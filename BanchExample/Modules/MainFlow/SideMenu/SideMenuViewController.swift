@@ -21,29 +21,18 @@ protocol SideMenuViewControllerDelegate: AnyObject {
 
 class SideMenuViewController: UIViewController {
 
-    weak var delegate: SideMenuViewControllerDelegate?
+    @IBOutlet private weak var sideMenuTableView: UITableView!
 
-    private let sideMenuTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(SideMenuTVCell.nib, forCellReuseIdentifier: SideMenuTVCell.identifier)
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .darkGray
-        return tableView
-    }()
+    weak var delegate: SideMenuViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
-        view.addSubview(sideMenuTableView)
+        sideMenuTableView.register(SideMenuTVCell.nib, forCellReuseIdentifier: SideMenuTVCell.identifier)
         sideMenuTableView.delegate = self
         sideMenuTableView.dataSource = self
         sideMenuTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        sideMenuTableView.frame = CGRect(x: 0, y: view.safeAreaInsets.top + 44 , width: view.bounds.size.width, height: view.bounds.size.height)
-    }
 }
 
     // MARK: - UITableViewDelegate
@@ -72,6 +61,5 @@ class SideMenuViewController: UIViewController {
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             delegate?.selectRow(with: MenuOptions.allCases[indexPath.item])
-    
         }
     }

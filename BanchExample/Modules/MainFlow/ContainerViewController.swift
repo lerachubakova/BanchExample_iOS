@@ -28,8 +28,9 @@ enum MenuPosition {
 
 // MARK: - ContainerViewController
 class ContainerViewController: UIViewController {
+
     // MARK: - Private Properties
-    private let sideMenuVC = SideMenuViewController()
+    private var sideMenuVC: SideMenuViewController!
     private var homeVC: HomeViewController!
     private var infoVC: InformationViewController!
 
@@ -46,6 +47,12 @@ class ContainerViewController: UIViewController {
         view.backgroundColor = .red
 
         setupShadowView()
+
+        if let vc = UIStoryboard(name: "SideMenu", bundle: Bundle.main).instantiateInitialViewController() as? SideMenuViewController {
+            sideMenuVC = vc
+        } else {
+            sideMenuVC = SideMenuViewController()
+        }
 
         sideMenuVC.delegate = self
         addChild(sideMenuVC)
@@ -68,8 +75,8 @@ class ContainerViewController: UIViewController {
         setupTapGestureRecognizer()
 
         setupConstraints()
-
     }
+
     // MARK: - Setup
     private func setupShadowView() {
         self.sideMenuShadowView = UIView(frame: self.view.bounds)
@@ -127,6 +134,7 @@ class ContainerViewController: UIViewController {
         }
     }
 }
+
 // MARK: - UIGestureRecognizerDelegate
 extension ContainerViewController: UIGestureRecognizerDelegate {
     @objc private func tappedView() {
@@ -193,6 +201,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
     }
 
 }
+
 // MARK: - SideMenuViewControllerDelegate
 extension ContainerViewController: SideMenuViewControllerDelegate {
     func selectRow(with option: MenuOptions) {
