@@ -26,28 +26,26 @@ enum MenuPosition {
     case down
 }
 
+// MARK: - ContainerViewController
 class ContainerViewController: UIViewController {
+    // MARK: - Private Properties
+    private let sideMenuVC = SideMenuViewController()
+    private var homeVC: HomeViewController!
+    private var infoVC: InformationViewController!
 
     private var menuState: MenuState = .closed
-    private var menuPosition: MenuPosition = .down
-
-    private var homeVC = HomeViewController()
-    private let sideMenuVC = SideMenuViewController()
-    private var infoVC = InformationViewController()
+    private var menuPosition: MenuPosition = .up
 
     private let sideMenuWidth: CGFloat = 200
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
     private var sideMenuShadowView: UIView!
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
 
-        self.sideMenuShadowView = UIView(frame: self.view.bounds)
-        self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.sideMenuShadowView.backgroundColor = .black
-        self.sideMenuShadowView.alpha = 0.0
-        sideMenuShadowView.isUserInteractionEnabled = false
+        setupShadowView()
 
         sideMenuVC.delegate = self
         addChild(sideMenuVC)
@@ -58,32 +56,62 @@ class ContainerViewController: UIViewController {
 
         sideMenuVC.didMove(toParent: self)
 
-        let navVC = UIStoryboard(name: "HomeNavigation", bundle: Bundle.main).instantiateViewController(identifier: "MainNavVC") as UINavigationController
+        setupHomeVC()
 
-        if let vc = navVC.viewControllers[0] as? HomeViewController {
-            vc.delegate = self
-            homeVC = vc
-        }
-
-        if let vc = UIStoryboard(name: "Information", bundle: Bundle.main).instantiateViewController(identifier: "InformationVC") as? InformationViewController {
-            infoVC = vc
-        }
-
-        addChild(navVC)
-        view.addSubview(navVC.view)
-        navVC.didMove(toParent: self)
+        setupInfoVC()
 
         if menuPosition == .up {
             view.addSubview(sideMenuShadowView)
             view.addSubview(sideMenuVC.view)
         }
 
+        setupTapGestureRecognizer()
+
+        setupConstraints()
+
+    }
+    // MARK: - Setup
+    private func setupShadowView() {
+        self.sideMenuShadowView = UIView(frame: self.view.bounds)
+        self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.sideMenuShadowView.backgroundColor = .black
+        self.sideMenuShadowView.alpha = 0.0
+        sideMenuShadowView.isUserInteractionEnabled = false
+    }
+
+    private func setupHomeVC() {
+        let homeNavVC = UIStoryboard(name: "HomeNavigation", bundle: Bundle.main).instantiateViewController(identifier: "MainNavVC") as UINavigationController
+
+        if let vc = homeNavVC.viewControllers[0] as? HomeViewController {
+            homeVC = vc
+        } else {
+            homeVC = HomeViewController()
+        }
+        homeVC.delegate = self
+
+        addChild(homeNavVC)
+        view.addSubview(homeNavVC.view)
+        homeNavVC.didMove(toParent: self)
+    }
+
+    private func setupInfoVC() {
+        if let vc = UIStoryboard(name: "Information", bundle: Bundle.main).instantiateViewController(identifier: "InformationVC") as? InformationViewController {
+            infoVC = vc
+        } else {
+            infoVC = InformationViewController()
+        }
+    }
+
+    private func setupTapGestureRecognizer() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delegate = self
         view.addGestureRecognizer(tapGestureRecognizer)
+    }
 
+    private func setupConstraints() {
         self.sideMenuVC.view.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
             self.sideMenuVC.view.widthAnchor.constraint(equalToConstant: sideMenuWidth),
             self.sideMenuVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -97,21 +125,9 @@ class ContainerViewController: UIViewController {
             self.sideMenuTrailingConstraint = self.sideMenuVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
             self.sideMenuTrailingConstraint.isActive = true
         }
-
     }
-
-    // Keep the state of the side menu (expanded or collapse) in rotation
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate { [unowned self] _ in
-            if self.menuPosition == .up {
-                self.sideMenuTrailingConstraint.constant = 0
-            }
-        }
-    }
-
 }
-
+// MARK: - UIGestureRecognizerDelegate
 extension ContainerViewController: UIGestureRecognizerDelegate {
     @objc private func tappedView() {
         if menuState == .opened {
@@ -127,6 +143,7 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
     }
 }
 
+// MARK: - HomeViewControllerDelegate
 extension ContainerViewController: HomeViewControllerDelegate {
     func tappedMenuButton() {
         toggleMenu()
@@ -176,7 +193,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
     }
 
 }
-
+// MARK: - SideMenuViewControllerDelegate
 extension ContainerViewController: SideMenuViewControllerDelegate {
     func selectRow(with option: MenuOptions) {
         self.toggleMenu()
