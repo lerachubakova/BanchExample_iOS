@@ -10,6 +10,8 @@
 		65F69B23DC783356BF5E376A /* Pods_BanchExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */; };
 		CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDB26F3613000DE394F /* HomeViewController.swift */; };
 		CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDD26F382EA00DE394F /* InformationViewController.swift */; };
+		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
+		CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E3127270340EA00C61AE6 /* Information.storyboard */; };
 		CEF265F326EF1F07008EE038 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF265F226EF1F07008EE038 /* AppDelegate.swift */; };
 		CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF265F426EF1F07008EE038 /* SceneDelegate.swift */; };
 		CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF265F626EF1F07008EE038 /* ContainerViewController.swift */; };
@@ -27,6 +29,8 @@
 		B58B45280D7442056926E6FE /* Pods-BanchExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.debug.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.debug.xcconfig"; sourceTree = "<group>"; };
 		CE88FBDB26F3613000DE394F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE88FBDD26F382EA00DE394F /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
+		CE8E3127270340EA00C61AE6 /* Information.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
 		CEF265EF26EF1F07008EE038 /* BanchExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanchExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF265F226EF1F07008EE038 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF265F426EF1F07008EE038 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +62,24 @@
 				24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE8E31292703433100C61AE6 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E3127270340EA00C61AE6 /* Information.storyboard */,
+				CE88FBDD26F382EA00DE394F /* InformationViewController.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		CE8E312A2703435600C61AE6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
+				CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		CEF265E626EF1F07008EE038 = {
@@ -137,8 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				CEF265F626EF1F07008EE038 /* ContainerViewController.swift */,
-				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
-				CE88FBDD26F382EA00DE394F /* InformationViewController.swift */,
+				CE8E312A2703435600C61AE6 /* Home */,
+				CE8E31292703433100C61AE6 /* Information */,
 				CEF2660C26EF3D93008EE038 /* SideMenu */,
 			);
 			path = MainFlow;
@@ -224,6 +246,8 @@
 				CEF2661126EF3F26008EE038 /* SideMenu.storyboard in Resources */,
 				CEF265FF26EF1F09008EE038 /* LaunchScreen.storyboard in Resources */,
 				CEF2661626EF45A3008EE038 /* SideMenuTVCell.xib in Resources */,
+				CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */,
+				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
 				CEF265FC26EF1F09008EE038 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

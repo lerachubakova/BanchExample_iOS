@@ -29,11 +29,11 @@ enum MenuPosition {
 class ContainerViewController: UIViewController {
 
     private var menuState: MenuState = .closed
-    private var menuPosition: MenuPosition = .up
+    private var menuPosition: MenuPosition = .down
 
-    private let homeVC = HomeViewController()
+    private var homeVC = HomeViewController()
     private let sideMenuVC = SideMenuViewController()
-    private let infoVC = InformationViewController()
+    private var infoVC = InformationViewController()
 
     private let sideMenuWidth: CGFloat = 200
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
@@ -58,8 +58,17 @@ class ContainerViewController: UIViewController {
 
         sideMenuVC.didMove(toParent: self)
 
-        homeVC.delegate = self
-        let navVC = UINavigationController(rootViewController: homeVC)
+        let navVC = UIStoryboard(name: "HomeNavigation", bundle: Bundle.main).instantiateViewController(identifier: "MainNavVC") as UINavigationController
+
+        if let vc = navVC.viewControllers[0] as? HomeViewController {
+            vc.delegate = self
+            homeVC = vc
+        }
+
+        if let vc = UIStoryboard(name: "Information", bundle: Bundle.main).instantiateViewController(identifier: "InformationVC") as? InformationViewController {
+            infoVC = vc
+        }
+
         addChild(navVC)
         view.addSubview(navVC.view)
         navVC.didMove(toParent: self)
