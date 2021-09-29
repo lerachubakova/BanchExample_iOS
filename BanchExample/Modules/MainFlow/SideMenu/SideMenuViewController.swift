@@ -63,7 +63,9 @@ class SideMenuViewController: UIViewController {
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.isUserInteractionEnabled = false
-            delegate?.selectRow(with: MenuOptions.allCases[indexPath.item])
+            if indexPath.item < 2 {
+                tableView.isUserInteractionEnabled = false
+                delegate?.selectRow(with: MenuOptions.allCases[indexPath.item])
+            }
         }
     }
