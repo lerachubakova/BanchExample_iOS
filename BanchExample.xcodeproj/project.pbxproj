@@ -14,6 +14,8 @@
 		CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E3127270340EA00C61AE6 /* Information.storyboard */; };
 		CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */; };
 		CE929D4E270452130031A8C8 /* AppRating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* AppRating.storyboard */; };
+		CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D5027047C510031A8C8 /* SettingsViewController.swift */; };
+		CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D5227047C770031A8C8 /* Settings.storyboard */; };
 		CEF265F326EF1F07008EE038 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF265F226EF1F07008EE038 /* AppDelegate.swift */; };
 		CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF265F426EF1F07008EE038 /* SceneDelegate.swift */; };
 		CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF265F626EF1F07008EE038 /* ContainerViewController.swift */; };
@@ -35,6 +37,8 @@
 		CE8E3127270340EA00C61AE6 /* Information.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
 		CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingViewController.swift; sourceTree = "<group>"; };
 		CE929D4D270452130031A8C8 /* AppRating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppRating.storyboard; sourceTree = "<group>"; };
+		CE929D5027047C510031A8C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CE929D5227047C770031A8C8 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		CEF265EF26EF1F07008EE038 /* BanchExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanchExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF265F226EF1F07008EE038 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEF265F426EF1F07008EE038 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 				CE929D4D270452130031A8C8 /* AppRating.storyboard */,
 			);
 			path = AppRating;
+			sourceTree = "<group>";
+		};
+		CE929D4F27047C140031A8C8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CE929D5027047C510031A8C8 /* SettingsViewController.swift */,
+				CE929D5227047C770031A8C8 /* Settings.storyboard */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		CEF265E626EF1F07008EE038 = {
@@ -175,6 +188,7 @@
 				CE929D4A27044E9A0031A8C8 /* AppRating */,
 				CE8E312A2703435600C61AE6 /* Home */,
 				CE8E31292703433100C61AE6 /* Information */,
+				CE929D4F27047C140031A8C8 /* Settings */,
 				CEF2660C26EF3D93008EE038 /* SideMenu */,
 			);
 			path = MainFlow;
@@ -260,6 +274,7 @@
 				CEF2661126EF3F26008EE038 /* SideMenu.storyboard in Resources */,
 				CEF265FF26EF1F09008EE038 /* LaunchScreen.storyboard in Resources */,
 				CEF2661626EF45A3008EE038 /* SideMenuTVCell.xib in Resources */,
+				CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */,
 				CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */,
 				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
 				CE929D4E270452130031A8C8 /* AppRating.storyboard in Resources */,
@@ -324,6 +339,7 @@
 				CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */,
 				CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */,
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,
+				CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

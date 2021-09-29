@@ -35,6 +35,7 @@ class ContainerViewController: UIViewController {
     private var homeVC: HomeViewController!
     private var infoVC: InformationViewController!
     private var appRatingVC: AppRatingViewController!
+    private var settingVC: SettingsViewController!
 
     private var menuState: MenuState = .closed
     private var menuPosition: MenuPosition = .down
@@ -74,6 +75,7 @@ class ContainerViewController: UIViewController {
         setupHomeVC()
         setupInfoVC()
         setupAppRatingVC()
+        setupSettingsVC()
     }
 
     private func setupSideMenuVC() {
@@ -115,6 +117,14 @@ class ContainerViewController: UIViewController {
             appRatingVC = vc
         } else {
             appRatingVC = AppRatingViewController()
+        }
+    }
+
+    private func setupSettingsVC() {
+        if let vc = UIStoryboard(name: "Settings", bundle: Bundle.main).instantiateInitialViewController() as? SettingsViewController {
+            settingVC = vc
+        } else {
+            settingVC = SettingsViewController()
         }
     }
 
@@ -238,19 +248,21 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         case .shareApp:
             break
         case .settings:
-            break
+            self.addSettingVC()
         }
     }
 
     private func resetToHome() {
         removeVC(vc: infoVC)
         removeVC(vc: appRatingVC)
+        removeVC(vc: settingVC)
 
         homeVC.title = "Home"
     }
 
     private func addInfoVC() {
         removeVC(vc: appRatingVC)
+        removeVC(vc: settingVC)
         addVC(vc: infoVC)
 
         homeVC.title = "Information"
@@ -258,9 +270,18 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
 
     private func addAppRatingVC() {
         removeVC(vc: infoVC)
+        removeVC(vc: settingVC)
         addVC(vc: appRatingVC)
 
         homeVC.title = "App Rating"
+    }
+
+    private func addSettingVC() {
+        removeVC(vc: infoVC)
+        removeVC(vc: appRatingVC)
+        addVC(vc: settingVC)
+
+        homeVC.title = "Settings"
     }
 
     private func removeVC(vc: UIViewController) {

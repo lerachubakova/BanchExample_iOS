@@ -63,8 +63,6 @@ class SideMenuViewController: UIViewController {
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            if indexPath.item < 3 {
-                delegate?.selectRow(with: MenuOptions.allCases[indexPath.item])
-            }
+            delegate?.selectRow(with: MenuOptions.allCases[indexPath.item])
         }
     }
