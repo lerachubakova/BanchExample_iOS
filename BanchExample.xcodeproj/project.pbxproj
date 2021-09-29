@@ -93,8 +93,8 @@
 		CE929D4A27044E9A0031A8C8 /* AppRating */ = {
 			isa = PBXGroup;
 			children = (
-				CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */,
 				CE929D4D270452130031A8C8 /* AppRating.storyboard */,
+				CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */,
 			);
 			path = AppRating;
 			sourceTree = "<group>";
@@ -102,8 +102,8 @@
 		CE929D4F27047C140031A8C8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				CE929D5027047C510031A8C8 /* SettingsViewController.swift */,
 				CE929D5227047C770031A8C8 /* Settings.storyboard */,
+				CE929D5027047C510031A8C8 /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

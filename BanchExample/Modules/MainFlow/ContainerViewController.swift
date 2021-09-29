@@ -240,58 +240,36 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         self.toggleMenu()
         switch option {
         case .home:
-            self.resetToHome()
+            removeAll()
+            homeVC.title = "Home"
         case .info:
-            self.addInfoVC()
+            addNewAndRemoveOld(vc: infoVC)
         case .appRating:
-            self.addAppRatingVC()
+            addNewAndRemoveOld(vc: appRatingVC)
         case .shareApp:
             break
         case .settings:
-            self.addSettingVC()
+            addNewAndRemoveOld(vc: settingVC)
         }
     }
 
-    private func resetToHome() {
-        removeVC(vc: infoVC)
-        removeVC(vc: appRatingVC)
-        removeVC(vc: settingVC)
+    private func removeAll() {
+        for subview in homeVC.view.subviews where subview.tag == 99 {
+            subview.removeFromSuperview()
+        }
 
-        homeVC.title = "Home"
+        for child in homeVC.children {
+            child.didMove(toParent: nil)
+        }
     }
 
-    private func addInfoVC() {
-        removeVC(vc: appRatingVC)
-        removeVC(vc: settingVC)
-        addVC(vc: infoVC)
+    private func addNewAndRemoveOld(vc: UIViewController) {
+        removeAll()
 
-        homeVC.title = "Information"
-    }
-
-    private func addAppRatingVC() {
-        removeVC(vc: infoVC)
-        removeVC(vc: settingVC)
-        addVC(vc: appRatingVC)
-
-        homeVC.title = "App Rating"
-    }
-
-    private func addSettingVC() {
-        removeVC(vc: infoVC)
-        removeVC(vc: appRatingVC)
-        addVC(vc: settingVC)
-
-        homeVC.title = "Settings"
-    }
-
-    private func removeVC(vc: UIViewController) {
-        vc.view.removeFromSuperview()
-        vc.didMove(toParent: nil)
-    }
-
-    private func addVC(vc: UIViewController) {
         homeVC.addChild(vc)
+        vc.view.tag = 99
         homeVC.view.addSubview(vc.view)
         vc.didMove(toParent: homeVC)
     }
+
 }
