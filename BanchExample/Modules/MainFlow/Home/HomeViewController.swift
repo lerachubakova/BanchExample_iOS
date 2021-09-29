@@ -17,17 +17,14 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .black
-        navigationController?.navigationBar.tintColor = .black
-        
+
         title = "Home"
 
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"),
                                                            style: .done,
                                                            target: self,
                                                            action: #selector(tappedMenuButton))
-
     }
 
     @IBAction private func tappedMenuButton() {

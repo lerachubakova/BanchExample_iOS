@@ -31,11 +31,12 @@ class ContainerViewController: UIViewController {
 
     // MARK: - Private Properties
     private var sideMenuVC: SideMenuViewController!
+    private var homeNVC: UINavigationController!
     private var homeVC: HomeViewController!
     private var infoVC: InformationViewController!
 
     private var menuState: MenuState = .closed
-    private var menuPosition: MenuPosition = .up
+    private var menuPosition: MenuPosition = .down
 
     private let sideMenuWidth: CGFloat = 200
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
@@ -48,29 +49,9 @@ class ContainerViewController: UIViewController {
 
         setupShadowView()
 
-        if let vc = UIStoryboard(name: "SideMenu", bundle: Bundle.main).instantiateInitialViewController() as? SideMenuViewController {
-            sideMenuVC = vc
-        } else {
-            sideMenuVC = SideMenuViewController()
-        }
+        setupChildVC()
 
-        sideMenuVC.delegate = self
-        addChild(sideMenuVC)
-
-        if menuPosition == .down {
-            view.addSubview(sideMenuVC.view)
-        }
-
-        sideMenuVC.didMove(toParent: self)
-
-        setupHomeVC()
-
-        setupInfoVC()
-
-        if menuPosition == .up {
-            view.addSubview(sideMenuShadowView)
-            view.addSubview(sideMenuVC.view)
-        }
+        addVCSubviews()
 
         setupTapGestureRecognizer()
 
@@ -86,9 +67,27 @@ class ContainerViewController: UIViewController {
         sideMenuShadowView.isUserInteractionEnabled = false
     }
 
+    private func setupChildVC() {
+        setupSideMenuVC()
+        setupHomeVC()
+        setupInfoVC()
+    }
+
+    private func setupSideMenuVC() {
+        if let vc = UIStoryboard(name: "SideMenu", bundle: Bundle.main).instantiateInitialViewController() as? SideMenuViewController {
+            sideMenuVC = vc
+        } else {
+            sideMenuVC = SideMenuViewController()
+        }
+
+        sideMenuVC.delegate = self
+        addChild(sideMenuVC)
+        sideMenuVC.didMove(toParent: self)
+    }
+
     private func setupHomeVC() {
         let homeNavVC = UIStoryboard(name: "HomeNavigation", bundle: Bundle.main).instantiateViewController(identifier: "MainNavVC") as UINavigationController
-
+        homeNVC = homeNavVC
         if let vc = homeNavVC.viewControllers[0] as? HomeViewController {
             homeVC = vc
         } else {
@@ -97,7 +96,6 @@ class ContainerViewController: UIViewController {
         homeVC.delegate = self
 
         addChild(homeNavVC)
-        view.addSubview(homeNavVC.view)
         homeNavVC.didMove(toParent: self)
     }
 
@@ -106,6 +104,17 @@ class ContainerViewController: UIViewController {
             infoVC = vc
         } else {
             infoVC = InformationViewController()
+        }
+    }
+
+    private func addVCSubviews() {
+        if menuPosition == .down {
+            view.addSubview(sideMenuVC.view)
+            view.addSubview(homeNVC.view)
+        } else {
+            view.addSubview(homeNVC.view)
+            view.addSubview(sideMenuShadowView)
+            view.addSubview(sideMenuVC.view)
         }
     }
 

@@ -76,8 +76,8 @@
 		CE8E312A2703435600C61AE6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
 				CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */,
+				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

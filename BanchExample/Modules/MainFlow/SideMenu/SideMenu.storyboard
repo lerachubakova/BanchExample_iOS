@@ -12,7 +12,7 @@
             <objects>
                 <viewController storyboardIdentifier="SideMenuVCID" id="Y6W-OH-hqX" customClass="SideMenuViewController" customModule="BanchExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXV-hp-JBb" userLabel="Header View">
@@ -36,14 +36,14 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HZN-ZR-rgz">
-                                <rect key="frame" x="0.0" y="88" width="260" height="729"/>
+                                <rect key="frame" x="0.0" y="88" width="260" height="387"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyv-99-lb6" userLabel="Footer View">
-                                <rect key="frame" x="0.0" y="817" width="260" height="45"/>
+                                <rect key="frame" x="0.0" y="475" width="260" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Footer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9e-QD-ARK">
-                                        <rect key="frame" x="10" y="0.0" width="240" height="45"/>
+                                        <rect key="frame" x="10" y="0.0" width="240" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                             <constraint firstItem="HZN-ZR-rgz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vtL-iD-h2M"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="260" height="896"/>
+                    <size key="freeformSize" width="260" height="500"/>
                     <connections>
                         <outlet property="sideMenuTableView" destination="HZN-ZR-rgz" id="olb-MV-tSz"/>
                     </connections>
