@@ -196,6 +196,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
         } completion: {[unowned self] done in
             if done {
                 menuState.toggle()
+                sideMenuVC.enableTableViewUserIteraction()
                 DispatchQueue.main.async {
                     completion?()
                 }

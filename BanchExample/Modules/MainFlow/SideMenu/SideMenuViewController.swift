@@ -33,6 +33,9 @@ class SideMenuViewController: UIViewController {
         sideMenuTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
     }
 
+    public func enableTableViewUserIteraction() {
+        sideMenuTableView.isUserInteractionEnabled = true
+    }
 }
 
     // MARK: - UITableViewDelegate
@@ -60,6 +63,7 @@ class SideMenuViewController: UIViewController {
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.isUserInteractionEnabled = false
             delegate?.selectRow(with: MenuOptions.allCases[indexPath.item])
         }
     }
