@@ -34,11 +34,13 @@ class ContainerViewController: UIViewController {
     private var homeNVC: UINavigationController!
     private var homeVC: HomeViewController!
     private var infoVC: InformationViewController!
+    private var appRatingVC: AppRatingViewController!
 
     private var menuState: MenuState = .closed
     private var menuPosition: MenuPosition = .down
 
     private let sideMenuWidth: CGFloat = 200
+    private let animationDuration: Double = 0.35
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
     private var sideMenuShadowView: UIView!
 
@@ -71,6 +73,7 @@ class ContainerViewController: UIViewController {
         setupSideMenuVC()
         setupHomeVC()
         setupInfoVC()
+        setupAppRatingVC()
     }
 
     private func setupSideMenuVC() {
@@ -104,6 +107,14 @@ class ContainerViewController: UIViewController {
             infoVC = vc
         } else {
             infoVC = InformationViewController()
+        }
+    }
+
+    private func setupAppRatingVC() {
+        if let vc = UIStoryboard(name: "AppRating", bundle: Bundle.main).instantiateInitialViewController() as? AppRatingViewController {
+            appRatingVC = vc
+        } else {
+            appRatingVC = AppRatingViewController()
         }
     }
 
@@ -186,7 +197,8 @@ extension ContainerViewController: HomeViewControllerDelegate {
     }
 
     func animateSideMenu(x: CGFloat, completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: 0.5) { [unowned self] in
+        sideMenuVC.enableTableViewUserIteraction(isEnabled: false)
+        UIView.animate(withDuration: animationDuration) { [unowned self] in
             if menuPosition == .down {
                 self.homeVC.navigationController?.view.frame.origin.x = x
             } else {
@@ -196,7 +208,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
         } completion: {[unowned self] done in
             if done {
                 menuState.toggle()
-                sideMenuVC.enableTableViewUserIteraction()
+                sideMenuVC.enableTableViewUserIteraction(isEnabled: true)
                 DispatchQueue.main.async {
                     completion?()
                 }
@@ -205,7 +217,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
     }
 
     func animateShadow(isDark: Bool) {
-        UIView.animate(withDuration: 0.5) { [unowned self] in
+        UIView.animate(withDuration: animationDuration) { [unowned self] in
             sideMenuShadowView.alpha = isDark ? 0.7 : 0.0
         }
     }
@@ -222,7 +234,7 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         case .info:
             self.addInfoVC()
         case .appRating:
-            break
+            self.addAppRatingVC()
         case .shareApp:
             break
         case .settings:
@@ -230,21 +242,35 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         }
     }
 
-    private func addInfoVC() {
-        homeVC.addChild(infoVC)
-        homeVC.view.addSubview(infoVC.view)
-        infoVC.view.frame = homeVC.view.bounds
-        infoVC.didMove(toParent: homeVC)
-        homeVC.title = "Information"
-
-        // let infoNVC = UINavigationController(rootViewController: infoVC)
-        // self?.present(infoNVC, animated: true, completion: nil)
-    }
-
     private func resetToHome() {
-        infoVC.view.removeFromSuperview()
-        infoVC.didMove(toParent: nil)
+        removeVC(vc: infoVC)
+        removeVC(vc: appRatingVC)
+
         homeVC.title = "Home"
     }
 
+    private func addInfoVC() {
+        removeVC(vc: appRatingVC)
+        addVC(vc: infoVC)
+
+        homeVC.title = "Information"
+    }
+
+    private func addAppRatingVC() {
+        removeVC(vc: infoVC)
+        addVC(vc: appRatingVC)
+
+        homeVC.title = "App Rating"
+    }
+
+    private func removeVC(vc: UIViewController) {
+        vc.view.removeFromSuperview()
+        vc.didMove(toParent: nil)
+    }
+
+    private func addVC(vc: UIViewController) {
+        homeVC.addChild(vc)
+        homeVC.view.addSubview(vc.view)
+        vc.didMove(toParent: homeVC)
+    }
 }
