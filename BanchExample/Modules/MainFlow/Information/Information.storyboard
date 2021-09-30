@@ -23,13 +23,20 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.89000000000000001" green="0.68033307789999997" blue="0.77462735199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rYr-vb-wMQ" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="PCg-hX-GDU"/>
                             <constraint firstItem="rYr-vb-wMQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ZDS-fD-PwW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ZJb-Gz-qVn"/>
+                    <navigationItem key="navigationItem" id="ZJb-Gz-qVn">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="lp9-O0-XRp">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tappedMenuButton" destination="Y6W-OH-hqX" id="vgz-LG-dhl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,4 +61,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+    </resources>
 </document>

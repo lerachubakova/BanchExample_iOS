@@ -64,5 +64,8 @@ class SideMenuViewController: UIViewController {
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             delegate?.selectRow(with: MenuOptions.allCases[indexPath.item])
+            if MenuOptions.allCases[indexPath.item] == .settings || MenuOptions.allCases[indexPath.item] == .appRating {
+                sideMenuTableView.deselectRow(at: indexPath, animated: false)
+            }
         }
     }

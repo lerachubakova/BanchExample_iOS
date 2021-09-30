@@ -13,14 +13,13 @@ class InformationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if let container = self.navigationController?.parent as? HomeViewControllerDelegate {
+            delegate = container
+        }
+
         title = "Information"
 
-        navigationController?.navigationBar.tintColor = .black
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"),
-                                                           style: .done,
-                                                           target: self,
-                                                           action: #selector(tappedMenuButton))
     }
 
     @IBAction private func tappedMenuButton() {

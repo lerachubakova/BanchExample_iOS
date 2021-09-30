@@ -16,14 +16,14 @@ class HomeViewController: UIViewController {
     weak var delegate: HomeViewControllerDelegate?
 
     override func viewDidLoad() {
-        title = "Home"
         super.viewDidLoad()
 
-        navigationController?.navigationBar.tintColor = .black
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"),
-                                                           style: .done,
-                                                           target: self,
-                                                           action: #selector(tappedMenuButton))
+        title = "Home"
+
+        if let container = self.navigationController?.parent as? HomeViewControllerDelegate {
+            delegate = container
+        }
+        
     }
 
     @IBAction private func tappedMenuButton() {
