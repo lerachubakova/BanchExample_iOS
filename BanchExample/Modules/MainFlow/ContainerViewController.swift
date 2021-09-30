@@ -33,12 +33,15 @@ class ContainerViewController: UIViewController {
     private var sideMenuVC: SideMenuViewController!
     private var homeNVC: UINavigationController!
     private var homeVC: HomeViewController!
+
+    private var infoNVC: UINavigationController!
     private var infoVC: InformationViewController!
+
     private var appRatingVC: AppRatingViewController!
     private var settingVC: SettingsViewController!
 
     private var menuState: MenuState = .closed
-    private var menuPosition: MenuPosition = .down
+    private var menuPosition: MenuPosition = .up
 
     private let sideMenuWidth: CGFloat = 200
     private let animationDuration: Double = 0.35
@@ -93,6 +96,7 @@ class ContainerViewController: UIViewController {
     private func setupHomeVC() {
         let homeNavVC = UIStoryboard(name: "HomeNavigation", bundle: Bundle.main).instantiateViewController(identifier: "MainNavVC") as UINavigationController
         homeNVC = homeNavVC
+        homeNVC.view.tag = 99
         if let vc = homeNavVC.viewControllers[0] as? HomeViewController {
             homeVC = vc
         } else {
@@ -105,11 +109,16 @@ class ContainerViewController: UIViewController {
     }
 
     private func setupInfoVC() {
-        if let vc = UIStoryboard(name: "Information", bundle: Bundle.main).instantiateViewController(identifier: "InformationVC") as? InformationViewController {
+        let infoNavVC = UIStoryboard(name: "Information", bundle: Bundle.main).instantiateViewController(identifier: "InfoNavVC") as UINavigationController
+        infoNVC = infoNavVC
+
+        if let vc = infoNavVC.viewControllers[0] as? InformationViewController {
             infoVC = vc
         } else {
             infoVC = InformationViewController()
         }
+        infoVC.delegate = self
+        infoNVC.view.tag = 99
     }
 
     private func setupAppRatingVC() {
@@ -130,12 +139,12 @@ class ContainerViewController: UIViewController {
 
     private func addVCSubviews() {
         if menuPosition == .down {
-            view.addSubview(sideMenuVC.view)
-            view.addSubview(homeNVC.view)
+            view.insertSubview(sideMenuVC.view, at: 0)
+            view.insertSubview(homeNVC.view, at: 1)
         } else {
-            view.addSubview(homeNVC.view)
-            view.addSubview(sideMenuShadowView)
-            view.addSubview(sideMenuVC.view)
+            view.insertSubview(homeNVC.view, at: 0)
+            view.insertSubview(sideMenuShadowView, at: 1)
+            view.insertSubview(sideMenuVC.view, at: 2)
         }
     }
 
@@ -210,7 +219,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
         sideMenuVC.enableTableViewUserIteraction(isEnabled: false)
         UIView.animate(withDuration: animationDuration) { [unowned self] in
             if menuPosition == .down {
-                self.homeVC.navigationController?.view.frame.origin.x = x
+                self.view.subviews[1].frame.origin.x = x
             } else {
                 self.sideMenuTrailingConstraint.constant = x
                 self.view.layoutIfNeeded()
@@ -232,18 +241,43 @@ extension ContainerViewController: HomeViewControllerDelegate {
         }
     }
 
+    func showViewController<Type: UIViewController>(viewController: Type.Type, storyboardName: String, storyboardId: String) {
+        // Remove the previous View
+        for subview in view.subviews where subview.tag == 99 {
+            subview.removeFromSuperview()
+        }
+
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: storyboardId) as? Type else { return }
+        vc.view.tag = 99
+       // view.insertSubview(vc.view, at: self.revealSideMenuOnTop ? 0 : 1)
+        addChild(vc)
+        print("\n LOG vc.view.frame.origin.x: \(vc.view.frame.origin.x)")
+
+//        if !self.revealSideMenuOnTop {
+//            if isExpanded {
+//                vc.view.frame.origin.x = 260.0
+//            }
+//            if self.sideMenuShadowView != nil {
+//                vc.view.addSubview(self.sideMenuShadowView)
+//            }
+//        }
+        vc.didMove(toParent: self)
+    }
 }
 
 // MARK: - SideMenuViewControllerDelegate
 extension ContainerViewController: SideMenuViewControllerDelegate {
     func selectRow(with option: MenuOptions) {
-        self.toggleMenu()
+        if menuPosition == .up {
+            self.toggleMenu()
+        }
+
         switch option {
         case .home:
-            removeAll()
-            homeVC.title = "Home"
+            addNewAndRemoveOld(vc: homeNVC)
         case .info:
-            addNewAndRemoveOld(vc: infoVC)
+            addNewAndRemoveOld(vc: infoNVC)
         case .appRating:
             addNewAndRemoveOld(vc: appRatingVC)
         case .shareApp:
@@ -251,25 +285,31 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         case .settings:
             addNewAndRemoveOld(vc: settingVC)
         }
+
+        if menuPosition == .down {
+            self.toggleMenu()
+        }
     }
 
-    private func removeAll() {
-        for subview in homeVC.view.subviews where subview.tag == 99 {
+    private func addNewAndRemoveOld(vc: UIViewController) {
+        for subview in view.subviews where subview.tag == 99 {
             subview.removeFromSuperview()
         }
 
         for child in homeVC.children {
             child.didMove(toParent: nil)
         }
-    }
 
-    private func addNewAndRemoveOld(vc: UIViewController) {
-        removeAll()
-
-        homeVC.addChild(vc)
+        self.addChild(vc)
         vc.view.tag = 99
-        homeVC.view.addSubview(vc.view)
-        vc.didMove(toParent: homeVC)
+
+        if menuPosition == .up {
+            view.insertSubview(vc.view, at: 0)
+        } else {
+            view.insertSubview(vc.view, at: 1)
+            vc.view.frame.origin.x = sideMenuWidth
+        }
+        vc.didMove(toParent: self)
     }
 
 }

@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     weak var delegate: HomeViewControllerDelegate?
 
     override func viewDidLoad() {
+        title = "Home"
         super.viewDidLoad()
 
         navigationController?.navigationBar.tintColor = .black

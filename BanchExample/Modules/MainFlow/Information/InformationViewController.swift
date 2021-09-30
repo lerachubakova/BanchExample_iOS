@@ -9,15 +9,21 @@ import UIKit
 
 class InformationViewController: UIViewController {
 
+    weak var delegate: HomeViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Information"
 
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.horizontal.3"),
+                                                           style: .done,
+                                                           target: self,
+                                                           action: #selector(tappedMenuButton))
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.parent?.title = "App Rating"
+    @IBAction private func tappedMenuButton() {
+        delegate?.tappedMenuButton()
     }
-
 }
