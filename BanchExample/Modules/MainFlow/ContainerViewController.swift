@@ -20,6 +20,14 @@ enum MenuState {
             self = .opened
         }
     }
+
+    func isOpen() -> Bool {
+        return self == .opened
+    }
+
+    func isClosed() -> Bool {
+        return self == .closed
+    }
 }
 
 enum MenuPosition {
@@ -37,7 +45,10 @@ class ContainerViewController: UIViewController {
 
     // You can change it before start
     private var menuState: MenuState = .closed
-    private var menuPosition: MenuPosition = .down
+    private var menuPosition: MenuPosition = .up
+
+    private var isGestureEnabled = true
+    private var isDraggingEnabled = false
 
     private let sideMenuWidth: CGFloat = 200
     private let animationDuration: Double = 0.35
@@ -52,7 +63,7 @@ class ContainerViewController: UIViewController {
 
         addSubviews()
 
-        setupTapGestureRecognizer()
+        setupGestureRecognizer()
 
         setupConstraints()
 
@@ -91,11 +102,15 @@ class ContainerViewController: UIViewController {
         }
     }
 
-    private func setupTapGestureRecognizer() {
+    private func setupGestureRecognizer() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delegate = self
         view.addGestureRecognizer(tapGestureRecognizer)
+
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+        panGestureRecognizer.delegate = self
+        view.addGestureRecognizer(panGestureRecognizer)
     }
 
     private func setupConstraints() {
@@ -130,6 +145,98 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
             return false
         }
         return true
+    }
+
+    @objc private func handlePanGesture(sender: UIPanGestureRecognizer) {
+        guard isGestureEnabled == true else { return }
+
+        switch sender.state {
+        case .began:
+            beginGesture(sender)
+        case .changed:
+            changeGesture(sender)
+        case .ended:
+            endGesture(sender)
+        default:
+            break
+        }
+    }
+
+    private func beginGesture(_ sender: UIPanGestureRecognizer) {
+        let velocity = sender.velocity(in: self.view).x
+
+        if velocity > 0, self.menuState.isOpen() { sender.state = .cancelled }
+
+        if (velocity > 0 && self.menuState.isClosed()) || (velocity < 0 && self.menuState.isOpen()) {
+            self.isDraggingEnabled = true
+        }
+
+        guard self.isDraggingEnabled else { return }
+
+        if abs(velocity) > 550 {
+            self.isDraggingEnabled = false
+            self.toggleMenu()
+            return
+        }
+
+    }
+
+    private func changeGesture(_ sender: UIPanGestureRecognizer) {
+        guard self.isDraggingEnabled else { return }
+
+        let position = sender.translation(in: self.view).x
+
+        switch self.menuPosition {
+        case .up:
+            let percentage = (position * 150 / self.sideMenuWidth) / self.sideMenuWidth
+
+            if menuState.isClosed() {
+                let alpha = percentage >= 0.7 ? 0.7 : percentage
+                self.sideMenuShadowView.alpha = alpha
+
+                if position <= self.sideMenuWidth {
+                    self.sideMenuTrailingConstraint.constant = -self.sideMenuWidth + position
+                }
+            } else {
+                let alpha = 0.7 + percentage >= 0 ? 0.7 + percentage : 0.0
+
+                if alpha >= 0, alpha <= 0.7 {
+                    self.sideMenuShadowView.alpha = alpha
+                }
+
+                if position <= 0 {
+                    self.sideMenuTrailingConstraint.constant = position
+                }
+            }
+        case .down:
+            if let recogView = sender.view?.subviews[1] {
+                if recogView.frame.origin.x <= self.sideMenuWidth, recogView.frame.origin.x >= 0 {
+                    recogView.frame.origin.x += position
+                    sender.setTranslation(CGPoint.zero, in: view)
+                }
+            }
+        }
+    }
+
+    private func endGesture(_ sender: UIPanGestureRecognizer) {
+        self.isDraggingEnabled = false
+        // If the side menu is half Open/Close, then Expand/Collapse with animation
+        switch self.menuPosition {
+        case .up:
+            if menuState.isClosed() {
+                let movedMoreThanHalf = self.sideMenuTrailingConstraint.constant > -(self.sideMenuWidth * 0.5)
+                self.menuState = movedMoreThanHalf ? .closed : .opened
+            } else {
+                let movedMoreThanHalf = abs(self.sideMenuTrailingConstraint.constant) > self.sideMenuWidth * 0.5
+                self.menuState = movedMoreThanHalf ? .opened : .closed
+            }
+        case .down:
+            if let recogView = sender.view?.subviews[1] {
+            let movedMoreThanHalf = recogView.frame.origin.x > self.sideMenuWidth * 0.5
+            self.menuState = movedMoreThanHalf ? .closed : .opened
+            }
+        }
+        self.toggleMenu()
     }
 }
 
@@ -199,11 +306,10 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         case .info:
             showViewController(viewController: UINavigationController.self, storyboardName: "Information")
         case .appRating:
-            // showViewController(viewController: UIViewController.self, storyboardName: "AppRating")
+             showViewController(viewController: UIViewController.self, storyboardName: "AppRating")
+        case .shareApp:
             let safariVC = SFSafariViewController(url: URL(string: "http://vironit.timesummary.com")!)
             present(safariVC, animated: true)
-        case .shareApp:
-            break
         case .settings:
             self.present(UIStoryboard(name: "Settings", bundle: Bundle.main).instantiateInitialViewController()!, animated: true)
         }
