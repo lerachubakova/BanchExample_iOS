@@ -7,23 +7,23 @@
 
 import UIKit
 
-enum MenuOptions: String, CaseIterable {
-    case home = "Home"
-    case info = "Information"
-    case appRating = "App Rating"
-    case shareApp = "Share App"
-    case settings = "Settings"
-}
-
 protocol SideMenuViewControllerDelegate: AnyObject {
-    func selectRow(with option: MenuOptions)
+    func selectRow(with option: String)
 }
 
 class SideMenuViewController: UIViewController {
 
+    @IBOutlet private weak var headerLabel: UILabel!
+    @IBOutlet private weak var footerLabel: UILabel!
     @IBOutlet private weak var sideMenuTableView: UITableView!
 
     weak var delegate: SideMenuViewControllerDelegate?
+
+    let options: [String] = [LocalizeKeys.home.rawValue,
+                             LocalizeKeys.info.rawValue,
+                             LocalizeKeys.appRating.rawValue,
+                             LocalizeKeys.shareApp.rawValue,
+                             LocalizeKeys.settings.rawValue]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,8 @@ class SideMenuViewController: UIViewController {
         sideMenuTableView.delegate = self
         sideMenuTableView.dataSource = self
         sideMenuTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
+        footerLabel.text = NSLocalizedString(LocalizeKeys.footer.rawValue, comment: "")
+        headerLabel.text = NSLocalizedString(LocalizeKeys.header.rawValue, comment: "")
     }
 
     public func enableTableViewUserIteraction(isEnabled: Bool) {
@@ -46,7 +48,7 @@ class SideMenuViewController: UIViewController {
     // MARK: - UITableViewDataSource
     extension SideMenuViewController: UITableViewDataSource {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return MenuOptions.allCases.count
+            return options.count
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,7 +56,7 @@ class SideMenuViewController: UIViewController {
                 fatalError("\(String(describing: self) ): xib doesn't exist")
             }
 
-            cell.setTitle(title: MenuOptions.allCases[indexPath.item].rawValue)
+            cell.setTitle(title: NSLocalizedString(options[indexPath.item], comment: ""))
 
             let myCustomSelectionColorView = UIView()
             myCustomSelectionColorView.backgroundColor = #colorLiteral(red: 0.2300506075, green: 0.2300506075, blue: 0.2300506075, alpha: 1)
@@ -63,8 +65,8 @@ class SideMenuViewController: UIViewController {
         }
 
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            delegate?.selectRow(with: MenuOptions.allCases[indexPath.item])
-            if MenuOptions.allCases[indexPath.item] == .settings || MenuOptions.allCases[indexPath.item] == .shareApp {
+            delegate?.selectRow(with: options[indexPath.item])
+            if options[indexPath.item] == LocalizeKeys.settings.rawValue || options[indexPath.item] == LocalizeKeys.shareApp.rawValue {
                 sideMenuTableView.deselectRow(at: indexPath, animated: false)
             }
         }

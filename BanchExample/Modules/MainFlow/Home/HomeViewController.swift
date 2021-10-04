@@ -13,12 +13,15 @@ protocol HomeViewControllerDelegate: AnyObject {
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet private weak var mainLabel: UILabel!
+
     weak var delegate: HomeViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Home"
+        title = NSLocalizedString(LocalizeKeys.home.rawValue, comment: "")
+        mainLabel.text = NSLocalizedString(LocalizeKeys.home.rawValue, comment: "").uppercased()
 
         if let container = self.navigationController?.parent as? HomeViewControllerDelegate {
             delegate = container

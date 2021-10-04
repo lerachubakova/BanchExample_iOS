@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  BanchExample
+
+  Created by User on 4.10.21.
+  
+*/
+
+"home" = "Home Page";
+"info" = "Information";
+"rating" = "App Rating";
+"share" = "Share App";
+"settings" = "Settings";
+"footer" = "by Me";
+"header" = "Pages";

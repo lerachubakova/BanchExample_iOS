@@ -44,7 +44,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Footer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9e-QD-ARK">
                                         <rect key="frame" x="10" y="0.0" width="240" height="25"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -77,6 +77,8 @@
                     </view>
                     <size key="freeformSize" width="260" height="500"/>
                     <connections>
+                        <outlet property="footerLabel" destination="T9e-QD-ARK" id="aAB-sk-DeT"/>
+                        <outlet property="headerLabel" destination="zT4-y5-Idp" id="AYm-w5-fCP"/>
                         <outlet property="sideMenuTableView" destination="HZN-ZR-rgz" id="olb-MV-tSz"/>
                     </connections>
                 </viewController>

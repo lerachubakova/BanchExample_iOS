@@ -295,23 +295,24 @@ extension ContainerViewController: HomeViewControllerDelegate {
 
 // MARK: - SideMenuViewControllerDelegate
 extension ContainerViewController: SideMenuViewControllerDelegate {
-    func selectRow(with option: MenuOptions) {
+    func selectRow(with option: String) {
         if menuPosition == .up {
             self.toggleMenu()
         }
 
         switch option {
-        case .home:
+        case LocalizeKeys.home.rawValue:
             showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
-        case .info:
+        case LocalizeKeys.info.rawValue:
             showViewController(viewController: UINavigationController.self, storyboardName: "Information")
-        case .appRating:
+        case LocalizeKeys.appRating.rawValue:
              showViewController(viewController: UIViewController.self, storyboardName: "AppRating")
-        case .shareApp:
+        case LocalizeKeys.shareApp.rawValue:
             let safariVC = SFSafariViewController(url: URL(string: "http://vironit.timesummary.com")!)
             present(safariVC, animated: true)
-        case .settings:
+        case LocalizeKeys.settings.rawValue:
             self.present(UIStoryboard(name: "Settings", bundle: Bundle.main).instantiateInitialViewController()!, animated: true)
+        default: break
         }
 
         if menuPosition == .down {

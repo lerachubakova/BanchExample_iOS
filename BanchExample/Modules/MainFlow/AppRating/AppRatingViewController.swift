@@ -9,6 +9,8 @@ import UIKit
 
 class AppRatingViewController: UIViewController {
 
+    @IBOutlet private weak var mainTitleLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,7 +19,7 @@ class AppRatingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.parent?.title = "App Rating"
+        mainTitleLabel.text = NSLocalizedString(LocalizeKeys.appRating.rawValue, comment: "").uppercased()
     }
 
 }

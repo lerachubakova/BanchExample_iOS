@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  BanchExample
+
+  Created by User on 4.10.21.
+  
+*/
+
+"home" = "Главная";
+"info" = "Информация";
+"rating" = "Рейтинг";
+"share" = "Поделиться";
+"settings" = "Настройки";
+"footer" = "от Меня";
+"header" = "Страницы";

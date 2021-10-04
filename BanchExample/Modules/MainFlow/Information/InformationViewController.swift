@@ -9,6 +9,7 @@ import UIKit
 
 class InformationViewController: UIViewController {
 
+    @IBOutlet private weak var mainLabel: UILabel!
     weak var delegate: HomeViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -18,8 +19,8 @@ class InformationViewController: UIViewController {
             delegate = container
         }
 
-        title = "Information"
-
+        title = NSLocalizedString(LocalizeKeys.info.rawValue, comment: "")
+        mainLabel.text = NSLocalizedString(LocalizeKeys.info.rawValue, comment: "").uppercased()
     }
 
     @IBAction private func tappedMenuButton() {

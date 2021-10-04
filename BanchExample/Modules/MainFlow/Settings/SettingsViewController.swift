@@ -9,6 +9,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet private weak var mainLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,8 +18,7 @@ class SettingsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.parent?.title = "App Rating"
+        mainLabel.text = NSLocalizedString(LocalizeKeys.settings.rawValue, comment: "").uppercased()
     }
 
 }
