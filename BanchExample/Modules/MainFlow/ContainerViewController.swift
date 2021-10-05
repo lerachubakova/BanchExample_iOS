@@ -56,19 +56,12 @@ class ContainerViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupShadowView()
-
         setupSideMenuVC()
-
         addSubviews()
-
         setupGestureRecognizer()
-
         setupConstraints()
-
         showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
-
     }
 
     // MARK: - Setup
@@ -87,7 +80,6 @@ class ContainerViewController: UIViewController {
         } else {
             sideMenuVC = SideMenuViewController()
         }
-
         sideMenuVC.delegate = self
         addChild(sideMenuVC)
         sideMenuVC.didMove(toParent: self)
@@ -123,11 +115,9 @@ class ContainerViewController: UIViewController {
         ])
 
         self.sideMenuTrailingConstraint = self.sideMenuVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: self.menuPosition == .up ? -sideMenuWidth : 0)
-
         if menuState == .opened {
             self.sideMenuTrailingConstraint.constant = 0
         }
-
         self.sideMenuTrailingConstraint.isActive = true
     }
 }
@@ -310,8 +300,7 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         case LocalizeKeys.shareApp:
             let safariVC = SFSafariViewController(url: URL(string: "http://vironit.timesummary.com")!)
             present(safariVC, animated: true)
-        case LocalizeKeys.settings
-        :
+        case LocalizeKeys.settings:
             self.present(UIStoryboard(name: "Settings", bundle: Bundle.main).instantiateInitialViewController()!, animated: true)
         default: break
         }
