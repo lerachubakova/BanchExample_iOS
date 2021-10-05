@@ -197,18 +197,10 @@
 		CEF2660926EF3C67008EE038 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CEF2660B26EF3D22008EE038 /* Launch */,
+				CEF265FD26EF1F09008EE038 /* LaunchScreen.storyboard */,
 				CEF2660D26EF3EA6008EE038 /* MainFlow */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		CEF2660B26EF3D22008EE038 /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-				CEF265FD26EF1F09008EE038 /* LaunchScreen.storyboard */,
-			);
-			path = Launch;
 			sourceTree = "<group>";
 		};
 		CEF2660C26EF3D93008EE038 /* SideMenu */ = {
