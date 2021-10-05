@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		65F69B23DC783356BF5E376A /* Pods_BanchExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */; };
+		CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */; };
 		CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C11BF270AD31A00063336 /* Localizable.strings */; };
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
+		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
+		CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C8270AF88C00063336 /* LanguageObserver.swift */; };
 		CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDB26F3613000DE394F /* HomeViewController.swift */; };
 		CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDD26F382EA00DE394F /* InformationViewController.swift */; };
 		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
@@ -33,9 +36,12 @@
 		24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BanchExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7824135B32911AF64197B2 /* Pods-BanchExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.release.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.release.xcconfig"; sourceTree = "<group>"; };
 		B58B45280D7442056926E6FE /* Pods-BanchExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.debug.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.debug.xcconfig"; sourceTree = "<group>"; };
+		CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSubscriber.swift; sourceTree = "<group>"; };
 		CE7C11BE270AD31A00063336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C0270AD36400063336 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
+		CE7C11C6270AF5F500063336 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		CE7C11C8270AF88C00063336 /* LanguageObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageObserver.swift; sourceTree = "<group>"; };
 		CE88FBDB26F3613000DE394F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE88FBDD26F382EA00DE394F /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
@@ -80,10 +86,28 @@
 		CE7C11C3270AE14600063336 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				CE7C11C8270AF88C00063336 /* LanguageObserver.swift */,
+				CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */,
 				CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */,
-				CE7C11BF270AD31A00063336 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		CE7C11C4270AF55700063336 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C11C3270AE14600063336 /* Localization */,
+				CE7C11C5270AF5DF00063336 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CE7C11C5270AF5DF00063336 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CE8E31292703433100C61AE6 /* Information */ = {
@@ -145,9 +169,9 @@
 			children = (
 				CEF2660026EF1F09008EE038 /* Info.plist */,
 				CEF2660826EF3C32008EE038 /* Application */,
-				CE7C11C3270AE14600063336 /* Localization */,
 				CEF2660926EF3C67008EE038 /* Modules */,
 				CEF2660726EF3BE0008EE038 /* Resources */,
+				CE7C11C4270AF55700063336 /* Utils */,
 			);
 			path = BanchExample;
 			sourceTree = "<group>";
@@ -156,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF265FB26EF1F09008EE038 /* Assets.xcassets */,
+				CE7C11BF270AD31A00063336 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -354,8 +379,11 @@
 				CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */,
 				CEF265F326EF1F07008EE038 /* AppDelegate.swift in Sources */,
 				CEF2661526EF45A3008EE038 /* SideMenuTVCell.swift in Sources */,
+				CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */,
 				CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */,
 				CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */,
+				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,
+				CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */,
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,
 				CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */,
 			);

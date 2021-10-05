@@ -13,3 +13,6 @@
 "settings" = "Settings";
 "footer" = "by Me";
 "header" = "Pages";
+"language" = "Language:";
+"languageName" = "En";
+"changeLanguage" = "Change Language";

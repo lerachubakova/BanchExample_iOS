@@ -13,13 +13,19 @@ class AppRatingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setLocalizedStrings() 
+        LanguageObserver.subscribe(self)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        mainTitleLabel.text = NSLocalizedString(LocalizeKeys.appRating.rawValue, comment: "").uppercased()
+    private func setLocalizedStrings() {
+        mainTitleLabel.text = LocalizeKeys.appRating.localized().uppercased()
     }
 
+}
+
+// MARK: - LanguageSubscriber
+extension AppRatingViewController: LanguageSubscriber {
+    func update() {
+        self.setLocalizedStrings()
+    }
 }

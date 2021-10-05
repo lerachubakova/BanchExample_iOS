@@ -19,11 +19,23 @@ class InformationViewController: UIViewController {
             delegate = container
         }
 
-        title = NSLocalizedString(LocalizeKeys.info.rawValue, comment: "")
-        mainLabel.text = NSLocalizedString(LocalizeKeys.info.rawValue, comment: "").uppercased()
+        setLocalizedStrings()
+        LanguageObserver.subscribe(self)
+    }
+
+    private func setLocalizedStrings() {
+        title = LocalizeKeys.info.localized()
+        mainLabel.text = LocalizeKeys.info.localized().uppercased()
     }
 
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
+    }
+}
+
+// MARK: - LanguageSubscriber
+extension InformationViewController: LanguageSubscriber {
+    func update() {
+        self.setLocalizedStrings()
     }
 }

@@ -301,16 +301,17 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         }
 
         switch option {
-        case LocalizeKeys.home.rawValue:
+        case LocalizeKeys.home:
             showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
-        case LocalizeKeys.info.rawValue:
+        case LocalizeKeys.info:
             showViewController(viewController: UINavigationController.self, storyboardName: "Information")
-        case LocalizeKeys.appRating.rawValue:
+        case LocalizeKeys.appRating:
              showViewController(viewController: UIViewController.self, storyboardName: "AppRating")
-        case LocalizeKeys.shareApp.rawValue:
+        case LocalizeKeys.shareApp:
             let safariVC = SFSafariViewController(url: URL(string: "http://vironit.timesummary.com")!)
             present(safariVC, animated: true)
-        case LocalizeKeys.settings.rawValue:
+        case LocalizeKeys.settings
+        :
             self.present(UIStoryboard(name: "Settings", bundle: Bundle.main).instantiateInitialViewController()!, animated: true)
         default: break
         }

@@ -13,3 +13,6 @@
 "settings" = "Настройки";
 "footer" = "от Меня";
 "header" = "Страницы";
+"language" = "Язык:";
+"languageName" = "Ru";
+"changeLanguage" = "Сменить язык";

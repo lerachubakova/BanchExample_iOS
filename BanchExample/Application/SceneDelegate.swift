@@ -12,12 +12,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        setLocalizationLanguage()
 
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
         window.rootViewController = ContainerViewController()
         window.makeKeyAndVisible()
         self.window = window
+
+    }
+
+    private func setLocalizationLanguage() {
+        var language = "en"
+
+        if let id = Locale.preferredLanguages.first,
+           let systemLanguage = Locale.components(fromIdentifier: id)["kCFLocaleLanguageCodeKey"] {
+            language = systemLanguage
+        }
+
+        LanguageObserver.setPreferredLanguage(str: language)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

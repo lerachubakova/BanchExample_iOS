@@ -20,17 +20,27 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString(LocalizeKeys.home.rawValue, comment: "")
-        mainLabel.text = NSLocalizedString(LocalizeKeys.home.rawValue, comment: "").uppercased()
-
         if let container = self.navigationController?.parent as? HomeViewControllerDelegate {
             delegate = container
         }
-        
+        setLocalizedStrings()
+        LanguageObserver.subscribe(self)
+    }
+
+    private func setLocalizedStrings() {
+        title = LocalizeKeys.home.localized()
+        mainLabel.text = LocalizeKeys.home.localized().uppercased()
     }
 
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
     }
 
+}
+
+// MARK: - LanguageSubscriber
+extension HomeViewController: LanguageSubscriber {
+    func update() {
+        self.setLocalizedStrings()
+    }
 }
