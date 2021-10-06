@@ -39,19 +39,13 @@ class HomeViewController: UIViewController {
         showAlertButton.setTitle(LocalizeKeys.showAlert.localized(), for: .normal)
     }
 
-    private func setAlert() {
-        let alertView = CustomAlertView.loadFromNib()
-        view.addSubview(alertView)
-        alertView.center = view.center
-        alertView.configure(title: LocalizeKeys.alertTitle.localized(), body: LocalizeKeys.alertText.localized(), buttonTitle: LocalizeKeys.alertButton.localized())
-    }
-
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
     }
     
     @IBAction private func tappedShowAlertButton(_ sender: Any) {
-        setAlert()
+      let alert = CustomAlertController(title: LocalizeKeys.alertTitle.localized(), text: LocalizeKeys.alertText.localized(), buttontext: LocalizeKeys.alertButton.localized())
+        self.present(alert, animated: true, completion: nil)
     }
 
 }
