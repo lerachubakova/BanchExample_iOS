@@ -35,6 +35,7 @@ class SideMenuViewController: UIViewController {
     private func configureTableView() {
         sideMenuTableView.register(SideMenuTVCell.nib, forCellReuseIdentifier: SideMenuTVCell.identifier)
         sideMenuTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
+        sideMenuTableView.isScrollEnabled = false
     }
 
     private func setLocalizedStrings() {

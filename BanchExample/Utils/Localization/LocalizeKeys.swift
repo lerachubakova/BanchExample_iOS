@@ -8,6 +8,7 @@
 import Foundation
 
 struct LocalizeKeys {
+    // sideMenu
     static let home = "home"
     static let info = "info"
     static let appRating = "rating"
@@ -15,7 +16,15 @@ struct LocalizeKeys {
     static let settings = "settings"
     static let footer = "footer"
     static let header = "header"
+
+    // settings
     static let language = "language"
     static let languageName = "languageName"
     static let changeLanguage = "changeLanguage"
+
+    // alerts
+    static let showAlert = "showAlert"
+    static let alertTitle = "alertTitle"
+    static let alertText = "alertText"
+    static let alertButton = "alertButton"
 }

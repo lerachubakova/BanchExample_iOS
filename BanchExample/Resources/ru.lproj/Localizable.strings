@@ -6,6 +6,7 @@
   
 */
 
+/* sideMenu */
 "home" = "Главная";
 "info" = "Информация";
 "rating" = "Рейтинг";
@@ -13,6 +14,14 @@
 "settings" = "Настройки";
 "footer" = "от Меня";
 "header" = "Страницы";
+
+/* settings */
 "language" = "Язык:";
 "languageName" = "Ru";
 "changeLanguage" = "Сменить язык";
+
+/* alert */
+"showAlert" = "Показать алерт";
+"alertTitle" = "Ошибка";
+"alertText" = "Данный адрес уже занят другим пользователем.";
+"alertButton" = "ОК";
