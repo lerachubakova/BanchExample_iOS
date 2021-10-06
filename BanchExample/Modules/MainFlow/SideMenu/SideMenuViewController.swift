@@ -27,12 +27,14 @@ class SideMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        sideMenuTableView.register(SideMenuTVCell.nib, forCellReuseIdentifier: SideMenuTVCell.identifier)
-        sideMenuTableView.delegate = self
-        sideMenuTableView.dataSource = self
-        sideMenuTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
+        configureTableView()
         setLocalizedStrings()
         LanguageObserver.subscribe(self)
+    }
+
+    private func configureTableView() {
+        sideMenuTableView.register(SideMenuTVCell.nib, forCellReuseIdentifier: SideMenuTVCell.identifier)
+        sideMenuTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
     }
 
     private func setLocalizedStrings() {
@@ -41,7 +43,6 @@ class SideMenuViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.sideMenuTableView.reloadData()
         }
-
     }
 
     public func enableTableViewUserIteraction(isEnabled: Bool) {

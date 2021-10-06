@@ -59,7 +59,7 @@ class ContainerViewController: UIViewController {
         setupShadowView()
         setupSideMenuVC()
         addSubviews()
-        setupGestureRecognizer()
+        setupGestureRecognizers()
         setupConstraints()
         showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
     }
@@ -94,7 +94,7 @@ class ContainerViewController: UIViewController {
         }
     }
 
-    private func setupGestureRecognizer() {
+    private func setupGestureRecognizers() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delegate = self
