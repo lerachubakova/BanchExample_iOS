@@ -14,31 +14,32 @@ class CustomAlertView: UIView {
     @IBOutlet private weak var textLabel: UILabel!
     @IBOutlet public weak var button: UIButton!
 
-    class func loadFromNib() -> CustomAlertView {
-        (Bundle.main.loadNibNamed(String(describing: Self.self), owner: nil, options: nil)?.first as? CustomAlertView)!
-    }
-
     func configure(title: String, body: String, buttonTitle: String) {
         titleLabel.text = title
         textLabel.text = body
-        button.setTitle(buttonTitle, for: .normal)
     }
 
 }
 
 class CustomAlertController: UIViewController {
+    private var alertView: CustomAlertView!
 
     init(title: String = "Error", text: String = "We have some error", buttontext: String = "OK") {
         super.init(nibName: nil, bundle: Bundle.main)
 
-        let alertView = (Bundle.main.loadNibNamed(String(describing: CustomAlertView.self), owner: self, options: nil)?.first as? CustomAlertView)!
+        alertView = (Bundle.main.loadNibNamed(String(describing: CustomAlertView.self), owner: self, options: nil)?.first as? CustomAlertView)!
         alertView.configure(title: title, body: text, buttonTitle: buttontext)
 
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
 
-        alertView.button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         view = alertView
+    }
+
+    func addAction(title: String) {
+        alertView.button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        alertView.button.setTitle(title, for: .normal)
+        alertView.button.isHidden = false
     }
 
     required init(coder aDecoder: NSCoder) {
