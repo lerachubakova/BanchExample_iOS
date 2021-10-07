@@ -115,8 +115,8 @@
 		CE7C11C5270AF5DF00063336 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 				CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */,
+				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
