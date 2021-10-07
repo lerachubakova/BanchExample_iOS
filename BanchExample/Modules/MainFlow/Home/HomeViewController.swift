@@ -53,6 +53,7 @@ class HomeViewController: UIViewController {
         alert.addAction(title: LocalizeKeys.alertButton.localized()) {
             print("\n LOG OK:")
         }
+        
         self.present(alert, animated: true, completion: nil)
     }
 

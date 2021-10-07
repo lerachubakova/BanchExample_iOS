@@ -19,7 +19,9 @@ class CustomAlertView: UIView {
     private var completion: (() -> Void)?
     private var secondCompletion: (() -> Void)?
 
-    private var buttonsCount: Int = 0
+    private var buttonsCount = 0
+    private let borderWidth: CGFloat = 0.4
+    private let borderAlpha: CGFloat = 0.6
 
     func getButtonsCount() -> Int {
         buttonsCount
@@ -28,6 +30,10 @@ class CustomAlertView: UIView {
     func configure(title: String, body: String) {
         titleLabel.text = title
         textLabel.text = body
+        button.superview?.layer.addBorder(edge: UIRectEdge.top, color: UIColor.white.withAlphaComponent(borderAlpha), thickness: borderWidth)
+        titleLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.white.withAlphaComponent(borderAlpha), thickness: borderWidth)
+        button.isHidden = true
+        secondButton.isHidden = true
     }
 
     func addFirstAction(title: String, completion: (() -> Void)? = nil) -> UIButton {
@@ -40,6 +46,7 @@ class CustomAlertView: UIView {
 
     func addSecondAction(title: String, completion: (() -> Void)? = nil) -> UIButton {
         self.secondCompletion = completion
+        button.layer.addBorder(edge: UIRectEdge.right, color: UIColor.white.withAlphaComponent(borderAlpha), thickness: borderWidth)
         secondButton.setTitle(title, for: .normal)
         secondButton.isHidden = false
         buttonsCount += 1
