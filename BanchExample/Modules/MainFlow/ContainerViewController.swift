@@ -239,6 +239,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
     func toggleMenu(completion: (() -> Void)? = nil) {
         switch menuState {
         case .opened:
+            _ = view.subviews.map { if $0.tag == 99 { $0.isUserInteractionEnabled = true }}
             if menuPosition == .up {
                 animateSideMenu(x: -sideMenuWidth, completion: completion)
             } else {
@@ -246,6 +247,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
             }
             animateShadow(isDark: false)
         case .closed:
+            _ = view.subviews.map { if $0.tag == 99 { $0.isUserInteractionEnabled = false }}
             if menuPosition == .up {
                 animateSideMenu(x: 0, completion: completion)
             } else {
