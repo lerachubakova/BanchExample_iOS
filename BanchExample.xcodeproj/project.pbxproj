@@ -14,7 +14,6 @@
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
 		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
 		CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C8270AF88C00063336 /* LanguageObserver.swift */; };
-		CE7FC0A0270D88FA007325DA /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC09F270D88FA007325DA /* PopUpWindow.swift */; };
 		CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */; };
 		CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */; };
 		CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */; };
@@ -48,7 +47,6 @@
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
 		CE7C11C6270AF5F500063336 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CE7C11C8270AF88C00063336 /* LanguageObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageObserver.swift; sourceTree = "<group>"; };
-		CE7FC09F270D88FA007325DA /* PopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
 		CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				CE7FC0A3270DAA11007325DA /* CustomAlert */,
-				CE7FC09F270D88FA007325DA /* PopUpWindow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -412,7 +409,6 @@
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,
 				CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */,
 				CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */,
-				CE7FC0A0270D88FA007325DA /* PopUpWindow.swift in Sources */,
 				CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
