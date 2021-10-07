@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		65F69B23DC783356BF5E376A /* Pods_BanchExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */; };
 		CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */; };
+		CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */; };
 		CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C11BF270AD31A00063336 /* Localizable.strings */; };
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
 		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
 		CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C8270AF88C00063336 /* LanguageObserver.swift */; };
+		CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */; };
+		CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */; };
+		CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */; };
 		CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDB26F3613000DE394F /* HomeViewController.swift */; };
 		CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDD26F382EA00DE394F /* InformationViewController.swift */; };
 		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
@@ -37,11 +41,15 @@
 		8B7824135B32911AF64197B2 /* Pods-BanchExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.release.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.release.xcconfig"; sourceTree = "<group>"; };
 		B58B45280D7442056926E6FE /* Pods-BanchExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.debug.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.debug.xcconfig"; sourceTree = "<group>"; };
 		CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSubscriber.swift; sourceTree = "<group>"; };
+		CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
 		CE7C11BE270AD31A00063336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C0270AD36400063336 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
 		CE7C11C6270AF5F500063336 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CE7C11C8270AF88C00063336 /* LanguageObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageObserver.swift; sourceTree = "<group>"; };
+		CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
+		CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		CE88FBDB26F3613000DE394F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE88FBDD26F382EA00DE394F /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
@@ -105,9 +113,28 @@
 		CE7C11C5270AF5DF00063336 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */,
 				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE7FC09E270D88D0007325DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE7FC0A3270DAA11007325DA /* CustomAlert */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE7FC0A3270DAA11007325DA /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */,
+				CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */,
+				CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */,
+			);
+			path = CustomAlert;
 			sourceTree = "<group>";
 		};
 		CE8E31292703433100C61AE6 /* Information */ = {
@@ -172,6 +199,7 @@
 				CEF2660926EF3C67008EE038 /* Modules */,
 				CEF2660726EF3BE0008EE038 /* Resources */,
 				CE7C11C4270AF55700063336 /* Utils */,
+				CE7FC09E270D88D0007325DA /* Views */,
 			);
 			path = BanchExample;
 			sourceTree = "<group>";
@@ -304,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */,
 				CEF2661126EF3F26008EE038 /* SideMenu.storyboard in Resources */,
 				CEF265FF26EF1F09008EE038 /* LaunchScreen.storyboard in Resources */,
 				CEF2661626EF45A3008EE038 /* SideMenuTVCell.xib in Resources */,
@@ -365,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */,
 				CEF2660F26EF3EFC008EE038 /* SideMenuViewController.swift in Sources */,
 				CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */,
 				CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */,
@@ -377,6 +407,8 @@
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,
 				CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */,
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,
+				CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */,
+				CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */,
 				CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

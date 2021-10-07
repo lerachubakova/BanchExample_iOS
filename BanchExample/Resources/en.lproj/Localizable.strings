@@ -6,6 +6,7 @@
   
 */
 
+/* sideMenu */
 "home" = "Home Page";
 "info" = "Information";
 "rating" = "App Rating";
@@ -13,6 +14,15 @@
 "settings" = "Settings";
 "footer" = "by Me";
 "header" = "Pages";
+
+/* settings */
 "language" = "Language:";
 "languageName" = "En";
 "changeLanguage" = "Change Language";
+
+/* alert */
+"showAlert" = "Show Alert";
+"alertTitle" = "Error";
+"alertText" = "Sorry, that email address is already used.";
+"alertButton" = "OK";
+"alertSkipButton" = "SKIP";
