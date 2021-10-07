@@ -44,8 +44,15 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction private func tappedShowAlertButton(_ sender: Any) {
-      let alert = CustomAlertController(title: LocalizeKeys.alertTitle.localized(), text: LocalizeKeys.alertText.localized(), buttontext: LocalizeKeys.alertButton.localized())
-        alert.addAction(title: "OK")
+      let alert = CustomAlertController(title: LocalizeKeys.alertTitle.localized(), text: LocalizeKeys.alertText.localized())
+
+        alert.addAction(title: LocalizeKeys.alertSkipButton.localized()) {
+            print("\n LOG SKIP:")
+        }
+
+        alert.addAction(title: LocalizeKeys.alertButton.localized()) {
+            print("\n LOG OK:")
+        }
         self.present(alert, animated: true, completion: nil)
     }
 

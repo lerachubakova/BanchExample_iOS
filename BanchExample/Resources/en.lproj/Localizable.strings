@@ -25,3 +25,4 @@
 "alertTitle" = "Error";
 "alertText" = "Sorry, that email address is already used.";
 "alertButton" = "OK";
+"alertSkipButton" = "SKIP";

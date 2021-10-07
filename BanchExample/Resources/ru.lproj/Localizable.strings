@@ -25,3 +25,4 @@
 "alertTitle" = "Ошибка";
 "alertText" = "Данный адрес уже занят другим пользователем.";
 "alertButton" = "ОК";
+"alertSkipButton" = "Пропустить";

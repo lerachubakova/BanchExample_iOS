@@ -15,7 +15,7 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBU-o7-upj">
                     <rect key="frame" x="94.5" y="143" width="264" height="144.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vws-sO-j7F">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vws-sO-j7F">
                             <rect key="frame" x="0.0" y="0.0" width="264" height="43"/>
                             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -39,18 +39,34 @@
                             </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxb-wE-AuP">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qxb-wE-AuP">
                             <rect key="frame" x="0.0" y="144.5" width="264" height="0.0"/>
                             <subviews>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD5-Wz-MGK">
+                                <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zzq-ng-PY6">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
+                                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="nmN-PG-DqD"/>
+                                    </constraints>
+                                    <state key="normal" title="BUTTON">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="tappedButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="d1d-6Q-Aqc"/>
+                                    </connections>
+                                </button>
+                                <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jD5-Wz-MGK">
                                     <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
                                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="ZZA-Qw-kB8"/>
                                     </constraints>
-                                    <state key="normal" title="SKIP">
+                                    <state key="normal" title="BUTTON">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="tappedButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="0Z1-fF-zfU"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -85,6 +101,7 @@
             <connections>
                 <outlet property="button" destination="jD5-Wz-MGK" id="Swn-h8-mAS"/>
                 <outlet property="contentView" destination="LBU-o7-upj" id="6K7-Og-yel"/>
+                <outlet property="secondButton" destination="Zzq-ng-PY6" id="eXG-mQ-FgB"/>
                 <outlet property="textLabel" destination="cZD-sd-mq9" id="dw1-Kl-LpA"/>
                 <outlet property="titleLabel" destination="Vws-sO-j7F" id="64U-ZP-gd5"/>
             </connections>
