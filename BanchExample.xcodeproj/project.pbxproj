@@ -10,6 +10,10 @@
 		65F69B23DC783356BF5E376A /* Pods_BanchExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */; };
 		CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */; };
 		CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */; };
+		CE690140270F1CB100F09B78 /* InfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69013E270F1CB100F09B78 /* InfoTVCell.swift */; };
+		CE690141270F1CB100F09B78 /* InfoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE69013F270F1CB100F09B78 /* InfoTVCell.xib */; };
+		CE690145270F276300F09B78 /* InfoCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE690143270F276300F09B78 /* InfoCollectionVCell.swift */; };
+		CE690146270F276300F09B78 /* InfoCollectionVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE690144270F276300F09B78 /* InfoCollectionVCell.xib */; };
 		CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C11BF270AD31A00063336 /* Localizable.strings */; };
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
 		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
@@ -42,6 +46,10 @@
 		B58B45280D7442056926E6FE /* Pods-BanchExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.debug.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.debug.xcconfig"; sourceTree = "<group>"; };
 		CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSubscriber.swift; sourceTree = "<group>"; };
 		CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
+		CE69013E270F1CB100F09B78 /* InfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTVCell.swift; sourceTree = "<group>"; };
+		CE69013F270F1CB100F09B78 /* InfoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTVCell.xib; sourceTree = "<group>"; };
+		CE690143270F276300F09B78 /* InfoCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionVCell.swift; sourceTree = "<group>"; };
+		CE690144270F276300F09B78 /* InfoCollectionVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCollectionVCell.xib; sourceTree = "<group>"; };
 		CE7C11BE270AD31A00063336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C0270AD36400063336 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
@@ -89,6 +97,25 @@
 				24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE69013D270F1C3F00F09B78 /* InformationTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE69013E270F1CB100F09B78 /* InfoTVCell.swift */,
+				CE69013F270F1CB100F09B78 /* InfoTVCell.xib */,
+				CE690142270F271E00F09B78 /* InfoCollectionVCell */,
+			);
+			path = InformationTableViewCell;
+			sourceTree = "<group>";
+		};
+		CE690142270F271E00F09B78 /* InfoCollectionVCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE690143270F276300F09B78 /* InfoCollectionVCell.swift */,
+				CE690144270F276300F09B78 /* InfoCollectionVCell.xib */,
+			);
+			path = InfoCollectionVCell;
 			sourceTree = "<group>";
 		};
 		CE7C11C3270AE14600063336 /* Localization */ = {
@@ -142,6 +169,7 @@
 			children = (
 				CE8E3127270340EA00C61AE6 /* Information.storyboard */,
 				CE88FBDD26F382EA00DE394F /* InformationViewController.swift */,
+				CE69013D270F1C3F00F09B78 /* InformationTableViewCell */,
 			);
 			path = Information;
 			sourceTree = "<group>";
@@ -334,9 +362,11 @@
 			files = (
 				CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */,
 				CEF2661126EF3F26008EE038 /* SideMenu.storyboard in Resources */,
+				CE690146270F276300F09B78 /* InfoCollectionVCell.xib in Resources */,
 				CEF265FF26EF1F09008EE038 /* LaunchScreen.storyboard in Resources */,
 				CEF2661626EF45A3008EE038 /* SideMenuTVCell.xib in Resources */,
 				CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */,
+				CE690141270F1CB100F09B78 /* InfoTVCell.xib in Resources */,
 				CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */,
 				CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */,
 				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
@@ -410,6 +440,8 @@
 				CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */,
 				CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */,
 				CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */,
+				CE690145270F276300F09B78 /* InfoCollectionVCell.swift in Sources */,
+				CE690140270F1CB100F09B78 /* InfoTVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
