@@ -57,8 +57,8 @@ extension InformationViewController: UITableViewDataSource {
         var res = 0
         switch section {
         case 0: res = 3
-        case 1: res = 1
-        case 2: res = 2
+        case 1: res = 2
+        case 2: res = 4
         default: break
         }
         return res
@@ -74,18 +74,22 @@ extension InformationViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        return 30
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.red
-        let titleLabel = UILabel(frame: CGRect(x: 8, y: 0, width: 200, height: 44))
+        headerView.backgroundColor = UIColor.darkGray
+        let titleLabel = UILabel(frame: CGRect(x: 8, y: 0, width: self.view.frame.size.width, height: 30))
         headerView.addSubview(titleLabel)
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        titleLabel.text = String(section)
+        titleLabel.text = "Section \(section)"
         return headerView
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let collectionViewCellHeight: CGFloat = (self.view.frame.size.width - 20)/3
+        return collectionViewCellHeight + 30 + 10
+    }
 }

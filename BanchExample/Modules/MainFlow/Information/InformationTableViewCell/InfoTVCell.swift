@@ -29,6 +29,7 @@ class InfoTVCell: UITableViewCell {
     }
     
 }
+
 // MARK: - UICollectionViewDelegate
 extension InfoTVCell: UICollectionViewDelegate {
 
@@ -37,15 +38,29 @@ extension InfoTVCell: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension InfoTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        collectionView.dequeueReusableCell(withReuseIdentifier: InfoCollectionVCell.identifier, for: indexPath) as? InfoCollectionVCell ?? UICollectionViewCell()
+        let infoColVC = collectionView.dequeueReusableCell(withReuseIdentifier: InfoCollectionVCell.identifier, for: indexPath) as? InfoCollectionVCell
+        return infoColVC ?? UICollectionViewCell()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    }
+
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension InfoTVCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellHeight = collectionView.frame.height
+        return CGSize(width: cellHeight, height: cellHeight)
     }
 
 }

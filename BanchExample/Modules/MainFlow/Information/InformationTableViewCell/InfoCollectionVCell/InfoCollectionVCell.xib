@@ -3,23 +3,35 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="InfoCollectionVCell" customModule="BanchExample" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gTV-IL-0wX" customClass="InfoCollectionVCell" customModule="BanchExample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgNoPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="6rI-eE-SPF">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    </imageView>
+                </subviews>
             </view>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="0.71840766649999999" green="0.1241007517" blue="0.1779878674" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <size key="customSize" width="42" height="44"/>
-            <point key="canvasLocation" x="100.00000000000001" y="129.91071428571428"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="6rI-eE-SPF" secondAttribute="bottom" id="HlS-hW-uKK"/>
+                <constraint firstItem="6rI-eE-SPF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jct-gt-NuW"/>
+                <constraint firstItem="6rI-eE-SPF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oh9-wF-evn"/>
+                <constraint firstAttribute="trailing" secondItem="6rI-eE-SPF" secondAttribute="trailing" id="p8J-Dn-DCl"/>
+            </constraints>
+            <size key="customSize" width="250" height="159"/>
+            <point key="canvasLocation" x="295.6521739130435" y="178.79464285714286"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="imgNoPhoto" width="500" height="500"/>
+    </resources>
 </document>
