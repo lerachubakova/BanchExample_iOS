@@ -61,7 +61,7 @@ class ContainerViewController: UIViewController {
         addSubviews()
         setupGestureRecognizers()
         setupConstraints()
-        showViewController(viewController: UINavigationController.self, storyboardName: "Information")
+        showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
     }
 
     // MARK: - Setup
