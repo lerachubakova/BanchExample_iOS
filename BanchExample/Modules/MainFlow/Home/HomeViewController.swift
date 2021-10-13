@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
         setLocalizedStrings()
         LanguageObserver.subscribe(self)
 
-        viewModel.getXMLNews()
+        viewModel.getNews()
     }
 
     private func configureButton() {

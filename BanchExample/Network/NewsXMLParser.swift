@@ -11,13 +11,13 @@ final class NewsXMLParser: NSObject {
     private var elementName = ""
     private var item = -1
 
-    private var news: [News]?
+    private var news: [XMLNewsModel]?
 
-    func getNews(from data: Data) -> [News]? {
+    func getNews(from data: Data) -> XMLResponseNewsModel? {
         let parser = XMLParser(data: data)
         parser.delegate = self
         parser.parse()
-        return news
+        return XMLResponseNewsModel(news: news)
     }
 
 }
@@ -29,7 +29,7 @@ extension NewsXMLParser : XMLParserDelegate {
         case "item":
             if news == nil { news = [] }
             self.item += 1
-            news?.append(News())
+            news?.insert(XMLNewsModel(), at: 0)
         default:
             break
         }
@@ -46,15 +46,15 @@ extension NewsXMLParser : XMLParserDelegate {
 
         switch self.elementName {
         case "link":
-            self.news?.last?.setLink(str: data)
+            self.news?.first?.setLink(str: data)
         case "description":
-            self.news?.last?.addToDescription(str: string)
+            self.news?.first?.addToDescription(str: string)
         case "title":
-            self.news?.last?.addToTitle(str: string)
+            self.news?.first?.addToTitle(str: string)
         case "author":
-            self.news?.last?.setAuthor(str: data)
+            self.news?.first?.setAuthor(str: data)
         case "pubDate":
-            self.news?.last?.setDate(str: data)
+            self.news?.first?.setDate(str: data)
         default:
             break
         }
