@@ -8,17 +8,8 @@
 import Foundation
 
 final class HomeViewModel {
-    private var XMLNews: XMLResponseNewsModel? {
-        didSet {
-            print(XMLNews?.debugDescription ?? "Empty")
-        }
-    }
-
-    private var JSONNews: JSONResponseNewsModel? {
-        didSet {
-            print( JSONNews?.debugDescription ?? "Empty")
-        }
-    }
+    private var XMLNews: XMLResponseNewsModel?
+    private var JSONNews: JSONResponseNewsModel?
 
     func getNews() {
         getXMLNews()
@@ -50,7 +41,6 @@ final class HomeViewModel {
         DispatchQueue.main.async {
             NetworkManager().makeJSONNewsRequest { [weak self] news in
                 guard let strongNews = news else { return }
-             //   print("\n LOG JSON News: \(strongNews.toString())")
                 self?.JSONNews = strongNews
             }
         }

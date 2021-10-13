@@ -22,11 +22,22 @@ struct JSONResponseNewsModel: Codable {
         return result
     }
 
+    var count: Int {
+        return news.count
+    }
+
     init() {
         self.news = []
     }
 
     init(news: [JSONNewsModel]) {
         self.news = news
+    }
+
+    subscript(index: Int) -> JSONNewsModel {
+        guard index > -1 && index < news.count else {
+            fatalError("JSONResponseNewsModel subscript index out exception")
+        }
+        return news[index]
     }
 }
