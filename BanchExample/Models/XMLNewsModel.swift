@@ -7,27 +7,6 @@
 
 import Foundation
 
-class XMLResponseNewsModel {
-    let news: [XMLNewsModel]
-
-    var debugDescription: String {
-        var result = "\n"
-        _ = self.news.map {
-           result += $0.debugDescription + "\n"
-        }
-        return result
-    }
-
-    init() {
-        self.news = []
-    }
-
-    init?(news: [XMLNewsModel]?) {
-        if news == nil { return nil }
-        self.news = news!
-    }
-}
-
 class XMLNewsModel {
     private var title = ""
     private var link = ""

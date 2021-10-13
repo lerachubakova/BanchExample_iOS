@@ -12,6 +12,9 @@
 		CE1B77E62716B45A00C3034A /* NewsXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E52716B45A00C3034A /* NewsXMLParser.swift */; };
 		CE1B77E82716B93300C3034A /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E72716B93300C3034A /* APIConstants.swift */; };
 		CE1B77EA2716BDF900C3034A /* JSONResponseNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E92716BDF900C3034A /* JSONResponseNewsModel.swift */; };
+		CE1B77EE2716E0B800C3034A /* JSONNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77ED2716E0B700C3034A /* JSONNewsModel.swift */; };
+		CE1B77F02716E0D100C3034A /* SourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77EF2716E0D100C3034A /* SourceModel.swift */; };
+		CE1B77F22716E0F600C3034A /* XMLResponseNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77F12716E0F600C3034A /* XMLResponseNewsModel.swift */; };
 		CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F392715D821005448BB /* HomeViewModel.swift */; };
 		CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F3C2715D96E005448BB /* NetworkManager.swift */; };
 		CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */; };
@@ -54,6 +57,9 @@
 		CE1B77E52716B45A00C3034A /* NewsXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsXMLParser.swift; sourceTree = "<group>"; };
 		CE1B77E72716B93300C3034A /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		CE1B77E92716BDF900C3034A /* JSONResponseNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponseNewsModel.swift; sourceTree = "<group>"; };
+		CE1B77ED2716E0B700C3034A /* JSONNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNewsModel.swift; sourceTree = "<group>"; };
+		CE1B77EF2716E0D100C3034A /* SourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceModel.swift; sourceTree = "<group>"; };
+		CE1B77F12716E0F600C3034A /* XMLResponseNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLResponseNewsModel.swift; sourceTree = "<group>"; };
 		CE249F392715D821005448BB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE249F3C2715D96E005448BB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSubscriber.swift; sourceTree = "<group>"; };
@@ -114,8 +120,11 @@
 		CE1B77E22716A4E000C3034A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE1B77E32716A55200C3034A /* XMLNewsModel.swift */,
+				CE1B77ED2716E0B700C3034A /* JSONNewsModel.swift */,
 				CE1B77E92716BDF900C3034A /* JSONResponseNewsModel.swift */,
+				CE1B77EF2716E0D100C3034A /* SourceModel.swift */,
+				CE1B77E32716A55200C3034A /* XMLNewsModel.swift */,
+				CE1B77F12716E0F600C3034A /* XMLResponseNewsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -471,8 +480,11 @@
 				CE1B77E62716B45A00C3034A /* NewsXMLParser.swift in Sources */,
 				CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */,
 				CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */,
+				CE1B77EE2716E0B800C3034A /* JSONNewsModel.swift in Sources */,
+				CE1B77F02716E0D100C3034A /* SourceModel.swift in Sources */,
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,
 				CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */,
+				CE1B77F22716E0F600C3034A /* XMLResponseNewsModel.swift in Sources */,
 				CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */,
 				CE1B77EA2716BDF900C3034A /* JSONResponseNewsModel.swift in Sources */,
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,

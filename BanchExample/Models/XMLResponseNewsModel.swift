@@ -1,5 +1,5 @@
 //
-//  JSONResponseNewsModel.swift
+//  XMLResponseNewsModel.swift
 //  BanchExample
 //
 //  Created by User on 13.10.21.
@@ -7,12 +7,8 @@
 
 import Foundation
 
-struct JSONResponseNewsModel: Codable {
-    let news: [JSONNewsModel]
-
-    private enum CodingKeys: String, CodingKey {
-        case news = "articles"
-    }
+class XMLResponseNewsModel {
+    let news: [XMLNewsModel]
 
     var debugDescription: String {
         var result = "\n"
@@ -26,7 +22,8 @@ struct JSONResponseNewsModel: Codable {
         self.news = []
     }
 
-    init(news: [JSONNewsModel]) {
-        self.news = news
+    init?(news: [XMLNewsModel]?) {
+        if news == nil { return nil }
+        self.news = news!
     }
 }
