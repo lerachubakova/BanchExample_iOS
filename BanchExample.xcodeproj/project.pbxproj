@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		65F69B23DC783356BF5E376A /* Pods_BanchExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */; };
 		CE1B77E42716A55200C3034A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E32716A55200C3034A /* News.swift */; };
+		CE1B77E62716B45A00C3034A /* NewsXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E52716B45A00C3034A /* NewsXMLParser.swift */; };
 		CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F392715D821005448BB /* HomeViewModel.swift */; };
 		CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F3C2715D96E005448BB /* NetworkManager.swift */; };
 		CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */; };
@@ -48,6 +49,7 @@
 		8B7824135B32911AF64197B2 /* Pods-BanchExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.release.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.release.xcconfig"; sourceTree = "<group>"; };
 		B58B45280D7442056926E6FE /* Pods-BanchExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.debug.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1B77E32716A55200C3034A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		CE1B77E52716B45A00C3034A /* NewsXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsXMLParser.swift; sourceTree = "<group>"; };
 		CE249F392715D821005448BB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE249F3C2715D96E005448BB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSubscriber.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				CE249F3C2715D96E005448BB /* NetworkManager.swift */,
+				CE1B77E52716B45A00C3034A /* NewsXMLParser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				CEF265F326EF1F07008EE038 /* AppDelegate.swift in Sources */,
 				CEF2661526EF45A3008EE038 /* SideMenuTVCell.swift in Sources */,
 				CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */,
+				CE1B77E62716B45A00C3034A /* NewsXMLParser.swift in Sources */,
 				CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */,
 				CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */,
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,

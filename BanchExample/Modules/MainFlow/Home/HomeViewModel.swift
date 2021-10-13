@@ -8,11 +8,14 @@
 import Foundation
 
 final class HomeViewModel {
-    func getNews() {
-        NetworkManager().makeXMLNewsRequest { news in
-            guard let strongNews = news else { return }
-            print("\n HomeViewModel LOG news:")
-            _ = strongNews.map { print($0.debugDescription) }
+    private var XMLNews: [News]?
+
+    func getXMLNews() {
+        DispatchQueue.main.async {
+            NetworkManager().makeXMLNewsRequest { [weak self] news in
+                guard let strongNews = news else { return }
+                self?.XMLNews = strongNews
+            }
         }
     }
 }
