@@ -8,11 +8,19 @@
 import Foundation
 
 class XMLNewsModel {
-    private var title = ""
-    private var link = ""
-    private var author = ""
-    private var date = ""
-    private var description = ""
+    private var title: String
+    private var link: URL?
+    private var author: String
+    private var date: Date
+    private var description: String
+
+    init() {
+        title = ""
+        link = nil
+        author = ""
+        date = Date()
+        description = ""
+    }
 
     var debugDescription: String {
         var result = ""
@@ -20,7 +28,7 @@ class XMLNewsModel {
         result += "\n Date: \(self.date)"
         result += "\n Description: \(self.description)"
         result += "\n Source: \(self.author)"
-        result += "\n Link: \(self.link)"
+        result += "\n Link: \(self.link?.absoluteString ?? "")"
         return result
     }
 
@@ -28,21 +36,43 @@ class XMLNewsModel {
         title += str
     }
 
+    func getTitle() -> String {
+        return title
+    }
+
     func setLink(str: String) {
-        link = str
+        link = URL(string: str)
+    }
+
+    func getLink() -> URL? {
+        return link
     }
 
     func setAuthor(str: String) {
         author = str
     }
 
+    func getAuthor() -> String {
+        return author
+    }
+
     func setDate(str: String) {
-        date = str
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        date = dateFormatter.date(from: str)!
+    }
+
+    func getDate() -> Date {
+        return date
     }
 
     func addToDescription(str: String) {
         let modifiedStr = str.replacingOccurrences(of: "\n\n", with: " ")
         description += modifiedStr
+    }
+
+    func getDescription() -> String {
+        return description
     }
 
 }

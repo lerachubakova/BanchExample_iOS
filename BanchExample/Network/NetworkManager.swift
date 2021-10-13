@@ -39,8 +39,10 @@ final class NetworkManager: NSObject {
         guard var urlComponents = URLComponents(string: APIConstants.baseURL) else { return }
 
         urlComponents.queryItems =
-            [URLQueryItem(name: APIConstants.nameСountry, value: APIConstants.valueCountry),
-             URLQueryItem(name: APIConstants.nameKey, value: APIConstants.valueKey)]
+            [
+                URLQueryItem(name: APIConstants.nameSources, value: APIConstants.valueSources),
+                URLQueryItem(name: APIConstants.nameKey, value: APIConstants.valueKey)
+            ]
 
         guard let url = urlComponents.url else { return }
         

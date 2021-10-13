@@ -48,4 +48,24 @@ struct JSONNewsModel: Codable {
         return result
     }
 
+    func getTitle() -> String {
+        return title
+    }
+
+    func getLink() -> URL? {
+        return link
+    }
+
+    func getAuthor() -> String {
+        return source.debugDescription
+    }
+
+    func getDate() -> String {
+        return date
+    }
+
+    func getDescription() -> String {
+        return description ?? ""
+    }
+
 }

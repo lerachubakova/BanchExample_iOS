@@ -7,32 +7,47 @@
 
 import Foundation
 
+enum State {
+    case nobodyFinished
+    case oneFinished
+    case twoFinished
+
+    mutating func toggle() {
+        switch self {
+        case .nobodyFinished:
+            self = .oneFinished
+        case .oneFinished:
+            self = .twoFinished
+        case .twoFinished:
+           break
+        }
+    }
+}
+
 final class HomeViewModel {
-    private var XMLNews: XMLResponseNewsModel?
-    private var JSONNews: JSONResponseNewsModel?
+
+    private var newsArray = NewsArray()
+
+    private var requestState: State = .nobodyFinished {
+        willSet {
+            if newValue == .twoFinished {
+                newsArray.sort()
+                print(newsArray.debugDescription)
+            }
+        }
+    }
 
     func getNews() {
-        getXMLNews()
         getJSONNews()
-
-//        _ = Timer.scheduledTimer(withTimeInterval: 20.0, repeats: true) { [weak self] _ in
-//            self?.getXMLNews()
-//        }
-//
-//        _ = Timer.scheduledTimer(withTimeInterval: 13.0, repeats: true) { [weak self] _ in
-//            self?.getJSONNews()
-//        }
-//        _ = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] _ in
-//            let rand =  Int.random(in: 0..<(self!.XMLNews!.count - 1) )
-//            print(self!.XMLNews![rand].debugDescription)
-//        }
+        getXMLNews()
     }
 
     private func getXMLNews() {
         DispatchQueue.main.async {
             NetworkManager().makeXMLNewsRequest { [weak self] news in
                 guard let strongNews = news else { return }
-                self?.XMLNews = strongNews
+                self?.newsArray.append(array: strongNews)
+                self?.requestState.toggle()
             }
         }
     }
@@ -41,8 +56,10 @@ final class HomeViewModel {
         DispatchQueue.main.async {
             NetworkManager().makeJSONNewsRequest { [weak self] news in
                 guard let strongNews = news else { return }
-                self?.JSONNews = strongNews
+                self?.newsArray.append(array: strongNews)
+                self?.requestState.toggle()
             }
         }
     }
+
 }
