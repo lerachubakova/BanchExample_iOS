@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		65F69B23DC783356BF5E376A /* Pods_BanchExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */; };
+		CE1B77E42716A55200C3034A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E32716A55200C3034A /* News.swift */; };
+		CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F392715D821005448BB /* HomeViewModel.swift */; };
+		CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F3C2715D96E005448BB /* NetworkManager.swift */; };
 		CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */; };
 		CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */; };
 		CE690140270F1CB100F09B78 /* InfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69013E270F1CB100F09B78 /* InfoTVCell.swift */; };
@@ -44,6 +47,9 @@
 		24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BanchExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7824135B32911AF64197B2 /* Pods-BanchExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.release.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.release.xcconfig"; sourceTree = "<group>"; };
 		B58B45280D7442056926E6FE /* Pods-BanchExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BanchExample.debug.xcconfig"; path = "Target Support Files/Pods-BanchExample/Pods-BanchExample.debug.xcconfig"; sourceTree = "<group>"; };
+		CE1B77E32716A55200C3034A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		CE249F392715D821005448BB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CE249F3C2715D96E005448BB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSubscriber.swift; sourceTree = "<group>"; };
 		CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
 		CE69013E270F1CB100F09B78 /* InfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTVCell.swift; sourceTree = "<group>"; };
@@ -97,6 +103,22 @@
 				24EDE68E4DA64C3DF49838B3 /* Pods_BanchExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE1B77E22716A4E000C3034A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE1B77E32716A55200C3034A /* News.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE249F3B2715D959005448BB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE249F3C2715D96E005448BB /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		CE69013D270F1C3F00F09B78 /* InformationTableViewCell */ = {
@@ -179,6 +201,7 @@
 			children = (
 				CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */,
 				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
+				CE249F392715D821005448BB /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -224,7 +247,9 @@
 			children = (
 				CEF2660026EF1F09008EE038 /* Info.plist */,
 				CEF2660826EF3C32008EE038 /* Application */,
+				CE1B77E22716A4E000C3034A /* Models */,
 				CEF2660926EF3C67008EE038 /* Modules */,
+				CE249F3B2715D959005448BB /* Network */,
 				CEF2660726EF3BE0008EE038 /* Resources */,
 				CE7C11C4270AF55700063336 /* Utils */,
 				CE7FC09E270D88D0007325DA /* Views */,
@@ -424,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */,
 				CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */,
 				CEF2660F26EF3EFC008EE038 /* SideMenuViewController.swift in Sources */,
 				CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */,
@@ -435,11 +461,13 @@
 				CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */,
 				CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */,
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,
+				CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */,
 				CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */,
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,
 				CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */,
 				CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */,
 				CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */,
+				CE1B77E42716A55200C3034A /* News.swift in Sources */,
 				CE690145270F276300F09B78 /* InfoCollectionVCell.swift in Sources */,
 				CE690140270F1CB100F09B78 /* InfoTVCell.swift in Sources */,
 			);

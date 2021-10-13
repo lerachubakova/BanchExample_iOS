@@ -18,6 +18,8 @@ class HomeViewController: UIViewController {
 
     weak var delegate: HomeViewControllerDelegate?
 
+    private let viewModel = HomeViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +29,8 @@ class HomeViewController: UIViewController {
         configureButton()
         setLocalizedStrings()
         LanguageObserver.subscribe(self)
+
+        viewModel.getNews()
     }
 
     private func configureButton() {
