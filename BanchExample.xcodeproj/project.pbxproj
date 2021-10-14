@@ -18,6 +18,9 @@
 		CE1B77F42716F9D700C3034A /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77F32716F9D700C3034A /* NewsModel.swift */; };
 		CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F392715D821005448BB /* HomeViewModel.swift */; };
 		CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F3C2715D96E005448BB /* NetworkManager.swift */; };
+		CE63328F271876140067A45B /* NewsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63328D271876140067A45B /* NewsTVCell.swift */; };
+		CE633290271876140067A45B /* NewsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE63328E271876140067A45B /* NewsTVCell.xib */; };
+		CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE633291271883D60067A45B /* DateFormatterExtensions.swift */; };
 		CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */; };
 		CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */; };
 		CE690140270F1CB100F09B78 /* InfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69013E270F1CB100F09B78 /* InfoTVCell.swift */; };
@@ -64,6 +67,9 @@
 		CE1B77F32716F9D700C3034A /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		CE249F392715D821005448BB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE249F3C2715D96E005448BB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CE63328D271876140067A45B /* NewsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTVCell.swift; sourceTree = "<group>"; };
+		CE63328E271876140067A45B /* NewsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTVCell.xib; sourceTree = "<group>"; };
+		CE633291271883D60067A45B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		CE667D4A270C6DF0004CD31A /* LanguageSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSubscriber.swift; sourceTree = "<group>"; };
 		CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
 		CE69013E270F1CB100F09B78 /* InfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTVCell.swift; sourceTree = "<group>"; };
@@ -141,6 +147,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		CE63328C271875DA0067A45B /* NewsTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE63328D271876140067A45B /* NewsTVCell.swift */,
+				CE63328E271876140067A45B /* NewsTVCell.xib */,
+			);
+			path = NewsTVCell;
+			sourceTree = "<group>";
+		};
 		CE69013D270F1C3F00F09B78 /* InformationTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +200,7 @@
 			children = (
 				CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */,
 				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
+				CE633291271883D60067A45B /* DateFormatterExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,6 +239,7 @@
 				CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */,
 				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
 				CE249F392715D821005448BB /* HomeViewModel.swift */,
+				CE63328C271875DA0067A45B /* NewsTVCell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -414,6 +431,7 @@
 				CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */,
 				CE690141270F1CB100F09B78 /* InfoTVCell.xib in Resources */,
 				CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */,
+				CE633290271876140067A45B /* NewsTVCell.xib in Resources */,
 				CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */,
 				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
 				CE929D4E270452130031A8C8 /* AppRating.storyboard in Resources */,
@@ -486,7 +504,9 @@
 				CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */,
 				CE1B77EE2716E0B800C3034A /* JSONNewsModel.swift in Sources */,
 				CE1B77F02716E0D100C3034A /* SourceModel.swift in Sources */,
+				CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */,
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,
+				CE63328F271876140067A45B /* NewsTVCell.swift in Sources */,
 				CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */,
 				CE1B77F22716E0F600C3034A /* XMLResponseNewsModel.swift in Sources */,
 				CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */,
@@ -649,8 +669,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L7S522SQRV;
+				DEVELOPMENT_TEAM = FFWMQ7T85M;
 				INFOPLIST_FILE = BanchExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -669,8 +690,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L7S522SQRV;
+				DEVELOPMENT_TEAM = FFWMQ7T85M;
 				INFOPLIST_FILE = BanchExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -57,9 +57,8 @@ class XMLNewsModel {
     }
 
     func setDate(str: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
-        date = dateFormatter.date(from: str)!
+        let localeFromResponse = Locale(identifier: "en_BY")
+        date = DateFormatter(format: "E, d MMM yyyy HH:mm:ss ZZZZ", locale: localeFromResponse).date(from: str)!
     }
 
     func getDate() -> Date {

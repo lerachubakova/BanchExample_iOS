@@ -17,9 +17,7 @@ class News {
     var debugDescription: String {
         var result = ""
         result += "\n Title: \(self.title)"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm MM-dd-yyyy"
-        result += "\n Date: \(dateFormatter.string(from: self.date))"
+        result += "\n Date: \(DateFormatter(format: "HH:mm MM-dd-yyyy").string(from: self.date))"
         result += "\n Description: \(self.description)"
         result += "\n Source: \(self.source)"
         result += "\n Link: \(self.link?.absoluteString ?? "")"
@@ -45,12 +43,8 @@ class News {
     init(from jsonNews: JSONNewsModel) {
         title = jsonNews.getTitle()
         description = jsonNews.getDescription()
-
-        print(jsonNews.getDate())
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        if let newDate = dateFormatter.date(from: jsonNews.getDate()) {
+     
+        if let newDate = DateFormatter(format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ").date(from: jsonNews.getDate()) {
             date = newDate
         } else {
             date = ISO8601DateFormatter().date(from: jsonNews.getDate())!
@@ -62,6 +56,18 @@ class News {
 
     func getDate() -> Date {
         return date
+    }
+
+    func getTitle() -> String {
+        return title
+    }
+
+    func getDescription() -> String {
+        return description
+    }
+
+    func getSource() -> String {
+        return source
     }
 }
 
@@ -82,7 +88,7 @@ class NewsArray {
 
     subscript(index: Int) -> News {
         guard index > -1 && index < news.count else {
-            fatalError("XMLResponseNewsModel subscript index out exception")
+            fatalError("XMLResponseNewsModel subscript index out exception \(index)")
         }
         return news[index]
     }
@@ -108,6 +114,6 @@ class NewsArray {
     }
 
     func sort() {
-        news.sort { $0.getDate() < $1.getDate()}
+        news.sort { $0.getDate() > $1.getDate()}
     }
 }

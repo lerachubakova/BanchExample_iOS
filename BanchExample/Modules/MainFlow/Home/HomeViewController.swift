@@ -13,52 +13,45 @@ protocol HomeViewControllerDelegate: AnyObject {
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet private weak var mainLabel: UILabel!
-    @IBOutlet private weak var showAlertButton: UIButton!
+    @IBOutlet private weak var tableView: UITableView!
 
     weak var delegate: HomeViewControllerDelegate?
 
-    private let viewModel = HomeViewModel()
+    private var viewModel: HomeViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel = HomeViewModel(vc: self)
+        LanguageObserver.subscribe(self)
+
         if let container = self.navigationController?.parent as? HomeViewControllerDelegate {
             delegate = container
         }
-        configureButton()
+        
+        configureTableView()
         setLocalizedStrings()
-        LanguageObserver.subscribe(self)
-
         viewModel.getNews()
     }
 
-    private func configureButton() {
-        showAlertButton.titleEdgeInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(NewsTVCell.nib, forCellReuseIdentifier: NewsTVCell.identifier)
     }
 
     private func setLocalizedStrings() {
         title = LocalizeKeys.home.localized()
-        mainLabel.text = LocalizeKeys.home.localized().uppercased()
-        showAlertButton.setTitle(LocalizeKeys.showAlert.localized(), for: .normal)
+    }
+
+    func reloadTable() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
 
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
-    }
-    
-    @IBAction private func tappedShowAlertButton(_ sender: Any) {
-      let alert = CustomAlertController(title: LocalizeKeys.alertTitle.localized(), text: LocalizeKeys.alertText.localized())
-
-        alert.addAction(title: LocalizeKeys.alertSkipButton.localized()) {
-            print("\n LOG SKIP:")
-        }
-
-        alert.addAction(title: LocalizeKeys.alertButton.localized()) {
-            print("\n LOG OK:")
-        }
-        
-        self.present(alert, animated: true, completion: nil)
     }
 
 }
@@ -67,5 +60,26 @@ class HomeViewController: UIViewController {
 extension HomeViewController: LanguageSubscriber {
     func update() {
         self.setLocalizedStrings()
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension HomeViewController: UITableViewDelegate {
+
+}
+
+// MARK: - UITableViewDataSource
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.newsArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let newsCell = tableView.dequeueReusableCell(withIdentifier: NewsTVCell.identifier) as? NewsTVCell else {
+            return UITableViewCell()
+        }
+        
+        newsCell.configure(by: viewModel.newsArray[indexPath.item])
+        return newsCell
     }
 }

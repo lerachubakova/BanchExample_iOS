@@ -26,15 +26,20 @@ enum State {
 
 final class HomeViewModel {
 
-    private var newsArray = NewsArray()
+    var newsArray = NewsArray()
+    weak var controller: HomeViewController?
 
     private var requestState: State = .nobodyFinished {
         willSet {
             if newValue == .twoFinished {
                 newsArray.sort()
-                print(newsArray.debugDescription)
+                controller?.reloadTable()
             }
         }
+    }
+
+    init(vc: HomeViewController) {
+        self.controller = vc
     }
 
     func getNews() {
