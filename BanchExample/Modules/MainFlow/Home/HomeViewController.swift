@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     weak var delegate: HomeViewControllerDelegate?
 
     private var viewModel: HomeViewModel!
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,21 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(NewsTVCell.nib, forCellReuseIdentifier: NewsTVCell.identifier)
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+    }
+
+    @objc private func refresh(_ sender: AnyObject) {
+        viewModel.getNews()
+    }
+
+    func endRefresh() {
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+//            self?.refreshControl.endRefreshing()
+//        }
+        DispatchQueue.main.async { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
     }
 
     private func setLocalizedStrings() {

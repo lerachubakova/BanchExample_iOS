@@ -33,6 +33,7 @@ final class HomeViewModel {
         willSet {
             if newValue == .twoFinished {
                 newsArray.sort()
+                controller?.endRefresh()
                 controller?.reloadTable()
             }
         }
@@ -43,6 +44,7 @@ final class HomeViewModel {
     }
 
     func getNews() {
+        newsArray = NewsArray()
         getJSONNews()
         getXMLNews()
     }
@@ -52,6 +54,7 @@ final class HomeViewModel {
             NetworkManager().makeXMLNewsRequest { [weak self] news in
                 guard let strongNews = news else { return }
                 self?.newsArray.append(array: strongNews)
+                // add to coredata
                 self?.requestState.toggle()
             }
         }
@@ -62,6 +65,7 @@ final class HomeViewModel {
             NetworkManager().makeJSONNewsRequest { [weak self] news in
                 guard let strongNews = news else { return }
                 self?.newsArray.append(array: strongNews)
+                // add to coredata
                 self?.requestState.toggle()
             }
         }
