@@ -14,6 +14,7 @@ protocol HomeViewControllerDelegate: AnyObject {
 class HomeViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var titleButton: UIButton!
 
     weak var delegate: HomeViewControllerDelegate?
 
@@ -48,16 +49,13 @@ class HomeViewController: UIViewController {
     }
 
     func endRefresh() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-//            self?.refreshControl.endRefreshing()
-//        }
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
             self?.refreshControl.endRefreshing()
         }
     }
 
     private func setLocalizedStrings() {
-        title = LocalizeKeys.home.localized()
+        titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
     }
 
     func reloadTable() {
@@ -68,6 +66,10 @@ class HomeViewController: UIViewController {
 
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
+    }
+
+    @IBAction private func tappedTitleButton(_ sender: Any) {
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 
 }

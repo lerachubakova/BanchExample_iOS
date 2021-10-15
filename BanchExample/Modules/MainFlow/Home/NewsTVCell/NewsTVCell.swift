@@ -26,4 +26,16 @@ final class NewsTVCell: UITableViewCell {
         sourceLabel.text = news.getSource()
         dateLabel.text = DateFormatter(format:"HH:mm dd.MM.yy").string(from: news.getDate())
     }
+
+    func configure(by news: News) {
+        titleLabel.text = news.title
+        descriptionLabel.text = news.extract
+        sourceLabel.text = news.source
+        
+        if let date = news.date {
+            dateLabel.text = DateFormatter(format:"HH:mm dd.MM.yy").string(from: date)
+        } else {
+            dateLabel.text = ""
+        }
+    }
 }

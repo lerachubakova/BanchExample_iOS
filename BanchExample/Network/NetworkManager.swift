@@ -25,10 +25,13 @@ final class NetworkManager: NSObject {
                 }
             }
 
-            if let data = data, let news = NewsXMLParser().getNews(from: data) {
-                completion(news)
+            if let data = data {
+                DispatchQueue.main.async {
+                    let news = NewsXMLParser().getNews(from: data)
+                    completion(news)
+                }
             } else {
-                print("\n NetworkManager: makeXMLNewsRequest no data or can't parse news.")
+                print("\n NetworkManager: makeXMLNewsRequest no data. ")
             }
         }
         dataTask?.resume()
@@ -58,10 +61,12 @@ final class NetworkManager: NSObject {
                 }
             }
             if let data = data {
+                DispatchQueue.main.async {
                 let news = try? JSONDecoder().decode(JSONResponseNewsModel.self, from: data)
-                completion(news)
+                    completion(news)
+                }
             } else {
-                print("\n NetworkManager: makeJSONNewsRequest no data or can't parse news.")
+                print("\n NetworkManager: makeJSONNewsRequest no data.")
             }
         }
         dataTask?.resume()

@@ -37,4 +37,8 @@ class XMLResponseNewsModel {
         }
         return news[index]
     }
+
+    func saveInCoreData() {
+       _ = news.map { CoreDataManager.addItem(NewsModel(from: $0)) }
+    }
 }

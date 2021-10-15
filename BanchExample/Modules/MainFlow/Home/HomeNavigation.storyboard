@@ -19,6 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" systemColor="systemGrayColor"/>
                         <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="0.0"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
@@ -54,15 +55,29 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8Ah-bX-aA3">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="abg-qi-W6I">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tappedMenuButton" destination="gub-jD-QhV" id="KKp-Vh-9EL"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3qH-fd-64W">
+                            <rect key="frame" x="90" y="5.5" width="234" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <state key="normal" title="Home">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedTitleButton:" destination="gub-jD-QhV" eventType="touchUpInside" id="RjV-qr-NiI"/>
+                            </connections>
+                        </button>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="iU7-mS-Fkx" id="ReG-UP-mmM"/>
+                        <outlet property="titleButton" destination="3qH-fd-64W" id="dgu-Hf-tR2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sLH-BX-HGd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

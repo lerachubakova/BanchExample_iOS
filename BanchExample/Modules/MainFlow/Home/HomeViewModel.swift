@@ -26,13 +26,13 @@ enum State {
 
 final class HomeViewModel {
 
-    var newsArray = NewsArray()
+    var newsArray: [News]
     weak var controller: HomeViewController?
 
-    private var requestState: State = .nobodyFinished {
+    private var requestState: State {
         willSet {
             if newValue == .twoFinished {
-                newsArray.sort()
+                newsArray = CoreDataManager.getItemsFromContext()
                 controller?.endRefresh()
                 controller?.reloadTable()
             }
@@ -41,10 +41,12 @@ final class HomeViewModel {
 
     init(vc: HomeViewController) {
         self.controller = vc
+        newsArray = CoreDataManager.getItemsFromContext()
+        requestState = .nobodyFinished
     }
 
     func getNews() {
-        newsArray = NewsArray()
+        requestState = .nobodyFinished
         getJSONNews()
         getXMLNews()
     }
@@ -53,9 +55,10 @@ final class HomeViewModel {
         DispatchQueue.main.async {
             NetworkManager().makeXMLNewsRequest { [weak self] news in
                 guard let strongNews = news else { return }
-                self?.newsArray.append(array: strongNews)
-                // add to coredata
-                self?.requestState.toggle()
+                DispatchQueue.main.async {
+                    strongNews.saveInCoreData()
+                    self?.requestState.toggle()
+                }
             }
         }
     }
@@ -64,10 +67,18 @@ final class HomeViewModel {
         DispatchQueue.main.async {
             NetworkManager().makeJSONNewsRequest { [weak self] news in
                 guard let strongNews = news else { return }
-                self?.newsArray.append(array: strongNews)
-                // add to coredata
-                self?.requestState.toggle()
+
+                DispatchQueue.main.async {
+                    strongNews.saveInCoreData()
+                    self?.requestState.toggle()
+                }
             }
+        }
+    }
+
+    private func makeTimers() {
+        _ = Timer.scheduledTimer(withTimeInterval: 5*60, repeats: true) { [weak self] _ in
+            self?.getNews()
         }
     }
 
