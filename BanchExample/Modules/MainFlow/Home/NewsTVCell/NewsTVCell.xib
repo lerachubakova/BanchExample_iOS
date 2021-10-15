@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="491" height="179"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В ФРГ заявили, что &quot;Северный поток-2&quot;поможет снизить цены на газ в ЕС" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvx-6c-ZnM">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      В ФРГ заявили, что &quot;Северный поток-2&quot;поможет снизить цены на газ в ЕС" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvx-6c-ZnM">
                         <rect key="frame" x="11" y="12" width="469" height="41"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -56,23 +56,32 @@
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icTick" translatesAutoresizingMaskIntoConstraints="NO" id="GNX-h2-rvl">
+                        <rect key="frame" x="11" y="10" width="23" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="GNX-h2-rvl" secondAttribute="height" multiplier="23:24" id="HLv-z4-Axe"/>
+                            <constraint firstAttribute="height" constant="24" id="g2c-iQ-LVU"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29830407149999999" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="pvx-6c-ZnM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="0RZ-gn-ETY"/>
+                    <constraint firstItem="GNX-h2-rvl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="21m-5X-lre"/>
                     <constraint firstItem="1UH-FE-MaV" firstAttribute="top" secondItem="pvx-6c-ZnM" secondAttribute="bottom" constant="15" id="2E8-2v-aKU"/>
+                    <constraint firstItem="1UH-FE-MaV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="2OL-iu-7gi"/>
                     <constraint firstItem="1UH-FE-MaV" firstAttribute="trailing" secondItem="pvx-6c-ZnM" secondAttribute="trailing" id="2a4-ck-Coo"/>
+                    <constraint firstItem="pvx-6c-ZnM" firstAttribute="leading" secondItem="GNX-h2-rvl" secondAttribute="leading" id="6tn-vX-vwk"/>
                     <constraint firstItem="KRy-ub-gRs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="DtL-Wx-0ug"/>
-                    <constraint firstItem="1UH-FE-MaV" firstAttribute="leading" secondItem="pvx-6c-ZnM" secondAttribute="leading" id="LhK-WY-YgA"/>
                     <constraint firstAttribute="bottom" secondItem="KRy-ub-gRs" secondAttribute="bottom" constant="12.5" id="MTG-Nx-Peq"/>
                     <constraint firstAttribute="trailing" secondItem="pvx-6c-ZnM" secondAttribute="trailing" constant="11" id="OEo-ai-tHY"/>
                     <constraint firstItem="KRy-ub-gRs" firstAttribute="top" secondItem="1UH-FE-MaV" secondAttribute="bottom" constant="15" id="QuR-Dz-h9H"/>
                     <constraint firstItem="pvx-6c-ZnM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="WPw-WT-gOg"/>
                     <constraint firstAttribute="trailing" secondItem="KRy-ub-gRs" secondAttribute="trailing" constant="11" id="YeL-0P-bXh"/>
+                    <constraint firstItem="GNX-h2-rvl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="iQq-Sc-W9l"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="dateLabel" destination="1Ul-Yy-Cwa" id="o2s-fY-n6Z"/>
                 <outlet property="descriptionLabel" destination="1UH-FE-MaV" id="4Jq-4A-6Sq"/>
@@ -82,4 +91,7 @@
             <point key="canvasLocation" x="255.79710144927537" y="138.95089285714286"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icTick" width="96" height="96"/>
+    </resources>
 </document>

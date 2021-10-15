@@ -31,6 +31,8 @@
 		CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0B92719537000D9E844 /* CoreDataManager.swift */; };
 		CE72F0C12719556000D9E844 /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */; };
 		CE72F0C42719562E00D9E844 /* NewsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0C32719562E00D9E844 /* NewsArray.swift */; };
+		CE72F0C72719882C00D9E844 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE72F0C62719882C00D9E844 /* News.storyboard */; };
+		CE72F0C92719885500D9E844 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0C82719885500D9E844 /* NewsViewController.swift */; };
 		CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C11BF270AD31A00063336 /* Localizable.strings */; };
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
 		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
@@ -84,6 +86,8 @@
 		CE72F0B92719537000D9E844 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "News+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE72F0C32719562E00D9E844 /* NewsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArray.swift; sourceTree = "<group>"; };
+		CE72F0C62719882C00D9E844 /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		CE72F0C82719885500D9E844 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		CE7C11BE270AD31A00063336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C0270AD36400063336 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
@@ -194,6 +198,15 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		CE72F0C5271987FA00D9E844 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				CE72F0C62719882C00D9E844 /* News.storyboard */,
+				CE72F0C82719885500D9E844 /* NewsViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		CE7C11C3270AE14600063336 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +271,7 @@
 				CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */,
 				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
 				CE249F392715D821005448BB /* HomeViewModel.swift */,
+				CE72F0C5271987FA00D9E844 /* News */,
 				CE63328C271875DA0067A45B /* NewsTVCell */,
 			);
 			path = Home;
@@ -454,6 +468,7 @@
 				CE633290271876140067A45B /* NewsTVCell.xib in Resources */,
 				CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */,
 				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
+				CE72F0C72719882C00D9E844 /* News.storyboard in Resources */,
 				CE929D4E270452130031A8C8 /* AppRating.storyboard in Resources */,
 				CEF265FC26EF1F09008EE038 /* Assets.xcassets in Resources */,
 			);
@@ -526,6 +541,7 @@
 				CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */,
 				CE72F0C42719562E00D9E844 /* NewsArray.swift in Sources */,
 				CE1B77EE2716E0B800C3034A /* JSONNewsModel.swift in Sources */,
+				CE72F0C92719885500D9E844 /* NewsViewController.swift in Sources */,
 				CE1B77F02716E0D100C3034A /* SourceModel.swift in Sources */,
 				CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */,
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,

@@ -38,4 +38,8 @@ final class NewsTVCell: UITableViewCell {
             dateLabel.text = ""
         }
     }
+
+    func makeAsViewed() {
+
+    }
 }

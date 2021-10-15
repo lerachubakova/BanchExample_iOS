@@ -68,10 +68,9 @@ class ContainerViewController: UIViewController {
     private func setupShadowView() {
         self.sideMenuShadowView = UIView(frame: self.view.bounds)
         self.sideMenuShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.sideMenuShadowView.backgroundColor = .black
+        self.sideMenuShadowView.backgroundColor = menuPosition == .up ? .black : .clear
         self.sideMenuShadowView.tag = 13
         self.sideMenuShadowView.alpha = menuState == .opened ? 0.7 : 0.0
-        sideMenuShadowView.isUserInteractionEnabled = false
     }
 
     private func setupSideMenuVC() {
@@ -88,6 +87,7 @@ class ContainerViewController: UIViewController {
     private func addSubviews() {
         if menuPosition == .down {
             view.insertSubview(sideMenuVC.view, at: 0)
+            view.insertSubview(sideMenuShadowView, at: 2)
         } else {
             view.insertSubview(sideMenuShadowView, at: 1)
             view.insertSubview(sideMenuVC.view, at: 2)
@@ -98,7 +98,7 @@ class ContainerViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delegate = self
-        view.addGestureRecognizer(tapGestureRecognizer)
+        sideMenuShadowView.addGestureRecognizer(tapGestureRecognizer)
 
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
         panGestureRecognizer.delegate = self
@@ -262,6 +262,7 @@ extension ContainerViewController: HomeViewControllerDelegate {
         UIView.animate(withDuration: animationDuration) { [unowned self] in
             if menuPosition == .down {
                 self.view.subviews[1].frame.origin.x = x
+                sideMenuShadowView.frame.origin.x = x
             } else {
                 self.sideMenuTrailingConstraint.constant = x
                 self.view.layoutIfNeeded()

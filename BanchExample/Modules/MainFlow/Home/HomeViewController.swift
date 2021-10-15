@@ -5,6 +5,7 @@
 //  Created by User on 16.09.21.
 //
 
+import SafariServices
 import UIKit
 
 protocol HomeViewControllerDelegate: AnyObject {
@@ -39,8 +40,8 @@ class HomeViewController: UIViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(NewsTVCell.nib, forCellReuseIdentifier: NewsTVCell.identifier)
         tableView.addSubview(refreshControl)
+        tableView.register(NewsTVCell.nib, forCellReuseIdentifier: NewsTVCell.identifier)
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
     }
 
@@ -56,6 +57,7 @@ class HomeViewController: UIViewController {
 
     private func setLocalizedStrings() {
         titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
+        navigationItem.backButtonTitle = LocalizeKeys.home.localized()
     }
 
     func reloadTable() {
@@ -99,5 +101,17 @@ extension HomeViewController: UITableViewDataSource {
         
         newsCell.configure(by: viewModel.newsArray[indexPath.item])
         return newsCell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+            // TODO: пометить что ячейка просмотрена
+        guard let strongURL = viewModel.newsArray[indexPath.item].link else {
+            // TODO: alert что нет ссылки или поменять цвет ячейки
+            return
+        }
+
+        let safariVC = SFSafariViewController(url: strongURL)
+        present(safariVC, animated: true)
     }
 }
