@@ -7,7 +7,7 @@
 
 import Foundation
 
-class News {
+class NewsModel {
     private let title: String
     private let description: String
     private let date: Date
@@ -72,7 +72,7 @@ class News {
 }
 
 class NewsArray {
-    private var news: [News] = []
+    private var news: [NewsModel] = []
 
     var debugDescription: String {
         var result = "\n"
@@ -86,7 +86,7 @@ class NewsArray {
         return news.count
     }
 
-    subscript(index: Int) -> News {
+    subscript(index: Int) -> NewsModel {
         guard index > -1 && index < news.count else {
             fatalError("XMLResponseNewsModel subscript index out exception \(index)")
         }
@@ -94,22 +94,22 @@ class NewsArray {
     }
 
     func append(element: XMLNewsModel) {
-        news.append(News(from: element))
+        news.append(NewsModel(from: element))
     }
 
     func append(element: JSONNewsModel) {
-        news.append(News(from: element))
+        news.append(NewsModel(from: element))
     }
 
     func append(array: JSONResponseNewsModel) {
         for i in (0..<array.count) {
-            news.append(News(from: array[i]))
+            news.append(NewsModel(from: array[i]))
         }
     }
 
     func append(array: XMLResponseNewsModel) {
         for i in (0..<array.count) {
-            news.append(News(from: array[i]))
+            news.append(NewsModel(from: array[i]))
         }
     }
 

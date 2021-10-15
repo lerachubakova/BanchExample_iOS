@@ -20,7 +20,7 @@ final class NewsTVCell: UITableViewCell {
         UINib(nibName: String(describing: Self.self), bundle: Bundle.main)
     }
 
-    func configure(by news: News) {
+    func configure(by news: NewsModel) {
         titleLabel.text = news.getTitle()
         descriptionLabel.text = news.getDescription()
         sourceLabel.text = news.getSource()
