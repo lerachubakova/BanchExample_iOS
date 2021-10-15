@@ -26,3 +26,5 @@
 "alertText" = "Sorry, that email address is already used.";
 "alertButton" = "OK";
 "alertSkipButton" = "SKIP";
+"alertMissedLink" = "It seems that there is no link to this news, all questions to";
+"alertMissedLinkSource" = "source";

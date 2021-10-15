@@ -37,6 +37,11 @@ class HomeViewController: UIViewController {
         viewModel.getNews()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reloadTable()
+    }
+
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -104,14 +109,26 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         tableView.deselectRow(at: indexPath, animated: true)
-            // TODO: пометить что ячейка просмотрена
+        CoreDataManager.makeAsViewed(news: viewModel.newsArray[indexPath.item])
+
         guard let strongURL = viewModel.newsArray[indexPath.item].link else {
-            // TODO: alert что нет ссылки или поменять цвет ячейки
+            makeMissedLinkAlert(index: indexPath.item)
             return
         }
 
         let safariVC = SFSafariViewController(url: strongURL)
         present(safariVC, animated: true)
+    }
+
+    func makeMissedLinkAlert(index: Int) {
+        let title = LocalizeKeys.alertTitle.localized()
+        let source = viewModel.newsArray[index].source ?? LocalizeKeys.alertMissedLinkSource.localized()
+        let message = LocalizeKeys.alertMissedLink.localized() + " " + source
+
+        let alert = CustomAlertController(title: title, text: message)
+        alert.addAction(title: LocalizeKeys.alertButton.localized())
+        self.present(alert, animated: true, completion: nil)
     }
 }

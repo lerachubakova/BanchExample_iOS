@@ -9,6 +9,7 @@ import UIKit
 
 final class NewsTVCell: UITableViewCell {
 
+    @IBOutlet private weak var wasViewedImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var sourceLabel: UILabel!
@@ -31,7 +32,15 @@ final class NewsTVCell: UITableViewCell {
         titleLabel.text = news.title
         descriptionLabel.text = news.extract
         sourceLabel.text = news.source
-        
+
+        if news.wasViewed, var titleText = self.titleLabel.text {
+            titleText.insert(contentsOf: "      ", at: titleText.startIndex)
+            self.titleLabel.text = titleText
+            wasViewedImageView.isHidden = false
+        } else {
+            wasViewedImageView.isHidden = true
+        }
+
         if let date = news.date {
             dateLabel.text = DateFormatter(format:"HH:mm dd.MM.yy").string(from: date)
         } else {

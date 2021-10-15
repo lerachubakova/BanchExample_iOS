@@ -28,4 +28,6 @@ struct LocalizeKeys {
     static let alertText = "alertText"
     static let alertButton = "alertButton"
     static let alertSkipButton = "alertSkipButton"
+    static let alertMissedLink = "alertMissedLink"
+    static let alertMissedLinkSource = "alertMissedLinkSource"
 }

@@ -20,7 +20,7 @@ public class News: NSManagedObject {
     @NSManaged public var source: String?
     @NSManaged public var extract: String?
     @NSManaged public var link: URL?
-    
+    @NSManaged public var wasViewed: Bool
 }
 
 extension News {
@@ -31,6 +31,7 @@ extension News {
         result += "\n Description: \(self.extract ?? "-")"
         result += "\n Source: \(self.source ?? "-")"
         result += "\n Link: \(self.link?.absoluteString ?? "")"
+        result += "\n wasViewed: \(self.wasViewed)"
         return result
     }
 }

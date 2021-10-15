@@ -63,4 +63,13 @@ class CoreDataManager {
             i+=1
         }
     }
+
+    static func makeAsViewed(news: News) {
+        news.wasViewed = true
+        do {
+            try context.save()
+        } catch (let error) {
+            print("\(self.debugDescription): makeAsViewed: \(error.localizedDescription)")
+        }
+    }
 }

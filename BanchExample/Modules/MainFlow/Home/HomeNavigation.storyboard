@@ -47,7 +47,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R4J-kI-BAc"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="iU7-mS-Fkx" firstAttribute="leading" secondItem="R4J-kI-BAc" secondAttribute="leading" id="UKF-EU-IbH"/>
                             <constraint firstItem="iU7-mS-Fkx" firstAttribute="top" secondItem="R4J-kI-BAc" secondAttribute="top" id="igQ-Mw-Von"/>
@@ -87,8 +87,8 @@
     </scenes>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
