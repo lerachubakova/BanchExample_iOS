@@ -28,3 +28,4 @@
 "alertSkipButton" = "Пропустить";
 "alertMissedLink" = "Похоже, что к данной новости отсутствует ссылка, все вопросы к";
 "alertMissedLinkSource" = "источнику";
+"alertRequestError" = "Произошла ошибка во время запроса на сервер";

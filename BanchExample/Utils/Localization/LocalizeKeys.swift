@@ -30,4 +30,5 @@ struct LocalizeKeys {
     static let alertSkipButton = "alertSkipButton"
     static let alertMissedLink = "alertMissedLink"
     static let alertMissedLinkSource = "alertMissedLinkSource"
+    static let alertRequestError = "alertRequestError"
 }

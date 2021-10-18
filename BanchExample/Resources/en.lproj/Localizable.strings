@@ -28,3 +28,4 @@
 "alertSkipButton" = "SKIP";
 "alertMissedLink" = "It seems that there is no link to this news, all questions to";
 "alertMissedLinkSource" = "source";
+"alertRequestError" = "An error occurred during a request to the server";

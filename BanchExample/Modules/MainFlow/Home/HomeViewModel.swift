@@ -35,6 +35,7 @@ final class HomeViewModel {
                 newsArray = CoreDataManager.getItemsFromContext()
                 controller?.endRefresh()
                 controller?.reloadTable()
+                // TODO: stop animaion
             }
         }
     }
@@ -46,6 +47,7 @@ final class HomeViewModel {
     }
 
     func getNews() {
+        // TODO: start animaion
         requestState = .nobodyFinished
         getJSONNews()
         getXMLNews()
@@ -54,7 +56,12 @@ final class HomeViewModel {
     private func getXMLNews() {
         DispatchQueue.main.async {
             NetworkManager().makeXMLNewsRequest { [weak self] news in
-                guard let strongNews = news else { return }
+                guard let strongNews = news else {
+                    self?.makeRequestErrorAlert()
+                    // TODO: stop animaion
+                    return
+                }
+
                 DispatchQueue.main.async {
                     strongNews.saveInCoreData()
                     self?.requestState.toggle()
@@ -66,7 +73,11 @@ final class HomeViewModel {
     private func getJSONNews() {
         DispatchQueue.main.async {
             NetworkManager().makeJSONNewsRequest { [weak self] news in
-                guard let strongNews = news else { return }
+                guard let strongNews = news else {
+                    self?.makeRequestErrorAlert()
+                    // TODO: stop animaion
+                    return
+                }
 
                 DispatchQueue.main.async {
                     strongNews.saveInCoreData()
@@ -74,6 +85,16 @@ final class HomeViewModel {
                 }
             }
         }
+    }
+
+    private func makeRequestErrorAlert() {
+        let title = LocalizeKeys.alertTitle.localized()
+        let message = LocalizeKeys.alertRequestError.localized()
+
+        let alert = CustomAlertController(title: title, text: message)
+        alert.addAction(title: LocalizeKeys.alertButton.localized())
+
+        controller?.present(alert, animated: true, completion: nil)
     }
 
     private func makeTimers() {
