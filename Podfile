@@ -7,4 +7,5 @@ target 'BanchExample' do
 
   # Pods for BanchExample
   pod 'SwiftLint','0.43.1'
+  pod 'lottie-ios','3.2.3'
 end
