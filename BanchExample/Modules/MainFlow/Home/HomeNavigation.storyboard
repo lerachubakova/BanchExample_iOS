@@ -45,14 +45,27 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEA-vg-QHM" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="124" y="365" width="166" height="166"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CEA-vg-QHM" secondAttribute="height" id="7Tx-zU-x2r"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="loading-state"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R4J-kI-BAc"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="iU7-mS-Fkx" firstAttribute="leading" secondItem="R4J-kI-BAc" secondAttribute="leading" id="UKF-EU-IbH"/>
+                            <constraint firstItem="CEA-vg-QHM" firstAttribute="centerX" secondItem="dCU-c1-IzK" secondAttribute="centerX" id="aM0-9i-4WH"/>
+                            <constraint firstItem="CEA-vg-QHM" firstAttribute="centerY" secondItem="dCU-c1-IzK" secondAttribute="centerY" id="edz-xw-JQx"/>
                             <constraint firstItem="iU7-mS-Fkx" firstAttribute="top" secondItem="R4J-kI-BAc" secondAttribute="top" id="igQ-Mw-Von"/>
                             <constraint firstItem="R4J-kI-BAc" firstAttribute="bottom" secondItem="iU7-mS-Fkx" secondAttribute="bottom" id="kIN-nv-Lm0"/>
                             <constraint firstItem="R4J-kI-BAc" firstAttribute="trailing" secondItem="iU7-mS-Fkx" secondAttribute="trailing" id="uMv-Gu-45r"/>
+                            <constraint firstItem="CEA-vg-QHM" firstAttribute="width" secondItem="dCU-c1-IzK" secondAttribute="width" multiplier="0.4" id="vHX-tS-N89"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8Ah-bX-aA3">
@@ -76,6 +89,7 @@
                         </button>
                     </navigationItem>
                     <connections>
+                        <outlet property="progressView" destination="CEA-vg-QHM" id="zhS-8f-qn1"/>
                         <outlet property="tableView" destination="iU7-mS-Fkx" id="ReG-UP-mmM"/>
                         <outlet property="titleButton" destination="3qH-fd-64W" id="dgu-Hf-tR2"/>
                     </connections>

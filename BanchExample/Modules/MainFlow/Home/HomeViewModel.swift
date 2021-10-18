@@ -26,16 +26,17 @@ enum State {
 
 final class HomeViewModel {
 
-    var newsArray: [News]
-    weak var controller: HomeViewController?
+    public var newsArray: [News]
+
+    private weak var controller: HomeViewController?
 
     private var requestState: State {
         willSet {
             if newValue == .twoFinished {
                 newsArray = CoreDataManager.getItemsFromContext()
                 controller?.endRefresh()
+                controller?.stopProgressAnimation()
                 controller?.reloadTable()
-                // TODO: stop animaion
             }
         }
     }
@@ -47,18 +48,21 @@ final class HomeViewModel {
     }
 
     func getNews() {
-        // TODO: start animaion
         requestState = .nobodyFinished
         getJSONNews()
         getXMLNews()
     }
+}
 
+// MARK: - Requests
+private extension HomeViewModel {
     private func getXMLNews() {
         DispatchQueue.main.async {
             NetworkManager().makeXMLNewsRequest { [weak self] news in
                 guard let strongNews = news else {
-                    self?.makeRequestErrorAlert()
-                    // TODO: stop animaion
+                    self?.controller?.stopProgressAnimation()
+                    self?.controller?.endRefresh()
+                    self?.controller?.makeRequestErrorAlert()
                     return
                 }
 
@@ -74,8 +78,9 @@ final class HomeViewModel {
         DispatchQueue.main.async {
             NetworkManager().makeJSONNewsRequest { [weak self] news in
                 guard let strongNews = news else {
-                    self?.makeRequestErrorAlert()
-                    // TODO: stop animaion
+                    self?.controller?.stopProgressAnimation()
+                    self?.controller?.endRefresh()
+                    self?.controller?.makeRequestErrorAlert()
                     return
                 }
 
@@ -86,21 +91,4 @@ final class HomeViewModel {
             }
         }
     }
-
-    private func makeRequestErrorAlert() {
-        let title = LocalizeKeys.alertTitle.localized()
-        let message = LocalizeKeys.alertRequestError.localized()
-
-        let alert = CustomAlertController(title: title, text: message)
-        alert.addAction(title: LocalizeKeys.alertButton.localized())
-
-        controller?.present(alert, animated: true, completion: nil)
-    }
-
-    private func makeTimers() {
-        _ = Timer.scheduledTimer(withTimeInterval: 5*60, repeats: true) { [weak self] _ in
-            self?.getNews()
-        }
-    }
-
 }

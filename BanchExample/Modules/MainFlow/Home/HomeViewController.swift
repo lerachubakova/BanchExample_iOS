@@ -5,6 +5,7 @@
 //  Created by User on 16.09.21.
 //
 
+import Lottie
 import SafariServices
 import UIKit
 
@@ -13,15 +14,19 @@ protocol HomeViewControllerDelegate: AnyObject {
 }
 
 class HomeViewController: UIViewController {
-
+    
+    // MARK: - @IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var titleButton: UIButton!
-
+    @IBOutlet private weak var progressView: AnimationView!
+    // MARK: - Public Properties
     weak var delegate: HomeViewControllerDelegate?
 
+    // MARK: - Private Properties
     private var viewModel: HomeViewModel!
     private let refreshControl = UIRefreshControl()
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,9 +36,12 @@ class HomeViewController: UIViewController {
         if let container = self.navigationController?.parent as? HomeViewControllerDelegate {
             delegate = container
         }
-        
+
         configureTableView()
+        configureAnimationView()
         setLocalizedStrings()
+        
+        startProgressAnimation()
         viewModel.getNews()
     }
 
@@ -42,24 +50,21 @@ class HomeViewController: UIViewController {
         self.reloadTable()
     }
 
+    // MARK: - Setup
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.addSubview(refreshControl)
         tableView.register(NewsTVCell.nib, forCellReuseIdentifier: NewsTVCell.identifier)
-        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(startRefresh(_:)), for: .valueChanged)
     }
 
-    @objc private func refresh(_ sender: AnyObject) {
-        viewModel.getNews()
+    private func configureAnimationView() {
+        progressView.loopMode = .loop
+        progressView.animationSpeed = 0.75
     }
 
-    func endRefresh() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) { [weak self] in
-            self?.refreshControl.endRefreshing()
-        }
-    }
-
+    // MARK: - Logic
     private func setLocalizedStrings() {
         titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
         navigationItem.backButtonTitle = LocalizeKeys.home.localized()
@@ -71,6 +76,49 @@ class HomeViewController: UIViewController {
         }
     }
 
+    @objc private func startRefresh(_ sender: AnyObject) {
+        viewModel.getNews()
+    }
+
+    func endRefresh() {
+        DispatchQueue.main.asyncAfter(deadline: .now() ) { [weak self] in
+            self?.refreshControl.endRefreshing()
+        }
+    }
+
+    func startProgressAnimation() {
+        progressView.isHidden = false
+        progressView.play()
+    }
+
+    func stopProgressAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() ) { [weak self] in
+            self?.progressView.isHidden = true
+            self?.progressView.stop()
+        }
+    }
+
+    func makeMissedLinkAlert(index: Int) {
+        let title = LocalizeKeys.alertTitle.localized()
+        let source = viewModel.newsArray[index].source ?? LocalizeKeys.alertMissedLinkSource.localized()
+        let message = LocalizeKeys.alertMissedLink.localized() + " " + source
+
+        let alert = CustomAlertController(title: title, text: message)
+        alert.addAction(title: LocalizeKeys.alertButton.localized())
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func makeRequestErrorAlert() {
+        let title = LocalizeKeys.alertTitle.localized()
+        let message = LocalizeKeys.alertRequestError.localized()
+
+        let alert = CustomAlertController(title: title, text: message)
+        alert.addAction(title: LocalizeKeys.alertButton.localized())
+
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    // MARK: - @IBActions
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
     }
@@ -120,15 +168,5 @@ extension HomeViewController: UITableViewDataSource {
 
         let safariVC = SFSafariViewController(url: strongURL)
         present(safariVC, animated: true)
-    }
-
-    func makeMissedLinkAlert(index: Int) {
-        let title = LocalizeKeys.alertTitle.localized()
-        let source = viewModel.newsArray[index].source ?? LocalizeKeys.alertMissedLinkSource.localized()
-        let message = LocalizeKeys.alertMissedLink.localized() + " " + source
-
-        let alert = CustomAlertController(title: title, text: message)
-        alert.addAction(title: LocalizeKeys.alertButton.localized())
-        self.present(alert, animated: true, completion: nil)
     }
 }
