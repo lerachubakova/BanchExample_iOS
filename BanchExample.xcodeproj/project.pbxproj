@@ -40,6 +40,8 @@
 		CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */; };
 		CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDB26F3613000DE394F /* HomeViewController.swift */; };
 		CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDD26F382EA00DE394F /* InformationViewController.swift */; };
+		CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */; };
+		CE8AB960271F0DCA00AEEEE4 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */; };
 		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
 		CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E3127270340EA00C61AE6 /* Information.storyboard */; };
 		CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */; };
@@ -94,6 +96,8 @@
 		CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
 		CE88FBDB26F3613000DE394F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE88FBDD26F382EA00DE394F /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
 		CE8E3127270340EA00C61AE6 /* Information.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
 		CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +248,15 @@
 			path = CustomAlert;
 			sourceTree = "<group>";
 		};
+		CE8AB95C271EFFCB00AEEEE4 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */,
+				CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		CE8E31292703433100C61AE6 /* Information */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +273,7 @@
 				CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */,
 				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
 				CE249F392715D821005448BB /* HomeViewModel.swift */,
+				CE8AB95C271EFFCB00AEEEE4 /* News */,
 				CE63328C271875DA0067A45B /* NewsTVCell */,
 			);
 			path = Home;
@@ -462,6 +476,7 @@
 				CEF2661626EF45A3008EE038 /* SideMenuTVCell.xib in Resources */,
 				CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */,
 				CE690141270F1CB100F09B78 /* InfoTVCell.xib in Resources */,
+				CE8AB960271F0DCA00AEEEE4 /* News.storyboard in Resources */,
 				CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */,
 				CEDD9CC6271D587E002F9833 /* loading-state.json in Resources */,
 				CE633290271876140067A45B /* NewsTVCell.xib in Resources */,
@@ -556,6 +571,7 @@
 				CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */,
 				CE72F0C42719562E00D9E844 /* NewsArray.swift in Sources */,
 				CE1B77EE2716E0B800C3034A /* JSONNewsModel.swift in Sources */,
+				CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */,
 				CE1B77F02716E0D100C3034A /* SourceModel.swift in Sources */,
 				CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */,
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,

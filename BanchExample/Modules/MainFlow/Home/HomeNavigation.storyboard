@@ -99,6 +99,9 @@
             <point key="canvasLocation" x="928.98550724637687" y="113.83928571428571"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="CEA-vg-QHM"/>
+    </designables>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <systemColor name="systemGray5Color">

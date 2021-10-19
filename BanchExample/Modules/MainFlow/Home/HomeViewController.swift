@@ -157,7 +157,8 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        tableView.isUserInteractionEnabled = false
+        startProgressAnimation()
         tableView.deselectRow(at: indexPath, animated: true)
         CoreDataManager.makeAsViewed(news: viewModel.newsArray[indexPath.item])
 
@@ -166,7 +167,35 @@ extension HomeViewController: UITableViewDataSource {
             return
         }
 
-        let safariVC = SFSafariViewController(url: strongURL)
-        present(safariVC, animated: true)
+        NetworkManager().makeNewsRequestByLink(url: strongURL) {[weak self] news in
+            guard let strongNews = news else {
+                let safariVC = SFSafariViewController(url: strongURL)
+                self?.present(safariVC, animated: true) { [weak self] in
+                    self?.tableView.isUserInteractionEnabled = true
+                    self?.stopProgressAnimation()
+                }
+                return
+            }
+
+            let storyboard = UIStoryboard(name: "News", bundle: Bundle.main)
+            guard let vc = storyboard.instantiateInitialViewController() as? NewsViewController else { return }
+            vc.setNews(strongNews)
+
+            self?.navigationController?.pushViewController(viewController: vc, animated: true ) { [weak self] in
+                self?.tableView.isUserInteractionEnabled = true
+                self?.stopProgressAnimation()
+            }
+        }
     }
+}
+
+extension UINavigationController {
+
+    public func pushViewController(viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        pushViewController(viewController, animated: animated)
+        CATransaction.commit()
+    }
+
 }
