@@ -87,7 +87,7 @@
                                 <action selector="tappedTitleButton:" destination="gub-jD-QhV" eventType="touchUpInside" id="RjV-qr-NiI"/>
                             </connections>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Gxz-fJ-mff">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="Gxz-fJ-mff">
                             <view key="customView" hidden="YES" contentMode="scaleToFill" id="w77-OB-sbP" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="350" y="0.0" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
