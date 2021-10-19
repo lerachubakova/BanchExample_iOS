@@ -18,7 +18,8 @@ class HomeViewController: UIViewController {
     // MARK: - @IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var titleButton: UIButton!
-    @IBOutlet private weak var progressView: AnimationView!
+    @IBOutlet private weak var smallProgressView: AnimationView!
+    @IBOutlet private weak var bigProgressView: AnimationView!
     // MARK: - Public Properties
     weak var delegate: HomeViewControllerDelegate?
 
@@ -38,10 +39,10 @@ class HomeViewController: UIViewController {
         }
 
         configureTableView()
-        configureAnimationView()
+        configureAnimationViews()
         setLocalizedStrings()
-        
-        startProgressAnimation()
+
+        startSmallProgressAnimation()
         viewModel.getNews()
     }
 
@@ -59,9 +60,12 @@ class HomeViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(startRefresh(_:)), for: .valueChanged)
     }
 
-    private func configureAnimationView() {
-        progressView.loopMode = .loop
-        progressView.animationSpeed = 0.75
+    private func configureAnimationViews() {
+        bigProgressView.loopMode = .loop
+        bigProgressView.animationSpeed = 0.75
+
+        smallProgressView.loopMode = .loop
+        smallProgressView.animationSpeed = 0.75
     }
 
     // MARK: - Logic
@@ -81,20 +85,34 @@ class HomeViewController: UIViewController {
     }
 
     func endRefresh() {
-        DispatchQueue.main.asyncAfter(deadline: .now() ) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.refreshControl.endRefreshing()
         }
     }
 
-    func startProgressAnimation() {
-        progressView.isHidden = false
-        progressView.play()
+    func startBigProgressAnimation() {
+        bigProgressView.isHidden = false
+        bigProgressView.play()
     }
 
-    func stopProgressAnimation() {
-        DispatchQueue.main.asyncAfter(deadline: .now() ) { [weak self] in
-            self?.progressView.isHidden = true
-            self?.progressView.stop()
+    func startSmallProgressAnimation() {
+        tableView.isUserInteractionEnabled = false
+        smallProgressView.isHidden = false
+        smallProgressView.play()
+    }
+
+    func stopBigProgressAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
+            self?.bigProgressView.isHidden = true
+            self?.bigProgressView.stop()
+        }
+    }
+
+    func stopSmallProgressAnimation() {
+        tableView.isUserInteractionEnabled = true
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
+            self?.smallProgressView.isHidden = true
+            self?.smallProgressView.stop()
         }
     }
 
@@ -158,7 +176,7 @@ extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.isUserInteractionEnabled = false
-        startProgressAnimation()
+        startBigProgressAnimation()
         tableView.deselectRow(at: indexPath, animated: true)
         CoreDataManager.makeAsViewed(news: viewModel.newsArray[indexPath.item])
 
@@ -172,7 +190,7 @@ extension HomeViewController: UITableViewDataSource {
                 let safariVC = SFSafariViewController(url: strongURL)
                 self?.present(safariVC, animated: true) { [weak self] in
                     self?.tableView.isUserInteractionEnabled = true
-                    self?.stopProgressAnimation()
+                    self?.stopBigProgressAnimation()
                 }
                 return
             }
@@ -183,7 +201,7 @@ extension HomeViewController: UITableViewDataSource {
 
             self?.navigationController?.pushViewController(viewController: vc, animated: true ) { [weak self] in
                 self?.tableView.isUserInteractionEnabled = true
-                self?.stopProgressAnimation()
+                self?.stopBigProgressAnimation()
             }
         }
     }

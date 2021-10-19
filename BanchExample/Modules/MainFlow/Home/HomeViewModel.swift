@@ -35,7 +35,7 @@ final class HomeViewModel {
             if newValue == .twoFinished {
                 newsArray = CoreDataManager.getItemsFromContext()
                 controller?.endRefresh()
-                controller?.stopProgressAnimation()
+                controller?.stopSmallProgressAnimation()
                 controller?.reloadTable()
             }
         }
@@ -60,7 +60,7 @@ private extension HomeViewModel {
         DispatchQueue.main.async {
             NetworkManager().makeXMLNewsRequest { [weak self] news in
                 guard let strongNews = news else {
-                    self?.controller?.stopProgressAnimation()
+                    self?.controller?.stopSmallProgressAnimation()
                     self?.controller?.endRefresh()
                     self?.controller?.makeRequestErrorAlert()
                     return
@@ -78,7 +78,7 @@ private extension HomeViewModel {
         DispatchQueue.main.async {
             NetworkManager().makeJSONNewsRequest { [weak self] news in
                 guard let strongNews = news else {
-                    self?.controller?.stopProgressAnimation()
+                    self?.controller?.stopSmallProgressAnimation()
                     self?.controller?.endRefresh()
                     self?.controller?.makeRequestErrorAlert()
                     return
