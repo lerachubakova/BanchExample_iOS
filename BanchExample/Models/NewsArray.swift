@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NewsArray {
+final class NewsArray {
     private var news: [NewsModel] = []
 
     var debugDescription: String {

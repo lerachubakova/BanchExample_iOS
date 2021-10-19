@@ -8,11 +8,11 @@
 import Foundation
 
 struct JSONNewsModel: Codable {
-    private let title: String
-    private let link: URL?
-    private let date: String
-    private let source: SourceModel
-    private let description: String?
+    let title: String
+    let link: URL?
+    let date: String
+    let source: SourceModel
+    let description: String?
 
     private enum CodingKeys: String, CodingKey {
         case title = "title"
@@ -46,26 +46,6 @@ struct JSONNewsModel: Codable {
         result += "\n Source: \(self.source.debugDescription)"
         result += "\n Link: \(self.link?.absoluteString ?? "")"
         return result
-    }
-
-    func getTitle() -> String {
-        return title
-    }
-
-    func getLink() -> URL? {
-        return link
-    }
-
-    func getAuthor() -> String {
-        return source.debugDescription
-    }
-
-    func getDate() -> String {
-        return date
-    }
-
-    func getDescription() -> String {
-        return description ?? ""
     }
 
 }

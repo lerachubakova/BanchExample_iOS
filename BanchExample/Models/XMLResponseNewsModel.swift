@@ -7,7 +7,7 @@
 
 import Foundation
 
-class XMLResponseNewsModel {
+final class XMLResponseNewsModel {
     let news: [XMLNewsModel]
 
     var debugDescription: String {

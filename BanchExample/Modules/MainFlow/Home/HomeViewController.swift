@@ -13,7 +13,7 @@ protocol HomeViewControllerDelegate: AnyObject {
     func tappedMenuButton()
 }
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     // MARK: - @IBOutlets
     @IBOutlet private weak var tableView: UITableView!
@@ -196,7 +196,7 @@ extension HomeViewController: UITableViewDataSource {
             guard let strongNews = news else {
                 let safariVC = SFSafariViewController(url: strongURL)
                 self?.present(safariVC, animated: true) { [weak self] in
-                    self?.tableView.isUserInteractionEnabled = true
+                    self?.blockTableView(isBlocked: false)
                     self?.stopBigProgressAnimation()
                 }
                 return
@@ -207,7 +207,7 @@ extension HomeViewController: UITableViewDataSource {
             vc.setNews(strongNews)
 
             self?.navigationController?.pushViewController(viewController: vc, animated: true ) { [weak self] in
-                self?.tableView.isUserInteractionEnabled = true
+                self?.blockTableView(isBlocked: false)
                 self?.stopBigProgressAnimation()
             }
         }

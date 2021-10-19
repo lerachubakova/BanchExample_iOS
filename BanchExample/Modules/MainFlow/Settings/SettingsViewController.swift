@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController {
 
     @IBOutlet private weak var mainLabel: UILabel!
     @IBOutlet private weak var languageLabel: UILabel!

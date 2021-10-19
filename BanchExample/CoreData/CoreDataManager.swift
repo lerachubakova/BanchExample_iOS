@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class CoreDataManager {
+final class CoreDataManager {
     private static let context: NSManagedObjectContext = (UIApplication.shared.delegate as? AppDelegate ?? AppDelegate()).persistentContainer.viewContext
 
     private static var debugDescription: String {

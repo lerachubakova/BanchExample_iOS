@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SideMenuTVCell: UITableViewCell {
+final class SideMenuTVCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var optionImageView: UIImageView!

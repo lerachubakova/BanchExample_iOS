@@ -7,7 +7,7 @@
 
 import Foundation
 
-class XMLNewsModel {
+final class XMLNewsModel {
     private var title: String
     private var link: URL?
     private var author: String

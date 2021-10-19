@@ -36,7 +36,7 @@ enum MenuPosition {
 }
 
 // MARK: - ContainerViewController
-class ContainerViewController: UIViewController {
+final class ContainerViewController: UIViewController {
 
     // MARK: - Private Properties
     private var sideMenuVC: SideMenuViewController!
