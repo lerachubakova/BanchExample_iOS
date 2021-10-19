@@ -69,6 +69,10 @@ class HomeViewController: UIViewController {
     }
 
     // MARK: - Logic
+    func blockTableView(isBlocked: Bool) {
+        tableView.isUserInteractionEnabled = !isBlocked
+    }
+
     private func setLocalizedStrings() {
         titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
         navigationItem.backButtonTitle = LocalizeKeys.home.localized()
@@ -90,32 +94,45 @@ class HomeViewController: UIViewController {
         }
     }
 
-    func startBigProgressAnimation() {
+    private func startBigProgressAnimation() {
         bigProgressView.isHidden = false
         bigProgressView.play()
     }
 
-    func startSmallProgressAnimation() {
-        tableView.isUserInteractionEnabled = false
-        smallProgressView.isHidden = false
-        smallProgressView.play()
-    }
-
-    func stopBigProgressAnimation() {
+    private func stopBigProgressAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.bigProgressView.isHidden = true
             self?.bigProgressView.stop()
         }
     }
 
+    func startSmallProgressAnimation() {
+        blockTableView(isBlocked: true)
+        smallProgressView.isHidden = false
+        smallProgressView.play()
+    }
+
     func stopSmallProgressAnimation() {
-        tableView.isUserInteractionEnabled = true
+        blockTableView(isBlocked: false)
         DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.smallProgressView.isHidden = true
             self?.smallProgressView.stop()
         }
     }
 
+    // MARK: - @IBActions
+    @IBAction private func tappedMenuButton() {
+        delegate?.tappedMenuButton()
+    }
+
+    @IBAction private func tappedTitleButton(_ sender: Any) {
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
+
+}
+
+// MARK: - Alerts
+extension HomeViewController {
     func makeMissedLinkAlert(index: Int) {
         let title = LocalizeKeys.alertTitle.localized()
         let source = viewModel.newsArray[index].source ?? LocalizeKeys.alertMissedLinkSource.localized()
@@ -135,16 +152,6 @@ class HomeViewController: UIViewController {
 
         self.present(alert, animated: true, completion: nil)
     }
-
-    // MARK: - @IBActions
-    @IBAction private func tappedMenuButton() {
-        delegate?.tappedMenuButton()
-    }
-
-    @IBAction private func tappedTitleButton(_ sender: Any) {
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-    }
-
 }
 
 // MARK: - LanguageSubscriber
@@ -175,7 +182,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.isUserInteractionEnabled = false
+        blockTableView(isBlocked: true)
         startBigProgressAnimation()
         tableView.deselectRow(at: indexPath, animated: true)
         CoreDataManager.makeAsViewed(news: viewModel.newsArray[indexPath.item])
