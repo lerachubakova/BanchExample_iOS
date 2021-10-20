@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APIConstants {
+struct BBCAPIConstants {
     static let baseURL = "https://newsapi.org/v2/top-headlines"
     static let nameСountry = "country"
     static let valueCountry = "ru"

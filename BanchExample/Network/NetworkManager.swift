@@ -12,7 +12,7 @@ final class NetworkManager: NSObject {
     private let defaultSession = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
 
-    func makeXMLNewsRequest(completion: @escaping (XMLResponseNewsModel?) -> Void) {
+    func makeGazetaRuXMLNewsRequest(completion: @escaping (XMLResponseNewsModel?) -> Void) {
         guard let url = URL(string: "https://www.gazeta.ru/export/rss/lenta.xml") else { return }
         dataTask = defaultSession.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
@@ -38,14 +38,14 @@ final class NetworkManager: NSObject {
         dataTask?.resume()
     }
 
-    func makeJSONNewsRequest(completion: @escaping (JSONResponseNewsModel?) -> Void) {
+    func makeBBCJSONNewsRequest(completion: @escaping (JSONResponseNewsModel?) -> Void) {
 
-        guard var urlComponents = URLComponents(string: APIConstants.baseURL) else { return }
+        guard var urlComponents = URLComponents(string: BBCAPIConstants.baseURL) else { return }
 
         urlComponents.queryItems =
             [
-                URLQueryItem(name: APIConstants.nameSources, value: APIConstants.valueSources),
-                URLQueryItem(name: APIConstants.nameKey, value: APIConstants.valueKey)
+                URLQueryItem(name: BBCAPIConstants.nameSources, value: BBCAPIConstants.valueSources),
+                URLQueryItem(name: BBCAPIConstants.nameKey, value: BBCAPIConstants.valueKey)
             ]
 
         guard let url = urlComponents.url else { return }

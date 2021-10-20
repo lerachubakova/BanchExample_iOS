@@ -58,7 +58,7 @@ final class HomeViewModel {
 private extension HomeViewModel {
     private func getXMLNews() {
         DispatchQueue.main.async {
-            NetworkManager().makeXMLNewsRequest { [weak self] news in
+            NetworkManager().makeGazetaRuXMLNewsRequest { [weak self] news in
                 guard let strongNews = news else {
                     self?.controller?.stopSmallProgressAnimation()
                     self?.controller?.endRefresh()
@@ -76,7 +76,7 @@ private extension HomeViewModel {
 
     private func getJSONNews() {
         DispatchQueue.main.async {
-            NetworkManager().makeJSONNewsRequest { [weak self] news in
+            NetworkManager().makeBBCJSONNewsRequest { [weak self] news in
                 guard let strongNews = news else {
                     self?.controller?.stopSmallProgressAnimation()
                     self?.controller?.endRefresh()
