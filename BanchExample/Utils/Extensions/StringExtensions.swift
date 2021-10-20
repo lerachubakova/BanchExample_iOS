@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftSoup
 
 extension String {
     func localized() -> String {
@@ -25,4 +26,24 @@ extension String {
         return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
     }
 
+    func parseGazetaRuHTML() -> (String, String)? {
+        do {
+            var result = (title: "", body: "")
+            let doc: Document = try SwiftSoup.parse(self)
+
+            let title = try doc.getElementsByClass("headline").text()
+            result.title = title
+
+            let body = try doc.getElementsByClass("b_article-text").text()
+            result.body = body
+
+            if title.isEmpty { return nil }
+
+            return result
+
+        } catch {
+            print("\n NetworkManager: parseHTML: error")
+        }
+        return nil
+    }
 }

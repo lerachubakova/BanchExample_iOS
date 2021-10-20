@@ -10,8 +10,8 @@ import Foundation
 struct JSONResponseNewsModel: Codable {
     var news: [JSONNewsModel] = []
 
-    private enum CodingKeys: String, CodingKey {
-        case news = "articles"
+    var count: Int {
+        return news.count
     }
 
     var debugDescription: String {
@@ -22,12 +22,8 @@ struct JSONResponseNewsModel: Codable {
         return result
     }
 
-    var count: Int {
-        return news.count
-    }
-
-    init(news: [JSONNewsModel]) {
-        self.news = news
+    private enum CodingKeys: String, CodingKey {
+        case news = "articles"
     }
 
     subscript(index: Int) -> JSONNewsModel {
@@ -35,6 +31,10 @@ struct JSONResponseNewsModel: Codable {
             fatalError("JSONResponseNewsModel subscript index out exception")
         }
         return news[index]
+    }
+
+    init(news: [JSONNewsModel]) {
+        self.news = news
     }
 
     func saveInCoreData() {

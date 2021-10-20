@@ -10,16 +10,16 @@ import Foundation
 final class NewsArray {
     private var news: [NewsModel] = []
 
+    var count: Int {
+        return news.count
+    }
+
     var debugDescription: String {
         var result = "\n"
         _ = self.news.map {
            result += $0.debugDescription + "\n"
         }
         return result
-    }
-
-    var count: Int {
-        return news.count
     }
 
     subscript(index: Int) -> NewsModel {

@@ -14,6 +14,16 @@ struct JSONNewsModel: Codable {
     let source: SourceModel
     let description: String?
 
+    var debugDescription: String {
+        var result = ""
+        result += "\n Title: \(self.title)"
+        result += "\n Date: \(self.date)"
+        result += "\n Description: \(self.description ?? "")"
+        result += "\n Source: \(self.source.debugDescription)"
+        result += "\n Link: \(self.link?.absoluteString ?? "")"
+        return result
+    }
+
     private enum CodingKeys: String, CodingKey {
         case title = "title"
         case link = "url"
@@ -37,15 +47,4 @@ struct JSONNewsModel: Codable {
         self.source = source
         self.description = description
     }
-
-    var debugDescription: String {
-        var result = ""
-        result += "\n Title: \(self.title)"
-        result += "\n Date: \(self.date)"
-        result += "\n Description: \(self.description ?? "")"
-        result += "\n Source: \(self.source.debugDescription)"
-        result += "\n Link: \(self.link?.absoluteString ?? "")"
-        return result
-    }
-
 }

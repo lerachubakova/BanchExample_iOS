@@ -53,6 +53,15 @@ final class CoreDataManager {
         return []
     }
 
+    static func makeAsViewed(news: News) {
+        news.wasViewed = true
+        do {
+            try context.save()
+        } catch (let error) {
+            print("\(self.debugDescription): makeAsViewed: \(error.localizedDescription)")
+        }
+    }
+
     static func printNews() {
         let items = CoreDataManager.getItemsFromContext()
         print("\n LOG items: \(items.count)")
@@ -64,12 +73,4 @@ final class CoreDataManager {
         }
     }
 
-    static func makeAsViewed(news: News) {
-        news.wasViewed = true
-        do {
-            try context.save()
-        } catch (let error) {
-            print("\(self.debugDescription): makeAsViewed: \(error.localizedDescription)")
-        }
-    }
 }
