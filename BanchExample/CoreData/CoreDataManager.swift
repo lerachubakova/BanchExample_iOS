@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class CoreDataManager {
+final class CoreDataManager {
     private static let context: NSManagedObjectContext = (UIApplication.shared.delegate as? AppDelegate ?? AppDelegate()).persistentContainer.viewContext
 
     private static var debugDescription: String {
@@ -22,7 +22,7 @@ class CoreDataManager {
         var isElementInContext = false
 
         _ = items.map {
-            if $0.date == news.getDate() && $0.title == news.getTitle() {
+            if $0.date == news.date && $0.title == news.title {
                 isElementInContext = true
             }
         }
@@ -30,11 +30,11 @@ class CoreDataManager {
         guard !isElementInContext else { return }
 
         let newNews = News(context: context)
-        newNews.title = news.getTitle()
-        newNews.extract = news.getDescription()
-        newNews.date = news.getDate()
-        newNews.link = news.getLink()
-        newNews.source = news.getSource()
+        newNews.title = news.title
+        newNews.extract = news.description
+        newNews.date = news.date
+        newNews.link = news.link
+        newNews.source = news.source
 
         do {
             context.insert(newNews)
@@ -53,6 +53,15 @@ class CoreDataManager {
         return []
     }
 
+    static func makeAsViewed(news: News) {
+        news.wasViewed = true
+        do {
+            try context.save()
+        } catch (let error) {
+            print("\(self.debugDescription): makeAsViewed: \(error.localizedDescription)")
+        }
+    }
+
     static func printNews() {
         let items = CoreDataManager.getItemsFromContext()
         print("\n LOG items: \(items.count)")
@@ -64,12 +73,4 @@ class CoreDataManager {
         }
     }
 
-    static func makeAsViewed(news: News) {
-        news.wasViewed = true
-        do {
-            try context.save()
-        } catch (let error) {
-            print("\(self.debugDescription): makeAsViewed: \(error.localizedDescription)")
-        }
-    }
 }

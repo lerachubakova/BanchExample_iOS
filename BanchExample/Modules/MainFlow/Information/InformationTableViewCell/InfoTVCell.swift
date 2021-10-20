@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoTVCell: UITableViewCell {
+final class InfoTVCell: UITableViewCell {
 
     @IBOutlet private weak var collectionView: UICollectionView!
 

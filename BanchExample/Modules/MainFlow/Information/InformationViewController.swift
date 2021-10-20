@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InformationViewController: UIViewController {
+final class InformationViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     weak var delegate: HomeViewControllerDelegate?

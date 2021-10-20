@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppRatingViewController: UIViewController {
+final class AppRatingViewController: UIViewController {
 
     @IBOutlet private weak var mainTitleLabel: UILabel!
 

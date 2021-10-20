@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LanguageObserver {
+final class LanguageObserver {
 
     private static var preferredLanguage: String = "en"
     

@@ -13,12 +13,13 @@ protocol HomeViewControllerDelegate: AnyObject {
     func tappedMenuButton()
 }
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     // MARK: - @IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var titleButton: UIButton!
-    @IBOutlet private weak var progressView: AnimationView!
+    @IBOutlet private weak var smallProgressView: AnimationView!
+    @IBOutlet private weak var bigProgressView: AnimationView!
     // MARK: - Public Properties
     weak var delegate: HomeViewControllerDelegate?
 
@@ -38,10 +39,10 @@ class HomeViewController: UIViewController {
         }
 
         configureTableView()
-        configureAnimationView()
+        configureAnimationViews()
         setLocalizedStrings()
-        
-        startProgressAnimation()
+
+        startSmallProgressAnimation()
         viewModel.getNews()
     }
 
@@ -59,12 +60,19 @@ class HomeViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(startRefresh(_:)), for: .valueChanged)
     }
 
-    private func configureAnimationView() {
-        progressView.loopMode = .loop
-        progressView.animationSpeed = 0.75
+    private func configureAnimationViews() {
+        bigProgressView.loopMode = .loop
+        bigProgressView.animationSpeed = 0.75
+
+        smallProgressView.loopMode = .loop
+        smallProgressView.animationSpeed = 0.75
     }
 
     // MARK: - Logic
+    func blockTableView(isBlocked: Bool) {
+        tableView.isUserInteractionEnabled = !isBlocked
+    }
+
     private func setLocalizedStrings() {
         titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
         navigationItem.backButtonTitle = LocalizeKeys.home.localized()
@@ -81,23 +89,50 @@ class HomeViewController: UIViewController {
     }
 
     func endRefresh() {
-        DispatchQueue.main.asyncAfter(deadline: .now() ) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.refreshControl.endRefreshing()
         }
     }
 
-    func startProgressAnimation() {
-        progressView.isHidden = false
-        progressView.play()
+    private func startBigProgressAnimation() {
+        bigProgressView.isHidden = false
+        bigProgressView.play()
     }
 
-    func stopProgressAnimation() {
-        DispatchQueue.main.asyncAfter(deadline: .now() ) { [weak self] in
-            self?.progressView.isHidden = true
-            self?.progressView.stop()
+    private func stopBigProgressAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
+            self?.bigProgressView.isHidden = true
+            self?.bigProgressView.stop()
         }
     }
 
+    func startSmallProgressAnimation() {
+        blockTableView(isBlocked: true)
+        smallProgressView.isHidden = false
+        smallProgressView.play()
+    }
+
+    func stopSmallProgressAnimation() {
+        blockTableView(isBlocked: false)
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
+            self?.smallProgressView.isHidden = true
+            self?.smallProgressView.stop()
+        }
+    }
+
+    // MARK: - @IBActions
+    @IBAction private func tappedMenuButton() {
+        delegate?.tappedMenuButton()
+    }
+
+    @IBAction private func tappedTitleButton(_ sender: Any) {
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+    }
+
+}
+
+// MARK: - Alerts
+extension HomeViewController {
     func makeMissedLinkAlert(index: Int) {
         let title = LocalizeKeys.alertTitle.localized()
         let source = viewModel.newsArray[index].source ?? LocalizeKeys.alertMissedLinkSource.localized()
@@ -117,16 +152,6 @@ class HomeViewController: UIViewController {
 
         self.present(alert, animated: true, completion: nil)
     }
-
-    // MARK: - @IBActions
-    @IBAction private func tappedMenuButton() {
-        delegate?.tappedMenuButton()
-    }
-
-    @IBAction private func tappedTitleButton(_ sender: Any) {
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-    }
-
 }
 
 // MARK: - LanguageSubscriber
@@ -157,7 +182,8 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        blockTableView(isBlocked: true)
+        startBigProgressAnimation()
         tableView.deselectRow(at: indexPath, animated: true)
         CoreDataManager.makeAsViewed(news: viewModel.newsArray[indexPath.item])
 
@@ -166,7 +192,24 @@ extension HomeViewController: UITableViewDataSource {
             return
         }
 
-        let safariVC = SFSafariViewController(url: strongURL)
-        present(safariVC, animated: true)
+        NetworkManager().makeNewsRequestByLink(url: strongURL) {[weak self] news in
+            guard let strongNews = news else {
+                let safariVC = SFSafariViewController(url: strongURL)
+                self?.present(safariVC, animated: true) { [weak self] in
+                    self?.blockTableView(isBlocked: false)
+                    self?.stopBigProgressAnimation()
+                }
+                return
+            }
+
+            let storyboard = UIStoryboard(name: "News", bundle: Bundle.main)
+            guard let vc = storyboard.instantiateInitialViewController() as? NewsViewController else { return }
+            vc.setNews(strongNews)
+
+            self?.navigationController?.pushViewController(viewController: vc, animated: true ) { [weak self] in
+                self?.blockTableView(isBlocked: false)
+                self?.stopBigProgressAnimation()
+            }
+        }
     }
 }

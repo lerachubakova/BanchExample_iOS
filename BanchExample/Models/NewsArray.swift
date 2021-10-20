@@ -7,8 +7,12 @@
 
 import Foundation
 
-class NewsArray {
+final class NewsArray {
     private var news: [NewsModel] = []
+
+    var count: Int {
+        return news.count
+    }
 
     var debugDescription: String {
         var result = "\n"
@@ -16,10 +20,6 @@ class NewsArray {
            result += $0.debugDescription + "\n"
         }
         return result
-    }
-
-    var count: Int {
-        return news.count
     }
 
     subscript(index: Int) -> NewsModel {
@@ -50,6 +50,10 @@ class NewsArray {
     }
 
     func sort() {
-        news.sort { $0.getDate() > $1.getDate()}
+        news.sort { $0.date > $1.date}
+    }
+
+    func saveInCoreData() {
+        _ = news.map { CoreDataManager.addItem($0) }
     }
 }

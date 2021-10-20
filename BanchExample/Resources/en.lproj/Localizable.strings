@@ -19,6 +19,7 @@
 "language" = "Language:";
 "languageName" = "En";
 "changeLanguage" = "Change Language";
+"cancel" = "Cancel";
 
 /* alert */
 "showAlert" = "Show Alert";

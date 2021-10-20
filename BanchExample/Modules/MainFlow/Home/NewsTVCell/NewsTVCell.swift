@@ -22,10 +22,10 @@ final class NewsTVCell: UITableViewCell {
     }
 
     func configure(by news: NewsModel) {
-        titleLabel.text = news.getTitle()
-        descriptionLabel.text = news.getDescription()
-        sourceLabel.text = news.getSource()
-        dateLabel.text = DateFormatter(format:"HH:mm dd.MM.yy").string(from: news.getDate())
+        titleLabel.text = news.title
+        descriptionLabel.text = news.description
+        sourceLabel.text = news.source
+        dateLabel.text = DateFormatter(format:"HH:mm dd.MM.yy").string(from: news.date)
     }
 
     func configure(by news: News) {

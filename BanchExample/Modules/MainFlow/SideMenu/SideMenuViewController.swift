@@ -11,7 +11,7 @@ protocol SideMenuViewControllerDelegate: AnyObject {
     func selectRow(with option: String)
 }
 
-class SideMenuViewController: UIViewController {
+final class SideMenuViewController: UIViewController {
 
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var footerLabel: UILabel!

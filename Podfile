@@ -6,6 +6,7 @@ target 'BanchExample' do
   use_frameworks!
 
   # Pods for BanchExample
-  pod 'SwiftLint','0.43.1'
   pod 'lottie-ios','3.2.3'
+  pod 'SwiftLint','0.43.1'
+  pod 'SwiftSoup','2.3.3'
 end

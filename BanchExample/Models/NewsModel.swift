@@ -7,12 +7,12 @@
 
 import Foundation
 
-class NewsModel {
-    private let title: String
-    private let description: String
-    private let date: Date
-    private let source: String
-    private let link: URL?
+final class NewsModel {
+    let title: String
+    let description: String
+    let date: Date
+    let source: String
+    let link: URL?
 
     var debugDescription: String {
         var result = ""
@@ -41,36 +41,17 @@ class NewsModel {
     }
 
     init(from jsonNews: JSONNewsModel) {
-        title = jsonNews.getTitle()
-        description = jsonNews.getDescription()
+        title = jsonNews.title
+        description = jsonNews.description ?? ""
      
-        if let newDate = DateFormatter(format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ").date(from: jsonNews.getDate()) {
+        if let newDate = DateFormatter(format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ").date(from: jsonNews.date) {
             date = newDate
         } else {
-            date = ISO8601DateFormatter().date(from: jsonNews.getDate())!
+            date = ISO8601DateFormatter().date(from: jsonNews.date)!
         }
 
-        source = jsonNews.getAuthor()
-        link = jsonNews.getLink()
+        source = jsonNews.source.debugDescription
+        link = jsonNews.link
     }
 
-    func getDate() -> Date {
-        return date
-    }
-
-    func getTitle() -> String {
-        return title
-    }
-
-    func getDescription() -> String {
-        return description
-    }
-
-    func getSource() -> String {
-        return source
-    }
-
-    func getLink() -> URL? {
-        return link
-    }
 }

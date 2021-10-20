@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController {
 
     @IBOutlet private weak var mainLabel: UILabel!
     @IBOutlet private weak var languageLabel: UILabel!
@@ -41,8 +41,12 @@ class SettingsViewController: UIViewController {
             self?.changeLanguage(str: "en")
         }
 
+        let cancelAction = UIAlertAction(title: LocalizeKeys.cancel.localized(), style: .cancel) { _ in }
+
         alert.addAction(russianAction)
         alert.addAction(englishAction)
+        alert.addAction(cancelAction)
+
         self.present(alert, animated: true)
     }
 }

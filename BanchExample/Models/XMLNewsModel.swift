@@ -7,20 +7,12 @@
 
 import Foundation
 
-class XMLNewsModel {
-    private var title: String
+final class XMLNewsModel {
+    private var title: String = ""
     private var link: URL?
-    private var author: String
-    private var date: Date
-    private var description: String
-
-    init() {
-        title = ""
-        link = nil
-        author = ""
-        date = Date()
-        description = ""
-    }
+    private var author: String = ""
+    private var date: Date = Date()
+    private var description: String = ""
 
     var debugDescription: String {
         var result = ""

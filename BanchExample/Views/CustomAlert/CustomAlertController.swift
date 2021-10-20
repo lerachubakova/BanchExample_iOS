@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomAlertController: UIViewController {
+final class CustomAlertController: UIViewController {
     private var alertView: CustomAlertView!
 
     init(title: String = "Error", text: String = "We have some error") {

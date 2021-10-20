@@ -45,7 +45,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEA-vg-QHM" customClass="AnimationView" customModule="Lottie">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEA-vg-QHM" customClass="AnimationView" customModule="Lottie">
                                 <rect key="frame" x="124" y="365" width="166" height="166"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -87,9 +87,24 @@
                                 <action selector="tappedTitleButton:" destination="gub-jD-QhV" eventType="touchUpInside" id="RjV-qr-NiI"/>
                             </connections>
                         </button>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="Gxz-fJ-mff">
+                            <view key="customView" hidden="YES" contentMode="scaleToFill" id="w77-OB-sbP" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="350" y="0.0" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="w77-OB-sbP" secondAttribute="height" id="a2g-aC-8zh"/>
+                                    <constraint firstAttribute="height" constant="44" id="duw-NL-hPL"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="loading-state"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="progressView" destination="CEA-vg-QHM" id="zhS-8f-qn1"/>
+                        <outlet property="bigProgressView" destination="CEA-vg-QHM" id="zhS-8f-qn1"/>
+                        <outlet property="smallProgressView" destination="w77-OB-sbP" id="mKG-rg-Egs"/>
                         <outlet property="tableView" destination="iU7-mS-Fkx" id="ReG-UP-mmM"/>
                         <outlet property="titleButton" destination="3qH-fd-64W" id="dgu-Hf-tR2"/>
                     </connections>
@@ -99,6 +114,10 @@
             <point key="canvasLocation" x="928.98550724637687" y="113.83928571428571"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="CEA-vg-QHM"/>
+        <designable name="w77-OB-sbP"/>
+    </designables>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <systemColor name="systemGray5Color">
