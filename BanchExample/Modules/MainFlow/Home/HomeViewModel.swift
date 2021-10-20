@@ -52,6 +52,20 @@ final class HomeViewModel {
         getJSONNews()
         getXMLNews()
     }
+
+    private func doAfterRequest(news: NewsArray?) {
+        guard let strongNews = news else {
+            self.controller?.stopSmallProgressAnimation()
+            self.controller?.endRefresh()
+            self.controller?.makeRequestErrorAlert()
+            return
+        }
+
+        DispatchQueue.main.async {
+            strongNews.saveInCoreData()
+            self.requestState.toggle()
+        }
+    }
 }
 
 // MARK: - Requests
@@ -59,17 +73,7 @@ private extension HomeViewModel {
     private func getXMLNews() {
         DispatchQueue.main.async {
             NetworkManager().makeGazetaRuXMLNewsRequest { [weak self] news in
-                guard let strongNews = news else {
-                    self?.controller?.stopSmallProgressAnimation()
-                    self?.controller?.endRefresh()
-                    self?.controller?.makeRequestErrorAlert()
-                    return
-                }
-
-                DispatchQueue.main.async {
-                    strongNews.saveInCoreData()
-                    self?.requestState.toggle()
-                }
+                self?.doAfterRequest(news: news)
             }
         }
     }
@@ -77,17 +81,7 @@ private extension HomeViewModel {
     private func getJSONNews() {
         DispatchQueue.main.async {
             NetworkManager().makeBBCJSONNewsRequest { [weak self] news in
-                guard let strongNews = news else {
-                    self?.controller?.stopSmallProgressAnimation()
-                    self?.controller?.endRefresh()
-                    self?.controller?.makeRequestErrorAlert()
-                    return
-                }
-
-                DispatchQueue.main.async {
-                    strongNews.saveInCoreData()
-                    self?.requestState.toggle()
-                }
+                self?.doAfterRequest(news: news)
             }
         }
     }

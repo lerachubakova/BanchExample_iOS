@@ -13,11 +13,15 @@ final class NewsXMLParser: NSObject {
 
     private var news: [XMLNewsModel]?
 
-    func getNews(from data: Data) -> XMLResponseNewsModel? {
+    func getNews(from data: Data) -> NewsArray? {
         let parser = XMLParser(data: data)
         parser.delegate = self
         parser.parse()
-        return XMLResponseNewsModel(news: news)
+        let newsArray = NewsArray()
+        if let xmlNews = XMLResponseNewsModel(news: news) {
+            newsArray.append(array: xmlNews)
+        }
+        return newsArray
     }
 
 }

@@ -52,4 +52,8 @@ final class NewsArray {
     func sort() {
         news.sort { $0.date > $1.date}
     }
+
+    func saveInCoreData() {
+        _ = news.map { CoreDataManager.addItem($0) }
+    }
 }

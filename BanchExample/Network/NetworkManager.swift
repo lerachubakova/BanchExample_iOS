@@ -12,7 +12,7 @@ final class NetworkManager: NSObject {
     private let defaultSession = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
 
-    func makeGazetaRuXMLNewsRequest(completion: @escaping (XMLResponseNewsModel?) -> Void) {
+    func makeGazetaRuXMLNewsRequest(completion: @escaping (NewsArray?) -> Void) {
         guard let url = URL(string: "https://www.gazeta.ru/export/rss/lenta.xml") else { return }
         dataTask = defaultSession.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
@@ -38,7 +38,7 @@ final class NetworkManager: NSObject {
         dataTask?.resume()
     }
 
-    func makeBBCJSONNewsRequest(completion: @escaping (JSONResponseNewsModel?) -> Void) {
+    func makeBBCJSONNewsRequest(completion: @escaping (NewsArray?) -> Void) {
 
         guard var urlComponents = URLComponents(string: BBCAPIConstants.baseURL) else { return }
 
@@ -63,8 +63,13 @@ final class NetworkManager: NSObject {
             }
             if let data = data {
                 DispatchQueue.main.async {
-                let news = try? JSONDecoder().decode(JSONResponseNewsModel.self, from: data)
-                    completion(news)
+                    if let news = try? JSONDecoder().decode(JSONResponseNewsModel.self, from: data) {
+                        let newsArray = NewsArray()
+                        newsArray.append(array: news)
+                        completion(newsArray)
+                    } else {
+                        completion(nil)
+                    }
                 }
             } else {
                 print("\n NetworkManager: makeJSONNewsRequest no data.")
