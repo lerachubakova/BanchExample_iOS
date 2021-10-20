@@ -8,11 +8,11 @@
 import Foundation
 
 final class NewsModel {
-    private let title: String
-    private let description: String
-    private let date: Date
-    private let source: String
-    private let link: URL?
+    let title: String
+    let description: String
+    let date: Date
+    let source: String
+    let link: URL?
 
     var debugDescription: String {
         var result = ""
@@ -54,23 +54,4 @@ final class NewsModel {
         link = jsonNews.link
     }
 
-    func getDate() -> Date {
-        return date
-    }
-
-    func getTitle() -> String {
-        return title
-    }
-
-    func getDescription() -> String {
-        return description
-    }
-
-    func getSource() -> String {
-        return source
-    }
-
-    func getLink() -> URL? {
-        return link
-    }
 }

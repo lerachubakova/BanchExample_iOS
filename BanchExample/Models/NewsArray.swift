@@ -50,6 +50,6 @@ final class NewsArray {
     }
 
     func sort() {
-        news.sort { $0.getDate() > $1.getDate()}
+        news.sort { $0.date > $1.date}
     }
 }
