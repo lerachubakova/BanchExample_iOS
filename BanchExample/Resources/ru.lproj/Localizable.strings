@@ -19,6 +19,7 @@
 "language" = "Язык:";
 "languageName" = "Ru";
 "changeLanguage" = "Сменить язык";
+"cancel" = "Отмена";
 
 /* alert */
 "showAlert" = "Показать алерт";

@@ -21,6 +21,7 @@ struct LocalizeKeys {
     static let language = "language"
     static let languageName = "languageName"
     static let changeLanguage = "changeLanguage"
+    static let cancel = "cancel"
 
     // alerts
     static let showAlert = "showAlert"
