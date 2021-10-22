@@ -20,6 +20,9 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var titleButton: UIButton!
     @IBOutlet private weak var smallProgressView: AnimationView!
     @IBOutlet private weak var bigProgressView: AnimationView!
+    @IBOutlet private weak var gearButton: UIButton!
+    @IBOutlet private weak var pickerView: UIPickerView!
+
     // MARK: - Public Properties
     weak var delegate: HomeViewControllerDelegate?
 
@@ -40,6 +43,7 @@ final class HomeViewController: UIViewController {
 
         configureTableView()
         configureAnimationViews()
+        configurePickerView()
         setLocalizedStrings()
 
         startSmallProgressAnimation()
@@ -66,6 +70,20 @@ final class HomeViewController: UIViewController {
 
         smallProgressView.loopMode = .loop
         smallProgressView.animationSpeed = 0.75
+    }
+
+    private func configurePickerView() {
+        pickerView.layer.masksToBounds = false
+
+        pickerView.layer.shadowColor = UIColor.black.cgColor
+        pickerView.layer.shadowRadius = 20.0
+        pickerView.layer.shadowOpacity = 0.4
+        pickerView.layer.shadowOffset.height = 15.0
+
+        pickerView.layer.cornerRadius = pickerView.frame.height / 5.5
+
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
 
     // MARK: - Logic
@@ -120,6 +138,14 @@ final class HomeViewController: UIViewController {
         }
     }
 
+    private func handleMarkAsUninteresting() {
+        print("Marked as uninteresting")
+    }
+
+    private func handleMoveToTrash() {
+        print("Moved to trash")
+    }
+
     // MARK: - @IBActions
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
@@ -129,6 +155,9 @@ final class HomeViewController: UIViewController {
         tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 
+    @IBAction private func tappedGearButton(_ sender: Any) {
+        pickerView.isHidden.toggle()
+    }
 }
 
 // MARK: - Alerts
@@ -212,4 +241,53 @@ extension HomeViewController: UITableViewDataSource {
             }
         }
     }
+
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let unreadAction = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, completionHandler) in
+                                        self?.handleMarkAsUninteresting()
+                                        completionHandler(true)
+        }
+        unreadAction.image = UIImage(systemName: "eye.slash.fill")
+        unreadAction.backgroundColor = .systemGray
+
+        let trashAction = UIContextualAction(style: .destructive, title: "") { [weak self] (_, _, completionHandler) in
+                                        self?.handleMoveToTrash()
+                                        completionHandler(true)
+        }
+        trashAction.image = UIImage(systemName: "trash.fill")
+        trashAction.backgroundColor = .systemRed
+
+        let configuration = UISwipeActionsConfiguration(actions: [trashAction, unreadAction])
+        return configuration
+    }
+}
+
+// MARK: - UIPickerViewDelegate
+extension HomeViewController: UIPickerViewDelegate {
+
+}
+
+// MARK: - UIPickerViewDelegate
+extension HomeViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        3
+    }
+
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var title = ""
+        switch row {
+        case 0: title = "All"
+        case 1: title = "Without deleted"
+        case 2: title = "Intresting"
+        default:
+            break
+        }
+        return NSAttributedString(string: title)
+    }
+
 }
