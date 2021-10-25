@@ -27,13 +27,14 @@ enum State {
 final class HomeViewModel {
 
     public var newsArray: [News]
+    public var filter: NewsFilter = .all
 
     private weak var controller: HomeViewController?
 
     private var requestState: State {
         willSet {
             if newValue == .twoFinished {
-                newsArray = CoreDataManager.getItemsFromContext()
+                newsArray = CoreDataManager.getItemsFromContext(filter: filter)
                 controller?.endRefresh()
                 controller?.stopSmallProgressAnimation()
                 controller?.reloadTable()
@@ -43,7 +44,7 @@ final class HomeViewModel {
 
     init(vc: HomeViewController) {
         self.controller = vc
-        newsArray = CoreDataManager.getItemsFromContext()
+        newsArray = CoreDataManager.getItemsFromContext(filter: filter)
         requestState = .nobodyFinished
     }
 

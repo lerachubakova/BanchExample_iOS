@@ -8,6 +8,14 @@
 import UIKit
 import CoreData
 
+enum NewsFilter {
+    case all
+    case noDeleted
+    case intresting
+    case trash
+    case hidden
+}
+
 final class CoreDataManager {
     private static let context: NSManagedObjectContext = (UIApplication.shared.delegate as? AppDelegate ?? AppDelegate()).persistentContainer.viewContext
 
@@ -17,7 +25,7 @@ final class CoreDataManager {
 
     static func addItem(_ news: NewsModel) {
 
-        let items = getItemsFromContext()
+        let items = getItemsFromContext(filter: .all)
 
         var isElementInContext = false
 
@@ -44,13 +52,28 @@ final class CoreDataManager {
         }
     }
 
-    static func getItemsFromContext() -> [News] {
+    static func getItemsFromContext(filter: NewsFilter) -> [News] {
         let request = News.fetchRequest() as NSFetchRequest<News>
-        if var items = try? context.fetch(request) {
-            items.sort(by: {$0.date! > $1.date!})
-            return items
+
+        let sort = NSSortDescriptor(key: #keyPath(News.date), ascending: false)
+        request.sortDescriptors = [sort]
+
+        switch filter {
+        case .all:
+            break
+        case .noDeleted:
+            request.predicate = NSPredicate(format: "wasDeleted == NO")
+        case .intresting:
+            request.predicate = NSPredicate(format: "isInteresting == YES && wasDeleted == NO")
+        case .trash:
+            request.predicate = NSPredicate(format: "wasDeleted == YES")
+        case .hidden:
+            request.predicate = NSPredicate(format: "isInteresting == NO")
         }
-        return []
+
+        let items = try? context.fetch(request)
+        
+        return items ?? []
     }
 
     static func makeAsViewed(news: News) {
@@ -80,8 +103,8 @@ final class CoreDataManager {
         }
     }
 
-    static func printNews() {
-        let items = CoreDataManager.getItemsFromContext()
+    static func printNews(filter: NewsFilter) {
+        let items = CoreDataManager.getItemsFromContext(filter: filter)
         print("\n LOG items: \(items.count)")
 
         var i = 1
