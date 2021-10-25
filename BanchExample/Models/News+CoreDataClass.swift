@@ -21,6 +21,8 @@ public class News: NSManagedObject {
     @NSManaged public var extract: String?
     @NSManaged public var link: URL?
     @NSManaged public var wasViewed: Bool
+    @NSManaged public var isInteresting: Bool
+    @NSManaged public var wasDeleted: Bool
 }
 
 extension News {
@@ -31,7 +33,11 @@ extension News {
         result += "\n Description: \(self.extract ?? "-")"
         result += "\n Source: \(self.source ?? "-")"
         result += "\n Link: \(self.link?.absoluteString ?? "")"
-        result += "\n wasViewed: \(self.wasViewed)"
+
+        result += "\n WasViewed: \(self.wasViewed)"
+        result += "\n IsInteresting: \(self.isInteresting)"
+        result += "\n WasDeleted: \(self.wasDeleted)"
+
         return result
     }
 }

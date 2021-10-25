@@ -138,14 +138,6 @@ final class HomeViewController: UIViewController {
         }
     }
 
-    private func handleMarkAsUninteresting() {
-        print("Marked as uninteresting")
-    }
-
-    private func handleMoveToTrash() {
-        print("Moved to trash")
-    }
-
     // MARK: - @IBActions
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
@@ -244,21 +236,30 @@ extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let unreadAction = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, completionHandler) in
-                                        self?.handleMarkAsUninteresting()
-                                        completionHandler(true)
-        }
-        unreadAction.image = UIImage(systemName: "eye.slash.fill")
-        unreadAction.backgroundColor = .systemGray
 
-        let trashAction = UIContextualAction(style: .destructive, title: "") { [weak self] (_, _, completionHandler) in
-                                        self?.handleMoveToTrash()
-                                        completionHandler(true)
+        let news = self.viewModel.newsArray[indexPath.item]
+        let cell = tableView.cellForRow(at: indexPath) as? NewsTVCell
+
+        let unreadAction = UIContextualAction(style: .normal, title: "") { (_, _, completionHandler) in
+            CoreDataManager.changeIntrestingStatus(news: news)
+            cell?.changeInterestingStatus()
+            completionHandler(true)
         }
-        trashAction.image = UIImage(systemName: "trash.fill")
-        trashAction.backgroundColor = .systemRed
+
+        unreadAction.image = news.isInteresting ? UIImage(systemName: "eye.slash.fill") : UIImage(systemName: "eye.fill")
+        unreadAction.backgroundColor = news.isInteresting ? .systemGray : .systemGreen
+
+        let trashAction = UIContextualAction(style: .destructive, title: "") { (_, _, completionHandler) in
+            CoreDataManager.changeDeletedStatus(news: news)
+            cell?.changeDeletedStatus()
+            completionHandler(true)
+        }
+
+        trashAction.image = news.wasDeleted ? UIImage(systemName: "trash.slash.fill") : UIImage(systemName: "trash.fill")
+        trashAction.backgroundColor = news.wasDeleted ?.systemGray2 : .systemRed
 
         let configuration = UISwipeActionsConfiguration(actions: [trashAction, unreadAction])
+
         return configuration
     }
 }

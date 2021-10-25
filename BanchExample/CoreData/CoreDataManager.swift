@@ -62,6 +62,24 @@ final class CoreDataManager {
         }
     }
 
+    static func changeIntrestingStatus(news: News ) {
+        news.isInteresting.toggle()
+        do {
+            try context.save()
+        } catch (let error) {
+            print("\(self.debugDescription): makeAsUnintresting: \(error.localizedDescription)")
+        }
+    }
+
+    static func changeDeletedStatus(news: News) {
+        news.wasDeleted.toggle()
+        do {
+            try context.save()
+        } catch (let error) {
+            print("\(self.debugDescription): makeAsDeleted: \(error.localizedDescription)")
+        }
+    }
+
     static func printNews() {
         let items = CoreDataManager.getItemsFromContext()
         print("\n LOG items: \(items.count)")
