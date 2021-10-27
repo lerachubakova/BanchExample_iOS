@@ -44,6 +44,7 @@ final class HomeViewController: UIViewController {
         configureTableView()
         configureAnimationViews()
         configurePickerView()
+        getFilterFromUserDefaults()
         setLocalizedStrings()
 
         startSmallProgressAnimation()
@@ -85,8 +86,11 @@ final class HomeViewController: UIViewController {
 
         pickerView.delegate = self
         pickerView.dataSource = self
+    }
 
+    private func getFilterFromUserDefaults() {
         let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
+        viewModel.setFilter(filter:  NewsFilter.allCases[row])
         pickerView.selectRow(row, inComponent: 0, animated: false)
     }
 
@@ -99,7 +103,9 @@ final class HomeViewController: UIViewController {
         titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
         navigationItem.backButtonTitle = LocalizeKeys.home.localized()
         pickerView.reloadAllComponents()
-        gearButton.setTitle(getTitleForPickerView(for: pickerView.selectedRow(inComponent: 0)), for: .normal)
+        
+        let row = pickerView.selectedRow(inComponent: 0)
+        gearButton.setTitle(getTitleForPickerView(for: row), for: .normal)
     }
 
     func reloadTable() {
