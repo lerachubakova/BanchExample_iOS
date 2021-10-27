@@ -23,21 +23,42 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="KRy-ub-gRs">
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="KRy-ub-gRs">
                         <rect key="frame" x="11" y="145.5" width="469" height="21"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Газета.Ru" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf6-JW-eD9">
-                                <rect key="frame" x="0.0" y="0.5" width="234.5" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.5" width="76.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:05  14.10.2021" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ul-Yy-Cwa">
-                                <rect key="frame" x="234.5" y="5" width="234.5" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="p75-Ib-KGU">
+                                <rect key="frame" x="294" y="0.0" width="175" height="21"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="E5J-ad-WQc">
+                                        <rect key="frame" x="0.0" y="-1" width="21" height="21.5"/>
+                                        <color key="tintColor" red="0.71840766649999999" green="0.1241007517" blue="0.1779878674" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="14E-7S-pnA"/>
+                                            <constraint firstAttribute="width" secondItem="E5J-ad-WQc" secondAttribute="height" multiplier="1:1" id="HIr-GP-pvm"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye.slash.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fUI-bt-dhj">
+                                        <rect key="frame" x="36" y="1" width="21" height="18.5"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Vak-lc-PK5"/>
+                                            <constraint firstAttribute="width" secondItem="fUI-bt-dhj" secondAttribute="height" multiplier="1:1" id="h8n-j1-Nb8"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:05  14.10.2021" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ul-Yy-Cwa">
+                                        <rect key="frame" x="72" y="0.0" width="103" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="fb2-Uq-7vK"/>
@@ -85,14 +106,18 @@
             <connections>
                 <outlet property="dateLabel" destination="1Ul-Yy-Cwa" id="o2s-fY-n6Z"/>
                 <outlet property="descriptionLabel" destination="1UH-FE-MaV" id="4Jq-4A-6Sq"/>
+                <outlet property="isUnintrestingImageView" destination="fUI-bt-dhj" id="5bo-i3-n0h"/>
                 <outlet property="sourceLabel" destination="wf6-JW-eD9" id="qJT-eI-GXi"/>
                 <outlet property="titleLabel" destination="pvx-6c-ZnM" id="IdH-5p-VlK"/>
+                <outlet property="wasDeletedImageView" destination="E5J-ad-WQc" id="9qb-WO-W1G"/>
                 <outlet property="wasViewedImageView" destination="GNX-h2-rvl" id="hp3-Em-d48"/>
             </connections>
             <point key="canvasLocation" x="255.79710144927537" y="138.95089285714286"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
         <image name="icTick" width="96" height="96"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
     </resources>
 </document>

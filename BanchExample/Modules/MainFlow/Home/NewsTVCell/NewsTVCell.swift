@@ -14,6 +14,10 @@ final class NewsTVCell: UITableViewCell {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var sourceLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var wasDeletedImageView: UIImageView!
+    @IBOutlet private weak var isUnintrestingImageView: UIImageView!
+
+    private unowned var news: News!
 
     static let identifier = "newsTVCell"
 
@@ -29,6 +33,7 @@ final class NewsTVCell: UITableViewCell {
     }
 
     func configure(by news: News) {
+        self.news = news
         titleLabel.text = news.title
         descriptionLabel.text = news.extract
         sourceLabel.text = news.source
@@ -46,9 +51,16 @@ final class NewsTVCell: UITableViewCell {
         } else {
             dateLabel.text = ""
         }
+
+        wasDeletedImageView.isHidden = !news.wasDeleted
+        isUnintrestingImageView.isHidden = news.isInteresting
     }
 
-    func makeAsViewed() {
+    func changeInterestingStatus() {
+        isUnintrestingImageView.isHidden = news.isInteresting
+    }
 
+    func changeDeletedStatus() {
+        wasDeletedImageView.isHidden = !news.wasDeleted
     }
 }

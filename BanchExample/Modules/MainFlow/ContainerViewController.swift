@@ -47,7 +47,7 @@ final class ContainerViewController: UIViewController {
     private var menuState: MenuState = .closed
     private var menuPosition: MenuPosition = .up
 
-    private var isGestureEnabled = true
+    private var isGestureEnabled = false
     private var isDraggingEnabled = false
 
     private let sideMenuWidth: CGFloat = 200
@@ -100,9 +100,11 @@ final class ContainerViewController: UIViewController {
         tapGestureRecognizer.delegate = self
         sideMenuShadowView.addGestureRecognizer(tapGestureRecognizer)
 
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
-        panGestureRecognizer.delegate = self
-        view.addGestureRecognizer(panGestureRecognizer)
+        if isGestureEnabled {
+            let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+            panGestureRecognizer.delegate = self
+            view.addGestureRecognizer(panGestureRecognizer)
+        }
     }
 
     private func setupConstraints() {

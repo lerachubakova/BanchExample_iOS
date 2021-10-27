@@ -27,6 +27,7 @@
 		CE690141270F1CB100F09B78 /* InfoTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE69013F270F1CB100F09B78 /* InfoTVCell.xib */; };
 		CE690145270F276300F09B78 /* InfoCollectionVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE690143270F276300F09B78 /* InfoCollectionVCell.swift */; };
 		CE690146270F276300F09B78 /* InfoCollectionVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE690144270F276300F09B78 /* InfoCollectionVCell.xib */; };
+		CE70DCD9272931C2009CDC61 /* UserDefaultsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE70DCD8272931C2009CDC61 /* UserDefaultsConstants.swift */; };
 		CE72F0B82719524200D9E844 /* BanchExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0B62719524200D9E844 /* BanchExample.xcdatamodeld */; };
 		CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0B92719537000D9E844 /* CoreDataManager.swift */; };
 		CE72F0C12719556000D9E844 /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */; };
@@ -83,6 +84,7 @@
 		CE69013F270F1CB100F09B78 /* InfoTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTVCell.xib; sourceTree = "<group>"; };
 		CE690143270F276300F09B78 /* InfoCollectionVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionVCell.swift; sourceTree = "<group>"; };
 		CE690144270F276300F09B78 /* InfoCollectionVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCollectionVCell.xib; sourceTree = "<group>"; };
+		CE70DCD8272931C2009CDC61 /* UserDefaultsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConstants.swift; sourceTree = "<group>"; };
 		CE72F0B72719524200D9E844 /* BanchExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BanchExample.xcdatamodel; sourceTree = "<group>"; };
 		CE72F0B92719537000D9E844 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "News+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,14 @@
 			path = InfoCollectionVCell;
 			sourceTree = "<group>";
 		};
+		CE70DCD727293194009CDC61 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				CE70DCD8272931C2009CDC61 /* UserDefaultsConstants.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		CE72F0B52719521F00D9E844 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +228,7 @@
 				CE1B77E72716B93300C3034A /* APIConstants.swift */,
 				CE7C11C5270AF5DF00063336 /* Extensions */,
 				CE7C11C3270AE14600063336 /* Localization */,
+				CE70DCD727293194009CDC61 /* UserDefaults */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -584,6 +595,7 @@
 				CE72F0B82719524200D9E844 /* BanchExample.xcdatamodeld in Sources */,
 				CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */,
 				CE1B77EA2716BDF900C3034A /* JSONResponseNewsModel.swift in Sources */,
+				CE70DCD9272931C2009CDC61 /* UserDefaultsConstants.swift in Sources */,
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,
 				CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */,
 				CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */,

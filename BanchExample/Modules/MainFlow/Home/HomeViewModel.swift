@@ -28,12 +28,18 @@ final class HomeViewModel {
 
     public var newsArray: [News]
 
+    public var filter: NewsFilter = .all {
+        didSet {
+            updateByCoreData()
+        }
+    }
+
     private weak var controller: HomeViewController?
 
     private var requestState: State {
         willSet {
             if newValue == .twoFinished {
-                newsArray = CoreDataManager.getItemsFromContext()
+                newsArray = CoreDataManager.getItemsFromContext(filter: filter)
                 controller?.endRefresh()
                 controller?.stopSmallProgressAnimation()
                 controller?.reloadTable()
@@ -43,8 +49,13 @@ final class HomeViewModel {
 
     init(vc: HomeViewController) {
         self.controller = vc
-        newsArray = CoreDataManager.getItemsFromContext()
+        newsArray = CoreDataManager.getItemsFromContext(filter: filter)
         requestState = .nobodyFinished
+    }
+
+    func updateByCoreData() {
+        newsArray = CoreDataManager.getItemsFromContext(filter: filter)
+        controller?.reloadTable()
     }
 
     func getNews() {
@@ -53,18 +64,8 @@ final class HomeViewModel {
         getXMLNews()
     }
 
-    private func doAfterRequest(news: NewsArray?) {
-        guard let strongNews = news else {
-            self.controller?.stopSmallProgressAnimation()
-            self.controller?.endRefresh()
-            self.controller?.makeRequestErrorAlert()
-            return
-        }
-
-        DispatchQueue.main.async {
-            strongNews.saveInCoreData()
-            self.requestState.toggle()
-        }
+    func setFilter(filter: NewsFilter) {
+        self.filter = filter
     }
 }
 
@@ -83,6 +84,20 @@ private extension HomeViewModel {
             NetworkManager().makeBBCJSONNewsRequest { [weak self] news in
                 self?.doAfterRequest(news: news)
             }
+        }
+    }
+
+    private func doAfterRequest(news: NewsArray?) {
+        guard let strongNews = news else {
+            self.controller?.stopSmallProgressAnimation()
+            self.controller?.endRefresh()
+            self.controller?.makeRequestErrorAlert()
+            return
+        }
+
+        DispatchQueue.main.async {
+            strongNews.saveInCoreData()
+            self.requestState.toggle()
         }
     }
 }
