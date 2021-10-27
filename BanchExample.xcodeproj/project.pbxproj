@@ -198,8 +198,8 @@
 		CE72F0B52719521F00D9E844 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				CE72F0B62719524200D9E844 /* BanchExample.xcdatamodeld */,
 				CE72F0B92719537000D9E844 /* CoreDataManager.swift */,
+				CE72F0B62719524200D9E844 /* BanchExample.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -246,9 +246,9 @@
 		CE7FC0A3270DAA11007325DA /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
-				CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */,
-				CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */,
 				CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */,
+				CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */,
+				CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */,
 			);
 			path = CustomAlert;
 			sourceTree = "<group>";
@@ -293,13 +293,13 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		CE929D4A27044E9A0031A8C8 /* AppRating */ = {
+		CE929D4A27044E9A0031A8C8 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
 				CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */,
 				CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */,
 			);
-			path = AppRating;
+			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
 		CE929D4F27047C140031A8C8 /* Settings */ = {
@@ -395,7 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF265F626EF1F07008EE038 /* ContainerViewController.swift */,
-				CE929D4A27044E9A0031A8C8 /* AppRating */,
+				CE929D4A27044E9A0031A8C8 /* GoogleMaps */,
 				CE8E312A2703435600C61AE6 /* Home */,
 				CE8E31292703433100C61AE6 /* Information */,
 				CE929D4F27047C140031A8C8 /* Settings */,
