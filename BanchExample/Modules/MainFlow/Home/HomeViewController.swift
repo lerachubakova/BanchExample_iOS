@@ -86,9 +86,7 @@ final class HomeViewController: UIViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
 
-
         let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
-        print("get \(row)")
         pickerView.selectRow(row, inComponent: 0, animated: false)
     }
 
@@ -300,7 +298,6 @@ extension HomeViewController: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         gearButton.setTitle(getTitleForPickerView(for: row), for: .normal)
         viewModel.setFilter(filter:  NewsFilter.allCases[row])
-        print("set \(row)")
         userDefaults.setValue(row, forKey: UserDefaultsKeys.filter)
     }
 
