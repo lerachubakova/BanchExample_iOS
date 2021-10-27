@@ -243,19 +243,25 @@ extension HomeViewController: UITableViewDataSource {
         let news = self.viewModel.newsArray[indexPath.item]
         let cell = tableView.cellForRow(at: indexPath) as? NewsTVCell
 
-        let unreadAction = UIContextualAction(style: .normal, title: "") { (_, _, completionHandler) in
+        let unreadAction = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, completionHandler) in
             CoreDataManager.changeIntrestingStatus(news: news)
             cell?.changeInterestingStatus()
             completionHandler(true)
+            DispatchQueue.main.asyncAfter(deadline: (.now() + 0.6)) {
+                self?.viewModel.updateByCoreData()
+            }
         }
 
         unreadAction.image = news.isInteresting ? UIImage(systemName: "eye.slash.fill") : UIImage(systemName: "eye.fill")
         unreadAction.backgroundColor = news.isInteresting ? .systemGray : .systemGreen
 
-        let trashAction = UIContextualAction(style: .destructive, title: "") { (_, _, completionHandler) in
+        let trashAction = UIContextualAction(style: .destructive, title: "") { [weak self] (_, _, completionHandler) in
             CoreDataManager.changeDeletedStatus(news: news)
             cell?.changeDeletedStatus()
             completionHandler(true)
+            DispatchQueue.main.asyncAfter(deadline: (.now() + 0.6)) {
+                self?.viewModel.updateByCoreData()
+            }
         }
 
         trashAction.image = news.wasDeleted ? UIImage(systemName: "trash.slash.fill") : UIImage(systemName: "trash.fill")
@@ -279,7 +285,7 @@ extension HomeViewController: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        5
+        NewsFilter.allCases.count
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -288,6 +294,7 @@ extension HomeViewController: UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         gearButton.setTitle(getTitleForPickerView(for: row), for: .normal)
+        viewModel.setFilter(filter:  NewsFilter.allCases[row])
         // TODO: set filter in UserDefaults
     }
 

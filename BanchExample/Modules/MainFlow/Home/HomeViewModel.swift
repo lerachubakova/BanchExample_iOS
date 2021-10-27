@@ -27,7 +27,12 @@ enum State {
 final class HomeViewModel {
 
     public var newsArray: [News]
-    public var filter: NewsFilter = .all
+
+    public var filter: NewsFilter = .all {
+        didSet {
+            updateByCoreData()
+        }
+    }
 
     private weak var controller: HomeViewController?
 
@@ -48,24 +53,19 @@ final class HomeViewModel {
         requestState = .nobodyFinished
     }
 
+    func updateByCoreData() {
+        newsArray = CoreDataManager.getItemsFromContext(filter: filter)
+        controller?.reloadTable()
+    }
+
     func getNews() {
         requestState = .nobodyFinished
         getJSONNews()
         getXMLNews()
     }
 
-    private func doAfterRequest(news: NewsArray?) {
-        guard let strongNews = news else {
-            self.controller?.stopSmallProgressAnimation()
-            self.controller?.endRefresh()
-            self.controller?.makeRequestErrorAlert()
-            return
-        }
-
-        DispatchQueue.main.async {
-            strongNews.saveInCoreData()
-            self.requestState.toggle()
-        }
+    func setFilter(filter: NewsFilter) {
+        self.filter = filter
     }
 }
 
@@ -84,6 +84,20 @@ private extension HomeViewModel {
             NetworkManager().makeBBCJSONNewsRequest { [weak self] news in
                 self?.doAfterRequest(news: news)
             }
+        }
+    }
+
+    private func doAfterRequest(news: NewsArray?) {
+        guard let strongNews = news else {
+            self.controller?.stopSmallProgressAnimation()
+            self.controller?.endRefresh()
+            self.controller?.makeRequestErrorAlert()
+            return
+        }
+
+        DispatchQueue.main.async {
+            strongNews.saveInCoreData()
+            self.requestState.toggle()
         }
     }
 }

@@ -8,12 +8,8 @@
 import UIKit
 import CoreData
 
-enum NewsFilter {
-    case all
-    case noDeleted
-    case intresting
-    case trash
-    case hidden
+enum NewsFilter: CaseIterable {
+    case all, noDeleted, intresting, trash, hidden
 }
 
 final class CoreDataManager {
