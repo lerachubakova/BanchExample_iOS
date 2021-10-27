@@ -300,8 +300,8 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
             showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
         case LocalizeKeys.info:
             showViewController(viewController: UINavigationController.self, storyboardName: "Information")
-        case LocalizeKeys.appRating:
-             showViewController(viewController: UIViewController.self, storyboardName: "AppRating")
+        case LocalizeKeys.googleMaps:
+             showViewController(viewController: UINavigationController.self, storyboardName: "GoogleMaps")
         case LocalizeKeys.shareApp:
             let safariVC = SFSafariViewController(url: URL(string: "http://vironit.timesummary.com")!)
             present(safariVC, animated: true)

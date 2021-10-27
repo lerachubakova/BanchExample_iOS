@@ -46,8 +46,8 @@
 		CE8AB962271F228F00AEEEE4 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */; };
 		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
 		CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E3127270340EA00C61AE6 /* Information.storyboard */; };
-		CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */; };
-		CE929D4E270452130031A8C8 /* AppRating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* AppRating.storyboard */; };
+		CE929D4C27044EFD0031A8C8 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */; };
+		CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */; };
 		CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D5027047C510031A8C8 /* SettingsViewController.swift */; };
 		CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D5227047C770031A8C8 /* Settings.storyboard */; };
 		CEDD9CC6271D587E002F9833 /* loading-state.json in Resources */ = {isa = PBXBuildFile; fileRef = CEDD9CC5271D587E002F9833 /* loading-state.json */; };
@@ -104,8 +104,8 @@
 		CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
 		CE8E3127270340EA00C61AE6 /* Information.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
-		CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingViewController.swift; sourceTree = "<group>"; };
-		CE929D4D270452130031A8C8 /* AppRating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppRating.storyboard; sourceTree = "<group>"; };
+		CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
+		CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
 		CE929D5027047C510031A8C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE929D5227047C770031A8C8 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		CEDD9CC5271D587E002F9833 /* loading-state.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-state.json"; sourceTree = "<group>"; };
@@ -195,14 +195,6 @@
 			path = InfoCollectionVCell;
 			sourceTree = "<group>";
 		};
-		CE70DCD727293194009CDC61 /* UserDefaults */ = {
-			isa = PBXGroup;
-			children = (
-				CE70DCD8272931C2009CDC61 /* UserDefaultsConstants.swift */,
-			);
-			path = UserDefaults;
-			sourceTree = "<group>";
-		};
 		CE72F0B52719521F00D9E844 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,10 +217,9 @@
 		CE7C11C4270AF55700063336 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CE1B77E72716B93300C3034A /* APIConstants.swift */,
+				CE8314402729821B007D11A3 /* Constants */,
 				CE7C11C5270AF5DF00063336 /* Extensions */,
 				CE7C11C3270AE14600063336 /* Localization */,
-				CE70DCD727293194009CDC61 /* UserDefaults */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -237,8 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */,
-				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 				CE633291271883D60067A45B /* DateFormatterExtensions.swift */,
+				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 				CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */,
 			);
 			path = Extensions;
@@ -260,6 +251,15 @@
 				CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */,
 			);
 			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		CE8314402729821B007D11A3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CE1B77E72716B93300C3034A /* APIConstants.swift */,
+				CE70DCD8272931C2009CDC61 /* UserDefaultsConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		CE8AB95C271EFFCB00AEEEE4 /* News */ = {
@@ -296,8 +296,8 @@
 		CE929D4A27044E9A0031A8C8 /* AppRating */ = {
 			isa = PBXGroup;
 			children = (
-				CE929D4D270452130031A8C8 /* AppRating.storyboard */,
-				CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */,
+				CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */,
+				CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */,
 			);
 			path = AppRating;
 			sourceTree = "<group>";
@@ -496,7 +496,7 @@
 				CE633290271876140067A45B /* NewsTVCell.xib in Resources */,
 				CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */,
 				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
-				CE929D4E270452130031A8C8 /* AppRating.storyboard in Resources */,
+				CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */,
 				CEF265FC26EF1F09008EE038 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,7 +579,7 @@
 				CEF2661526EF45A3008EE038 /* SideMenuTVCell.swift in Sources */,
 				CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */,
 				CE1B77E62716B45A00C3034A /* NewsXMLParser.swift in Sources */,
-				CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */,
+				CE929D4C27044EFD0031A8C8 /* GoogleMapsViewController.swift in Sources */,
 				CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */,
 				CE72F0C12719556000D9E844 /* News+CoreDataClass.swift in Sources */,
 				CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */,

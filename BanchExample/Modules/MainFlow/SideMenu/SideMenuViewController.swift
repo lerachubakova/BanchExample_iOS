@@ -21,7 +21,7 @@ final class SideMenuViewController: UIViewController {
 
     let options: [String] = [LocalizeKeys.home,
                              LocalizeKeys.info,
-                             LocalizeKeys.appRating,
+                             LocalizeKeys.googleMaps,
                              LocalizeKeys.shareApp,
                              LocalizeKeys.settings]
 

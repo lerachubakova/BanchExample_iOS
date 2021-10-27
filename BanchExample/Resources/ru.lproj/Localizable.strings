@@ -9,7 +9,7 @@
 /* sideMenu */
 "home" = "Главная";
 "info" = "Информация";
-"rating" = "Рейтинг";
+"googleMaps" = "Google Карты";
 "share" = "Поделиться";
 "settings" = "Настройки";
 "footer" = "от Меня";

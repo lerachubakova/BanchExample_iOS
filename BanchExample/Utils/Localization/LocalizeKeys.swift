@@ -11,7 +11,7 @@ struct LocalizeKeys {
     // sideMenu
     static let home = "home"
     static let info = "info"
-    static let appRating = "rating"
+    static let googleMaps = "googleMaps"
     static let shareApp = "share"
     static let settings = "settings"
     static let footer = "footer"
