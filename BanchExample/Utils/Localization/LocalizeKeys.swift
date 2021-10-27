@@ -24,12 +24,23 @@ struct LocalizeKeys {
     static let cancel = "cancel"
 
     // alerts
-    static let showAlert = "showAlert"
-    static let alertTitle = "alertTitle"
-    static let alertText = "alertText"
-    static let alertButton = "alertButton"
-    static let alertSkipButton = "alertSkipButton"
-    static let alertMissedLink = "alertMissedLink"
-    static let alertMissedLinkSource = "alertMissedLinkSource"
-    static let alertRequestError = "alertRequestError"
+    class Alerts {
+        static let showAlert = "showAlert"
+        static let alertTitle = "alertTitle"
+        static let alertText = "alertText"
+        static let alertButton = "alertButton"
+        static let alertSkipButton = "alertSkipButton"
+        static let alertMissedLink = "alertMissedLink"
+        static let alertMissedLinkSource = "alertMissedLinkSource"
+        static let alertRequestError = "alertRequestError"
+    }
+
+    // filters
+    class Filters {
+        static let all = "allFilter"
+        static let withoutDeleted = "withoutDeletedFilter"
+        static let interesting = "interestingFilter"
+        static let trash = "trashFilter"
+        static let hidden = "hiddenFilter"
+    }
 }

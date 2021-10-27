@@ -48,6 +48,7 @@ final class HomeViewController: UIViewController {
 
         startSmallProgressAnimation()
         viewModel.getNews()
+        // TODO: get filter from UserDefaults
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +95,8 @@ final class HomeViewController: UIViewController {
     private func setLocalizedStrings() {
         titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
         navigationItem.backButtonTitle = LocalizeKeys.home.localized()
+        pickerView.reloadAllComponents()
+        gearButton.setTitle(getTitleForPickerView(for: pickerView.selectedRow(inComponent: 0)), for: .normal)
     }
 
     func reloadTable() {
@@ -155,21 +158,21 @@ final class HomeViewController: UIViewController {
 // MARK: - Alerts
 extension HomeViewController {
     func makeMissedLinkAlert(index: Int) {
-        let title = LocalizeKeys.alertTitle.localized()
-        let source = viewModel.newsArray[index].source ?? LocalizeKeys.alertMissedLinkSource.localized()
-        let message = LocalizeKeys.alertMissedLink.localized() + " " + source
+        let title = LocalizeKeys.Alerts.alertTitle.localized()
+        let source = viewModel.newsArray[index].source ?? LocalizeKeys.Alerts.alertMissedLinkSource.localized()
+        let message = LocalizeKeys.Alerts.alertMissedLink.localized() + " " + source
 
         let alert = CustomAlertController(title: title, text: message)
-        alert.addAction(title: LocalizeKeys.alertButton.localized())
+        alert.addAction(title: LocalizeKeys.Alerts.alertButton.localized())
         self.present(alert, animated: true, completion: nil)
     }
 
     func makeRequestErrorAlert() {
-        let title = LocalizeKeys.alertTitle.localized()
-        let message = LocalizeKeys.alertRequestError.localized()
+        let title = LocalizeKeys.Alerts.alertTitle.localized()
+        let message = LocalizeKeys.Alerts.alertRequestError.localized()
 
         let alert = CustomAlertController(title: title, text: message)
-        alert.addAction(title: LocalizeKeys.alertButton.localized())
+        alert.addAction(title: LocalizeKeys.Alerts.alertButton.localized())
 
         self.present(alert, animated: true, completion: nil)
     }
@@ -276,19 +279,30 @@ extension HomeViewController: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        3
+        5
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: getTitleForPickerView(for: row))
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        gearButton.setTitle(getTitleForPickerView(for: row), for: .normal)
+        // TODO: set filter in UserDefaults
+    }
+
+    func getTitleForPickerView(for row: Int) -> String {
         var title = ""
         switch row {
-        case 0: title = "All"
-        case 1: title = "Without deleted"
-        case 2: title = "Intresting"
+        case 0: title = LocalizeKeys.Filters.all.localized()
+        case 1: title = LocalizeKeys.Filters.withoutDeleted.localized()
+        case 2: title = LocalizeKeys.Filters.interesting.localized()
+        case 3: title = LocalizeKeys.Filters.trash.localized()
+        case 4: title = LocalizeKeys.Filters.hidden.localized()
         default:
             break
         }
-        return NSAttributedString(string: title)
+        return title
     }
 
 }

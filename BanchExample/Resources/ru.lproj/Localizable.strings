@@ -30,3 +30,10 @@
 "alertMissedLink" = "Похоже, что к данной новости отсутствует ссылка, все вопросы к";
 "alertMissedLinkSource" = "источнику";
 "alertRequestError" = "Произошла ошибка во время запроса на сервер";
+
+/* filters */
+"allFilter" = "Все";
+"withoutDeletedFilter" = "Без удалённых";
+"interestingFilter" = "Интересные";
+"trashFilter" = "Корзина";
+"hiddenFilter" = "Скрытые";
