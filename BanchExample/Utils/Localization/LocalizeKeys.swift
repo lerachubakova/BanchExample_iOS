@@ -33,6 +33,11 @@ struct LocalizeKeys {
         static let alertMissedLink = "alertMissedLink"
         static let alertMissedLinkSource = "alertMissedLinkSource"
         static let alertRequestError = "alertRequestError"
+
+        static let continueTitle = "alertContinueTitle"
+        static let photoLibraryMessage = "alertLibraryMessage"
+        static let openSettingsButton = "alertOpenSettingsButton"
+        static let noThanksButton = "alertNoThanksButton"
     }
 
     // filters

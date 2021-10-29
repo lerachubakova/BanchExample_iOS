@@ -10,28 +10,62 @@ import UIKit
 final class InformationViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    weak var delegate: HomeViewControllerDelegate?
+
+    private weak var delegate: HomeViewControllerDelegate?
+    private weak var container: ContainerViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let container = self.navigationController?.parent as? HomeViewControllerDelegate {
-            delegate = container
-        }
+        delegate = navigationController?.parent as? HomeViewControllerDelegate
+        container = navigationController?.parent as? ContainerViewController
 
         setLocalizedStrings()
-        configureTableView()
         LanguageObserver.subscribe(self)
+        checkAuthorization()
+    }
+
+    private func configureTableView() {
+        tableView.register(InfoTVCell.nib(), forCellReuseIdentifier: InfoTVCell.identifier)
+
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        tableView.isHidden = false
     }
 
     private func setLocalizedStrings() {
         title = LocalizeKeys.info.localized()
     }
 
-    private func configureTableView() {
-        tableView.register(InfoTVCell.nib(), forCellReuseIdentifier: InfoTVCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
+    private func checkAuthorization() {
+        let status = PHLibraryAuthorizationManager.getPhotoLibraryAuthorizationStatus()
+        switch status {
+        case .notRequested:
+            makeAuthorizationRequest()
+        case .granted:
+            configureTableView()
+        case .unauthorized:
+            container?.showOpenSettingsAlert()
+        }
+    }
+
+    private func makeAuthorizationRequest() {
+        PHLibraryAuthorizationManager.requestPhotoLibraryAuthorization { status in
+            switch status {
+            case .granted:
+                DispatchQueue.main.async { [weak self] in
+                    self?.configureTableView()
+                    self?.tableView.reloadData()
+                }
+            case .unauthorized:
+                DispatchQueue.main.async { [weak self] in
+                    self?.container?.showOpenSettingsAlert()
+                }
+            case .notRequested:
+                break
+            }
+        }
     }
 
     @IBAction private func tappedMenuButton() {

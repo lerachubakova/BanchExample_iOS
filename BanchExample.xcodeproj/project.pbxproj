@@ -20,6 +20,7 @@
 		CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F3C2715D96E005448BB /* NetworkManager.swift */; };
 		CE326620272BC2400067A9A7 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32661E272BC2400067A9A7 /* FiltersViewController.swift */; };
 		CE326621272BC2400067A9A7 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE32661F272BC2400067A9A7 /* FiltersViewController.xib */; };
+		CE326623272BE8F00067A9A7 /* PHLibraryAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */; };
 		CE63328F271876140067A45B /* NewsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63328D271876140067A45B /* NewsTVCell.swift */; };
 		CE633290271876140067A45B /* NewsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE63328E271876140067A45B /* NewsTVCell.xib */; };
 		CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE633291271883D60067A45B /* DateFormatterExtensions.swift */; };
@@ -79,6 +80,7 @@
 		CE249F3C2715D96E005448BB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE32661E272BC2400067A9A7 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		CE32661F272BC2400067A9A7 /* FiltersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
+		CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHLibraryAuthorizationManager.swift; sourceTree = "<group>"; };
 		CE63328D271876140067A45B /* NewsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTVCell.swift; sourceTree = "<group>"; };
 		CE63328E271876140067A45B /* NewsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTVCell.xib; sourceTree = "<group>"; };
 		CE633291271883D60067A45B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 				CE32661F272BC2400067A9A7 /* FiltersViewController.xib */,
 			);
 			path = Filters;
+			sourceTree = "<group>";
+		};
+		CE326624272BF3850067A9A7 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		CE63328C271875DA0067A45B /* NewsTVCell */ = {
@@ -289,6 +299,7 @@
 			children = (
 				CE8E3127270340EA00C61AE6 /* Information.storyboard */,
 				CE88FBDD26F382EA00DE394F /* InformationViewController.swift */,
+				CE326624272BF3850067A9A7 /* Authorization */,
 				CE69013D270F1C3F00F09B78 /* InformationTableViewCell */,
 			);
 			path = Information;
@@ -582,6 +593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE326623272BE8F00067A9A7 /* PHLibraryAuthorizationManager.swift in Sources */,
 				CE1B77F42716F9D700C3034A /* NewsModel.swift in Sources */,
 				CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */,
 				CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */,

@@ -31,6 +31,12 @@
 "alertMissedLinkSource" = "источнику";
 "alertRequestError" = "Произошла ошибка во время запроса на сервер";
 
+/* PHLibrary alert */
+"alertContinueTitle" = "Хотите продолжить?";
+"alertLibraryMessage" = "Приложению необходим доступ к одному и более фото в библиотеке.";
+"alertOpenSettingsButton" = "Открыть настройки";
+"alertNoThanksButton" = "Нет, спасибо";
+
 /* filters */
 "allFilter" = "Все";
 "withoutDeletedFilter" = "Без удалённых";

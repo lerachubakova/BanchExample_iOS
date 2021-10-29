@@ -154,7 +154,7 @@ extension HomeViewController {
         let source = viewModel.newsArray[index].source ?? LocalizeKeys.Alerts.alertMissedLinkSource.localized()
         let message = LocalizeKeys.Alerts.alertMissedLink.localized() + " " + source
 
-        let alert = CustomAlertController(title: title, text: message)
+        let alert = CustomAlertController(title: title, message: message)
         alert.addAction(title: LocalizeKeys.Alerts.alertButton.localized())
         self.present(alert, animated: true, completion: nil)
     }
@@ -163,7 +163,7 @@ extension HomeViewController {
         let title = LocalizeKeys.Alerts.alertTitle.localized()
         let message = LocalizeKeys.Alerts.alertRequestError.localized()
 
-        let alert = CustomAlertController(title: title, text: message)
+        let alert = CustomAlertController(title: title, message: message)
         alert.addAction(title: LocalizeKeys.Alerts.alertButton.localized())
 
         self.present(alert, animated: true, completion: nil)

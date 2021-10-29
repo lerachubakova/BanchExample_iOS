@@ -31,6 +31,12 @@
 "alertMissedLinkSource" = "source";
 "alertRequestError" = "An error occurred during a request to the server";
 
+/* PHLibrary alert */
+"alertContinueTitle" = "Want to continue?";
+"alertLibraryMessage" = "Application needs access to one or more photos in library.";
+"alertOpenSettingsButton" = "Open Settings";
+"alertNoThanksButton" = "No, thanks";
+
 /* filters */
 "allFilter" = "All";
 "withoutDeletedFilter" = "Without deleted";

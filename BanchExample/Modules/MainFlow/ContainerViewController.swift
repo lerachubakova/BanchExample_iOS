@@ -61,7 +61,7 @@ final class ContainerViewController: UIViewController {
         addSubviews()
         setupGestureRecognizers()
         setupConstraints()
-        showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
+        showViewController(viewController: UINavigationController.self, storyboardName: "Information")
     }
 
     // MARK: - Setup
@@ -121,6 +121,26 @@ final class ContainerViewController: UIViewController {
             self.sideMenuTrailingConstraint.constant = 0
         }
         self.sideMenuTrailingConstraint.isActive = true
+    }
+
+    func showOpenSettingsAlert() {
+        let title = LocalizeKeys.Alerts.continueTitle.localized()
+        let message = LocalizeKeys.Alerts.photoLibraryMessage.localized()
+        let settingsButtonTitle = LocalizeKeys.Alerts.openSettingsButton.localized()
+        let noButtonTitle = LocalizeKeys.Alerts.noThanksButton.localized()
+
+        let alert = CustomAlertController(title: title, message: message)
+
+        alert.addAction(title: settingsButtonTitle) {
+            let settingURLString = UIApplication.openSettingsURLString
+            if let url = URL(string: settingURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+
+        alert.addAction(title: noButtonTitle)
+
+        self.present(alert, animated: true)
     }
 }
 

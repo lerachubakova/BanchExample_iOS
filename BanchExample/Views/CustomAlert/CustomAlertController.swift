@@ -10,11 +10,11 @@ import UIKit
 final class CustomAlertController: UIViewController {
     private var alertView: CustomAlertView!
 
-    init(title: String = "Error", text: String = "We have some error") {
+    init(title: String = "Error", message: String = "We have some error") {
         super.init(nibName: nil, bundle: Bundle.main)
 
         alertView = (Bundle.main.loadNibNamed(String(describing: CustomAlertView.self), owner: self, options: nil)?.first as? CustomAlertView)!
-        alertView.configure(title: title, body: text)
+        alertView.configure(title: title, body: message)
 
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
