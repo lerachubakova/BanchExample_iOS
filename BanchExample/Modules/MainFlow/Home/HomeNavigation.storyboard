@@ -140,7 +140,6 @@
                     <connections>
                         <outlet property="bigProgressView" destination="CEA-vg-QHM" id="zhS-8f-qn1"/>
                         <outlet property="gearButton" destination="del-nu-FFu" id="rL9-yQ-veV"/>
-                        <outlet property="pickerView" destination="idb-Zl-yKA" id="HRg-ag-0Ih"/>
                         <outlet property="smallProgressView" destination="w77-OB-sbP" id="mKG-rg-Egs"/>
                         <outlet property="tableView" destination="iU7-mS-Fkx" id="ReG-UP-mmM"/>
                         <outlet property="titleButton" destination="3qH-fd-64W" id="dgu-Hf-tR2"/>

@@ -41,7 +41,7 @@ final class InformationViewController: UIViewController {
 
 // MARK: - LanguageSubscriber
 extension InformationViewController: LanguageSubscriber {
-    func update() {
+    func updateLanguage() {
         self.setLocalizedStrings()
     }
 }

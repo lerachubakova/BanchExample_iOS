@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LanguageSubscriber : AnyObject {
-    func update()
+    func updateLanguage()
 }
 
 struct WeakLanguageSubscriber {

@@ -85,7 +85,7 @@ extension SideMenuViewController: UITableViewDataSource {
 
 // MARK: - LanguageSubscriber
 extension SideMenuViewController: LanguageSubscriber {
-    func update() {
+    func updateLanguage() {
         self.setLocalizedStrings()
     }
 }

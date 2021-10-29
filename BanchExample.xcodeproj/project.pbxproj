@@ -18,6 +18,8 @@
 		CE1B77F42716F9D700C3034A /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77F32716F9D700C3034A /* NewsModel.swift */; };
 		CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F392715D821005448BB /* HomeViewModel.swift */; };
 		CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F3C2715D96E005448BB /* NetworkManager.swift */; };
+		CE326620272BC2400067A9A7 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32661E272BC2400067A9A7 /* FiltersViewController.swift */; };
+		CE326621272BC2400067A9A7 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE32661F272BC2400067A9A7 /* FiltersViewController.xib */; };
 		CE63328F271876140067A45B /* NewsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63328D271876140067A45B /* NewsTVCell.swift */; };
 		CE633290271876140067A45B /* NewsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE63328E271876140067A45B /* NewsTVCell.xib */; };
 		CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE633291271883D60067A45B /* DateFormatterExtensions.swift */; };
@@ -75,6 +77,8 @@
 		CE1B77F32716F9D700C3034A /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		CE249F392715D821005448BB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE249F3C2715D96E005448BB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CE32661E272BC2400067A9A7 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		CE32661F272BC2400067A9A7 /* FiltersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
 		CE63328D271876140067A45B /* NewsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTVCell.swift; sourceTree = "<group>"; };
 		CE63328E271876140067A45B /* NewsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTVCell.xib; sourceTree = "<group>"; };
 		CE633291271883D60067A45B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
@@ -167,6 +171,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		CE326619272BC0C20067A9A7 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				CE32661E272BC2400067A9A7 /* FiltersViewController.swift */,
+				CE32661F272BC2400067A9A7 /* FiltersViewController.xib */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
 		CE63328C271875DA0067A45B /* NewsTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +251,7 @@
 		CE7FC09E270D88D0007325DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE326619272BC0C20067A9A7 /* Filters */,
 				CE7FC0A3270DAA11007325DA /* CustomAlert */,
 			);
 			path = Views;
@@ -484,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */,
+				CE326621272BC2400067A9A7 /* FiltersViewController.xib in Resources */,
 				CEF2661126EF3F26008EE038 /* SideMenu.storyboard in Resources */,
 				CE690146270F276300F09B78 /* InfoCollectionVCell.xib in Resources */,
 				CEF265FF26EF1F09008EE038 /* LaunchScreen.storyboard in Resources */,
@@ -597,6 +612,7 @@
 				CE1B77EA2716BDF900C3034A /* JSONResponseNewsModel.swift in Sources */,
 				CE70DCD9272931C2009CDC61 /* UserDefaultsConstants.swift in Sources */,
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,
+				CE326620272BC2400067A9A7 /* FiltersViewController.swift in Sources */,
 				CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */,
 				CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */,
 				CE8AB962271F228F00AEEEE4 /* UINavigationControllerExtensions.swift in Sources */,

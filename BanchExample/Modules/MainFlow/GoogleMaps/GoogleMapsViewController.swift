@@ -40,7 +40,7 @@ final class GoogleMapsViewController: UIViewController {
 
 // MARK: - LanguageSubscriber
 extension GoogleMapsViewController: LanguageSubscriber {
-    func update() {
+    func updateLanguage() {
         self.setLocalizedStrings()
     }
 }
