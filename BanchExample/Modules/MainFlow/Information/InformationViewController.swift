@@ -5,14 +5,25 @@
 //  Created by User on 16.09.21.
 //
 
+import Photos
 import UIKit
+
+struct Day {
+    let date: Int
+    let images: [UIImage?]
+}
 
 final class InformationViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var backgroundMessageLabel: UILabel!
 
     private weak var delegate: HomeViewControllerDelegate?
     private weak var container: ContainerViewController?
+
+    private let refreshControl = UIRefreshControl()
+    private var photos: [UIImage?] = []
+    private var photosCount = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +41,36 @@ final class InformationViewController: UIViewController {
     }
 
     private func configureTableView() {
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+
         tableView.register(InfoTVCell.nib(), forCellReuseIdentifier: InfoTVCell.identifier)
 
         tableView.delegate = self
         tableView.dataSource = self
 
         tableView.isHidden = false
+
+        makePhotosArray()
+
+        if photos.count == 0 {
+            tableView.isHidden = true
+            backgroundMessageLabel.isHidden = false
+            backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPhotoMessage.localized()
+        }
     }
 
     private func setLocalizedStrings() {
         title = LocalizeKeys.info.localized()
+        let status = PHLibraryAuthorizationManager.getPhotoLibraryAuthorizationStatus()
+        switch status {
+        case .notRequested:
+            break
+        case .granted:
+            backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPhotoMessage.localized()
+        case .unauthorized:
+            backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPermission.localized()
+        }
     }
 
     private func checkAuthorization() {
@@ -50,6 +81,7 @@ final class InformationViewController: UIViewController {
         case .granted:
             configureTableView()
         case .unauthorized:
+            setNoPermissionBackgroundLabel()
             container?.showOpenSettingsAlert()
         }
     }
@@ -64,11 +96,70 @@ final class InformationViewController: UIViewController {
                 }
             case .unauthorized:
                 DispatchQueue.main.async { [weak self] in
+                    self?.setNoPermissionBackgroundLabel()
                     self?.container?.showOpenSettingsAlert()
                 }
             case .notRequested:
                 break
             }
+        }
+    }
+
+    private func makePhotosArray() {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: false)]
+
+        fetchOptions.fetchLimit = photosCount
+
+        let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
+
+        if fetchResult.count > 0 {
+            fetchPhotoAtIndex(0, photosCount, fetchResult)
+        }
+
+        self.reloadTableView()
+    }
+
+    private func fetchPhotoAtIndex(_ index: Int, _ totalImageCountNeeded: Int, _ fetchResult: PHFetchResult<PHAsset>) {
+
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.isSynchronous = true
+
+        let object = fetchResult.object(at: index) as PHAsset
+
+        let mode = PHImageContentMode.aspectFill
+
+        PHImageManager.default().requestImage(for: object, targetSize: view.frame.size, contentMode: mode, options: requestOptions, resultHandler: { [unowned self] (image, _) in
+
+            self.photos.append(image)
+
+//            if let image = image {
+//                print("\t LOG image.count += 1 \(image)")
+//            } else {
+//                print("\t LOG image is nil \(String(describing: some))")
+//            }
+
+            if index + 1 < fetchResult.count && self.photos.count < totalImageCountNeeded {
+                self.fetchPhotoAtIndex(index + 1, totalImageCountNeeded, fetchResult)
+            }
+        })
+    }
+
+    private func setNoPermissionBackgroundLabel() {
+        backgroundMessageLabel.isHidden = false
+        backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPermission.localized()
+    }
+
+    private func reloadTableView() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+
+    @objc private func refresh() {
+        DispatchQueue.main.async { [weak self] in
+
+            self?.refreshControl.endRefreshing()
         }
     }
 
@@ -103,11 +194,12 @@ extension InformationViewController: UITableViewDataSource {
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let infoTVCell = tableView.dequeueReusableCell(withIdentifier: InfoTVCell.identifier) as? InfoTVCell else { return UITableViewCell() }
+        infoTVCell.configure(images: photos)
         return infoTVCell
     }
 

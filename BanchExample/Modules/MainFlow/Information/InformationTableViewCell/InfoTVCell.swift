@@ -11,6 +11,8 @@ final class InfoTVCell: UITableViewCell {
 
     @IBOutlet private weak var collectionView: UICollectionView!
 
+    private var images: [UIImage?] = []
+
     static let identifier = "infoTVCell"
 
     static func nib() -> UINib {
@@ -22,6 +24,10 @@ final class InfoTVCell: UITableViewCell {
         collectionView.register(InfoCollectionVCell.nib(), forCellWithReuseIdentifier: InfoCollectionVCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+
+    func configure(images: [UIImage?]) {
+        self.images = images
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,11 +44,12 @@ extension InfoTVCell: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension InfoTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return images.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let infoColVC = collectionView.dequeueReusableCell(withReuseIdentifier: InfoCollectionVCell.identifier, for: indexPath) as? InfoCollectionVCell
+        infoColVC?.configure(with: images[indexPath.row])
         return infoColVC ?? UICollectionViewCell()
     }
 

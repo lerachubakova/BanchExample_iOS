@@ -37,6 +37,10 @@
 "alertOpenSettingsButton" = "Открыть настройки";
 "alertNoThanksButton" = "Нет, спасибо";
 
+/* Information screen */
+"EmptyLibraryMessage" = "В доступных медиафайлах нет фото или видео.";
+"NoPermissionsPhotoLibrary" = "У приложения нет разрешений для доступа к медиафайлам.";
+
 /* filters */
 "allFilter" = "Все";
 "withoutDeletedFilter" = "Без удалённых";

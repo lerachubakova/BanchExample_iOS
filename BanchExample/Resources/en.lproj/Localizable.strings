@@ -37,6 +37,10 @@
 "alertOpenSettingsButton" = "Open Settings";
 "alertNoThanksButton" = "No, thanks";
 
+/* Information screen */
+"EmptyLibraryMessage" = "There is no video in library or in the available media.";
+"NoPermissionsPhotoLibrary" = "We don't have permissions to show your photos.";
+
 /* filters */
 "allFilter" = "All";
 "withoutDeletedFilter" = "Without deleted";
