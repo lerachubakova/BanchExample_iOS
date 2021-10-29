@@ -72,11 +72,6 @@ final class HomeViewController: UIViewController {
         smallProgressView.animationSpeed = 0.75
     }
 
-//    private func getFilterFromUserDefaults() {
-//        let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
-//        viewModel.setFilter(filter:  NewsFilter.allCases[row])
-//    }
-
     // MARK: - Logic
     func blockTableView(isBlocked: Bool) {
         tableView.isUserInteractionEnabled = !isBlocked
@@ -85,6 +80,9 @@ final class HomeViewController: UIViewController {
     private func setLocalizedStrings() {
         titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
         navigationItem.backButtonTitle = LocalizeKeys.home.localized()
+
+        let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
+        gearButton.setTitle(FiltersViewController.getTitleForPickerView(for: row), for: .normal)
     }
 
     private func setFilter() {

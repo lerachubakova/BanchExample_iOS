@@ -251,7 +251,6 @@
 		CE7FC09E270D88D0007325DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE326619272BC0C20067A9A7 /* Filters */,
 				CE7FC0A3270DAA11007325DA /* CustomAlert */,
 			);
 			path = Views;
@@ -301,6 +300,7 @@
 				CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */,
 				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
 				CE249F392715D821005448BB /* HomeViewModel.swift */,
+				CE326619272BC0C20067A9A7 /* Filters */,
 				CE8AB95C271EFFCB00AEEEE4 /* News */,
 				CE63328C271875DA0067A45B /* NewsTVCell */,
 			);
