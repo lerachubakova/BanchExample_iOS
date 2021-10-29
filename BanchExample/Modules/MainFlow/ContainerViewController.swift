@@ -37,6 +37,9 @@ enum MenuPosition {
 
 // MARK: - ContainerViewController
 final class ContainerViewController: UIViewController {
+    
+    // MARK: - Public Properties
+    let animationDuration: Double = 0.35
 
     // MARK: - Private Properties
     private var sideMenuVC: SideMenuViewController!
@@ -51,7 +54,6 @@ final class ContainerViewController: UIViewController {
     private var isDraggingEnabled = false
 
     private let sideMenuWidth: CGFloat = 200
-    private let animationDuration: Double = 0.35
 
     // MARK: - LifeCycle
     override func viewDidLoad() {

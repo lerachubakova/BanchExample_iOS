@@ -22,7 +22,11 @@ final class InformationViewController: UIViewController {
 
         setLocalizedStrings()
         LanguageObserver.subscribe(self)
-        checkAuthorization()
+
+        let animationDuration = container?.animationDuration ?? 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) { [weak self] in
+            self?.checkAuthorization()
+        }
     }
 
     private func configureTableView() {
