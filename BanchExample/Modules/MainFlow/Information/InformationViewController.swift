@@ -150,7 +150,7 @@ final class InformationViewController: UIViewController {
         let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
 
         if fetchResult.count > 0 {
-            fetchPhotoAtIndex(0, photosCount, fetchResult) //   fetchPhotoAtIndex(0, photosCount, fetchResult)
+            fetchPhotoAtIndex(0, photosCount, fetchResult)
         }
 
         self.reloadTableView()
