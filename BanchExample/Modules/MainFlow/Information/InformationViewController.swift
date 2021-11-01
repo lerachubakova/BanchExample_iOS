@@ -8,9 +8,35 @@
 import Photos
 import UIKit
 
-struct Day {
-    let date: Int
-    let images: [UIImage?]
+class Day {
+    let day: Date
+    var images: [UIImage?]
+
+    init(day: Date, images: [UIImage?]) {
+        self.day = day
+        self.images = images
+    }
+}
+
+class Month {
+    let month: Date
+    var days: [Day]
+
+    var debugDescription: String {
+        var res = ""
+        res += " month: \(month)\n"
+        res += " daysCount: \(days.count)\n"
+        _ = days.map {
+            res += " day \(DateFormatter(format: "dd.MM").string(from: $0.day)): images: \($0.images.count)\n"
+        }
+
+        return res
+    }
+
+    init(month: Date, days: [Day]) {
+        self.month = month
+        self.days = days
+    }
 }
 
 final class InformationViewController: UIViewController {
@@ -22,8 +48,13 @@ final class InformationViewController: UIViewController {
     private weak var container: ContainerViewController?
 
     private let refreshControl = UIRefreshControl()
-    private var photos: [UIImage?] = []
-    private var photosCount = 10
+
+    private var photosCount = 50
+
+    private var month: Month?
+
+    private let dayFormatter = DateFormatter(format: "dd.MM.yyyy")
+    private let monthFormatter = DateFormatter(format: "MM.yyyy")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +84,7 @@ final class InformationViewController: UIViewController {
 
         makePhotosArray()
 
-        if photos.count == 0 {
+        if month == nil {
             tableView.isHidden = true
             backgroundMessageLabel.isHidden = false
             backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPhotoMessage.localized()
@@ -107,14 +138,19 @@ final class InformationViewController: UIViewController {
 
     private func makePhotosArray() {
         let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: false)]
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
-        fetchOptions.fetchLimit = photosCount
+      //  fetchOptions.fetchLimit = photosCount
+
+        let startDate = NSDate(dateString: "01.10.2021", format:  "dd.MM.yyyy")
+        let endDate = NSDate(dateString: "01.11.2021", format:  "dd.MM.yyyy")
+
+        fetchOptions.predicate = NSPredicate(format: "creationDate > %@ AND creationDate < %@", startDate, endDate)
 
         let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
 
         if fetchResult.count > 0 {
-            fetchPhotoAtIndex(0, photosCount, fetchResult)
+            fetchPhotoAtIndex(0, photosCount, fetchResult) //   fetchPhotoAtIndex(0, photosCount, fetchResult)
         }
 
         self.reloadTableView()
@@ -126,21 +162,33 @@ final class InformationViewController: UIViewController {
         requestOptions.isSynchronous = true
 
         let object = fetchResult.object(at: index) as PHAsset
-
         let mode = PHImageContentMode.aspectFill
+        let screenSize = view.frame.size
 
-        PHImageManager.default().requestImage(for: object, targetSize: view.frame.size, contentMode: mode, options: requestOptions, resultHandler: { [unowned self] (image, _) in
+        PHImageManager.default().requestImage(for: object, targetSize: screenSize, contentMode: mode, options: requestOptions, resultHandler: { [unowned self] (image, _) in
 
-            self.photos.append(image)
+            guard let objectDate = object.creationDate else { return }
 
-//            if let image = image {
-//                print("\t LOG image.count += 1 \(image)")
-//            } else {
-//                print("\t LOG image is nil \(String(describing: some))")
-//            }
+            if month == nil {
+                month = Month(month: objectDate, days: [])
+            }
 
-            if index + 1 < fetchResult.count && self.photos.count < totalImageCountNeeded {
+            guard let strongMonth = month else { return }
+
+            if strongMonth.days.isEmpty {
+                month?.days.append(Day(day: objectDate, images: []))
+            } else if let lastDayDate = strongMonth.days.last?.day, dayFormatter.string(from: objectDate) != dayFormatter.string(from: lastDayDate) {
+                month?.days.append(Day(day: objectDate, images: []))
+            }
+
+            if let lastDayDate = strongMonth.days.last?.day, dayFormatter.string(from: objectDate) == dayFormatter.string(from: lastDayDate) {
+                month?.days.last?.images.append(image)
+            }
+
+            if index + 1 < fetchResult.count {
                 self.fetchPhotoAtIndex(index + 1, totalImageCountNeeded, fetchResult)
+            } else {
+                self.reloadTableView()
             }
         })
     }
@@ -158,7 +206,6 @@ final class InformationViewController: UIViewController {
 
     @objc private func refresh() {
         DispatchQueue.main.async { [weak self] in
-
             self?.refreshControl.endRefreshing()
         }
     }
@@ -185,9 +232,9 @@ extension InformationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var res = 0
         switch section {
-        case 0: res = 3
-        case 1: res = 2
-        case 2: res = 4
+        case 0: res = month?.days.count ?? 0
+        case 1: res = 0
+        case 2: res = 0
         default: break
         }
         return res
@@ -199,7 +246,12 @@ extension InformationViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let infoTVCell = tableView.dequeueReusableCell(withIdentifier: InfoTVCell.identifier) as? InfoTVCell else { return UITableViewCell() }
-        infoTVCell.configure(images: photos)
+
+        if let day = month?.days[indexPath.row] {
+            infoTVCell.configure(by: day)
+            infoTVCell.reloadCollectionView()
+        }
+
         return infoTVCell
     }
 
@@ -214,12 +266,30 @@ extension InformationViewController: UITableViewDataSource {
         headerView.addSubview(titleLabel)
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        titleLabel.text = "Section \(section)"
+
+        if let strMonth = month {
+            titleLabel.text = monthFormatter.string(from: strMonth.month )
+        } else {
+            titleLabel.text = "Section \(section)"
+        }
+
         return headerView
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let collectionViewCellHeight: CGFloat = (self.view.frame.size.width - 20)/3
         return collectionViewCellHeight + 30 + 10
+    }
+}
+
+// TODO: move in Utils
+extension NSDate {
+    convenience
+    init(dateString: String, format: String) {
+        let dateStringFormatter = DateFormatter()
+        dateStringFormatter.dateFormat = format
+        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+        let d = dateStringFormatter.date(from: dateString)!
+        self.init(timeInterval:0, since:d)
     }
 }
