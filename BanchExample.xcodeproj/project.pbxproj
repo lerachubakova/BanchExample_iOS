@@ -42,6 +42,7 @@
 		CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */; };
 		CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */; };
 		CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */; };
+		CE82DB592730063600C265E1 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DB582730063600C265E1 /* NSDateExtensions.swift */; };
 		CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDB26F3613000DE394F /* HomeViewController.swift */; };
 		CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDD26F382EA00DE394F /* InformationViewController.swift */; };
 		CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */; };
@@ -103,6 +104,7 @@
 		CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		CE82DB582730063600C265E1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		CE88FBDB26F3613000DE394F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE88FBDD26F382EA00DE394F /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */,
 				CE633291271883D60067A45B /* DateFormatterExtensions.swift */,
+				CE82DB582730063600C265E1 /* NSDateExtensions.swift */,
 				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 				CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */,
 			);
@@ -601,6 +604,7 @@
 				CEF2660F26EF3EFC008EE038 /* SideMenuViewController.swift in Sources */,
 				CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */,
 				CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */,
+				CE82DB592730063600C265E1 /* NSDateExtensions.swift in Sources */,
 				CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */,
 				CEF265F326EF1F07008EE038 /* AppDelegate.swift in Sources */,
 				CEF2661526EF45A3008EE038 /* SideMenuTVCell.swift in Sources */,

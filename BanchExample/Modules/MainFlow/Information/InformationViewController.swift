@@ -281,15 +281,3 @@ extension InformationViewController: UITableViewDataSource {
         return collectionViewCellHeight + 30 + 10
     }
 }
-
-// TODO: move in Utils
-extension NSDate {
-    convenience
-    init(dateString: String, format: String) {
-        let dateStringFormatter = DateFormatter()
-        dateStringFormatter.dateFormat = format
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
-        let d = dateStringFormatter.date(from: dateString)!
-        self.init(timeInterval:0, since:d)
-    }
-}
