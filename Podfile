@@ -7,7 +7,7 @@
 abstract_target 'default_pods' do
 
   # Pods for BanchExample
-  pod 'GoogleMaps'
+  pod 'GoogleMaps','5.2.0'
   pod 'lottie-ios','3.2.3'
   pod 'SwiftLint','0.43.1'
   pod 'SwiftSoup','2.3.3'
