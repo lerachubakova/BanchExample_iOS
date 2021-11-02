@@ -32,7 +32,6 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="zgA-Sm-BE0" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ecH-8A-F5W"/>
-                <constraint firstItem="zgA-Sm-BE0" firstAttribute="width" secondItem="zgA-Sm-BE0" secondAttribute="height" multiplier="25:18" id="h7e-Yb-cRG"/>
                 <constraint firstItem="zgA-Sm-BE0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o2L-rU-hYB"/>
                 <constraint firstItem="zgA-Sm-BE0" firstAttribute="width" secondItem="zgA-Sm-BE0" secondAttribute="height" multiplier="25:18" id="qVP-jt-0Ul"/>
             </constraints>

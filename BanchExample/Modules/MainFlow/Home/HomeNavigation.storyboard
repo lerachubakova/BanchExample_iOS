@@ -41,7 +41,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iU7-mS-Fkx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iU7-mS-Fkx">
                                 <rect key="frame" x="0.0" y="132" width="414" height="730"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -77,20 +77,10 @@
                                     <action selector="tappedGearButton:" destination="gub-jD-QhV" eventType="touchUpInside" id="xv1-X8-PLK"/>
                                 </connections>
                             </button>
-                            <pickerView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idb-Zl-yKA">
-                                <rect key="frame" x="177" y="139" width="207" height="149"/>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="idb-Zl-yKA" secondAttribute="height" multiplier="25:18" id="Khw-8H-dKf"/>
-                                </constraints>
-                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R4J-kI-BAc"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="idb-Zl-yKA" firstAttribute="top" secondItem="del-nu-FFu" secondAttribute="bottom" constant="10" id="02e-cP-aaE"/>
-                            <constraint firstItem="idb-Zl-yKA" firstAttribute="width" secondItem="dCU-c1-IzK" secondAttribute="width" multiplier="0.5" id="7fr-Kj-soo"/>
-                            <constraint firstItem="R4J-kI-BAc" firstAttribute="trailing" secondItem="idb-Zl-yKA" secondAttribute="trailing" constant="30" id="Jec-MC-Qht"/>
                             <constraint firstItem="del-nu-FFu" firstAttribute="top" secondItem="R4J-kI-BAc" secondAttribute="top" constant="7" id="Sqm-BP-Ors"/>
                             <constraint firstItem="iU7-mS-Fkx" firstAttribute="leading" secondItem="R4J-kI-BAc" secondAttribute="leading" id="UKF-EU-IbH"/>
                             <constraint firstItem="CEA-vg-QHM" firstAttribute="centerX" secondItem="dCU-c1-IzK" secondAttribute="centerX" id="aM0-9i-4WH"/>
@@ -159,9 +149,6 @@
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

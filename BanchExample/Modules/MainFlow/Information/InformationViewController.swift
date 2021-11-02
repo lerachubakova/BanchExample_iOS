@@ -83,12 +83,6 @@ final class InformationViewController: UIViewController {
         tableView.isHidden = false
 
         makePhotosArray()
-
-        if month == nil {
-            tableView.isHidden = true
-            backgroundMessageLabel.isHidden = false
-            backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPhotoMessage.localized()
-        }
     }
 
     private func setLocalizedStrings() {
@@ -151,6 +145,10 @@ final class InformationViewController: UIViewController {
 
         if fetchResult.count > 0 {
             fetchPhotoAtIndex(0, photosCount, fetchResult)
+        } else {
+            tableView.isHidden = true
+            backgroundMessageLabel.isHidden = false
+            backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPhotoMessage.localized()
         }
 
         self.reloadTableView()
@@ -188,7 +186,10 @@ final class InformationViewController: UIViewController {
             if index + 1 < fetchResult.count {
                 self.fetchPhotoAtIndex(index + 1, totalImageCountNeeded, fetchResult)
             } else {
-                self.reloadTableView()
+                DispatchQueue.main.async { [weak self] in
+                    self?.refreshControl.endRefreshing()
+                    self?.reloadTableView()
+                }
             }
         })
     }
@@ -205,9 +206,8 @@ final class InformationViewController: UIViewController {
     }
 
     @objc private func refresh() {
-        DispatchQueue.main.async { [weak self] in
-            self?.refreshControl.endRefreshing()
-        }
+        month = nil
+        makePhotosArray()
     }
 
     @IBAction private func tappedMenuButton() {

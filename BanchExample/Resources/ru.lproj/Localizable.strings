@@ -34,7 +34,7 @@
 /* PHLibrary alert */
 "alertContinueTitle" = "Хотите продолжить?";
 "alertLibraryMessage" = "Приложению необходим доступ к одному и более фото в библиотеке.";
-"alertOpenSettingsButton" = "Открыть настройки";
+"alertOpenSettingsButton" = "Настройки";
 "alertNoThanksButton" = "Нет, спасибо";
 
 /* Information screen */
