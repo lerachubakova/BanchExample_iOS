@@ -21,7 +21,6 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var smallProgressView: AnimationView!
     @IBOutlet private weak var bigProgressView: AnimationView!
     @IBOutlet private weak var gearButton: UIButton!
-    @IBOutlet private weak var pickerView: UIPickerView!
 
     // MARK: - Public Properties
     weak var delegate: HomeViewControllerDelegate?
@@ -43,8 +42,7 @@ final class HomeViewController: UIViewController {
 
         configureTableView()
         configureAnimationViews()
-        configurePickerView()
-        getFilterFromUserDefaults()
+        setFilter()
         setLocalizedStrings()
 
         startSmallProgressAnimation()
@@ -74,26 +72,6 @@ final class HomeViewController: UIViewController {
         smallProgressView.animationSpeed = 0.75
     }
 
-    private func configurePickerView() {
-        pickerView.layer.masksToBounds = false
-
-        pickerView.layer.shadowColor = UIColor.black.cgColor
-        pickerView.layer.shadowRadius = 20.0
-        pickerView.layer.shadowOpacity = 0.4
-        pickerView.layer.shadowOffset.height = 15.0
-
-        pickerView.layer.cornerRadius = pickerView.frame.height / 5.5
-
-        pickerView.delegate = self
-        pickerView.dataSource = self
-    }
-
-    private func getFilterFromUserDefaults() {
-        let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
-        viewModel.setFilter(filter:  NewsFilter.allCases[row])
-        pickerView.selectRow(row, inComponent: 0, animated: false)
-    }
-
     // MARK: - Logic
     func blockTableView(isBlocked: Bool) {
         tableView.isUserInteractionEnabled = !isBlocked
@@ -102,10 +80,15 @@ final class HomeViewController: UIViewController {
     private func setLocalizedStrings() {
         titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
         navigationItem.backButtonTitle = LocalizeKeys.home.localized()
-        pickerView.reloadAllComponents()
-        
-        let row = pickerView.selectedRow(inComponent: 0)
-        gearButton.setTitle(getTitleForPickerView(for: row), for: .normal)
+
+        let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
+        gearButton.setTitle(FiltersViewController.getTitleForPickerView(for: row), for: .normal)
+    }
+
+    private func setFilter() {
+        let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
+        viewModel.setFilter(filter:  NewsFilter.allCases[row])
+        gearButton.setTitle(FiltersViewController.getTitleForPickerView(for: row), for: .normal)
     }
 
     func reloadTable() {
@@ -160,7 +143,7 @@ final class HomeViewController: UIViewController {
     }
 
     @IBAction private func tappedGearButton(_ sender: Any) {
-        pickerView.isHidden.toggle()
+        self.present(FiltersViewController(delegate: self), animated: true, completion: nil)
     }
 }
 
@@ -171,7 +154,7 @@ extension HomeViewController {
         let source = viewModel.newsArray[index].source ?? LocalizeKeys.Alerts.alertMissedLinkSource.localized()
         let message = LocalizeKeys.Alerts.alertMissedLink.localized() + " " + source
 
-        let alert = CustomAlertController(title: title, text: message)
+        let alert = CustomAlertController(title: title, message: message)
         alert.addAction(title: LocalizeKeys.Alerts.alertButton.localized())
         self.present(alert, animated: true, completion: nil)
     }
@@ -180,7 +163,7 @@ extension HomeViewController {
         let title = LocalizeKeys.Alerts.alertTitle.localized()
         let message = LocalizeKeys.Alerts.alertRequestError.localized()
 
-        let alert = CustomAlertController(title: title, text: message)
+        let alert = CustomAlertController(title: title, message: message)
         alert.addAction(title: LocalizeKeys.Alerts.alertButton.localized())
 
         self.present(alert, animated: true, completion: nil)
@@ -189,8 +172,15 @@ extension HomeViewController {
 
 // MARK: - LanguageSubscriber
 extension HomeViewController: LanguageSubscriber {
-    func update() {
+    func updateLanguage() {
         self.setLocalizedStrings()
+    }
+}
+
+// MARK: - FiltersSubscriber
+extension HomeViewController: FiltersSubscriber {
+    func updateFilter() {
+        self.setFilter()
     }
 }
 
@@ -280,45 +270,4 @@ extension HomeViewController: UITableViewDataSource {
 
         return configuration
     }
-}
-
-// MARK: - UIPickerViewDelegate
-extension HomeViewController: UIPickerViewDelegate {
-
-}
-
-// MARK: - UIPickerViewDelegate
-extension HomeViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        NewsFilter.allCases.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: getTitleForPickerView(for: row))
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        gearButton.setTitle(getTitleForPickerView(for: row), for: .normal)
-        viewModel.setFilter(filter:  NewsFilter.allCases[row])
-        userDefaults.setValue(row, forKey: UserDefaultsKeys.filter)
-    }
-
-    func getTitleForPickerView(for row: Int) -> String {
-        var title = ""
-        switch row {
-        case 0: title = LocalizeKeys.Filters.all.localized()
-        case 1: title = LocalizeKeys.Filters.withoutDeleted.localized()
-        case 2: title = LocalizeKeys.Filters.interesting.localized()
-        case 3: title = LocalizeKeys.Filters.trash.localized()
-        case 4: title = LocalizeKeys.Filters.hidden.localized()
-        default:
-            break
-        }
-        return title
-    }
-
 }

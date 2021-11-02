@@ -10,6 +10,9 @@ import UIKit
 final class InfoTVCell: UITableViewCell {
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var dayLabel: UILabel!
+
+    private weak var day: Day?
 
     static let identifier = "infoTVCell"
 
@@ -22,6 +25,23 @@ final class InfoTVCell: UITableViewCell {
         collectionView.register(InfoCollectionVCell.nib(), forCellWithReuseIdentifier: InfoCollectionVCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+
+//    func configure(by images: [UIImage?]) {
+//        day = Day(day: Date(), images: images)
+//    }
+
+    func configure(by day: Day) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        dayLabel.text = formatter.string(from: day.day)
+        self.day = day
+    }
+
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,11 +58,12 @@ extension InfoTVCell: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension InfoTVCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return day?.images.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let infoColVC = collectionView.dequeueReusableCell(withReuseIdentifier: InfoCollectionVCell.identifier, for: indexPath) as? InfoCollectionVCell
+        infoColVC?.configure(with: day?.images[indexPath.row])
         return infoColVC ?? UICollectionViewCell()
     }
 

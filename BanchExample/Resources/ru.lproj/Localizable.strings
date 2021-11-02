@@ -9,7 +9,7 @@
 /* sideMenu */
 "home" = "Главная";
 "info" = "Информация";
-"rating" = "Рейтинг";
+"googleMaps" = "Google Карты";
 "share" = "Поделиться";
 "settings" = "Настройки";
 "footer" = "от Меня";
@@ -30,6 +30,16 @@
 "alertMissedLink" = "Похоже, что к данной новости отсутствует ссылка, все вопросы к";
 "alertMissedLinkSource" = "источнику";
 "alertRequestError" = "Произошла ошибка во время запроса на сервер";
+
+/* PHLibrary alert */
+"alertContinueTitle" = "Хотите продолжить?";
+"alertLibraryMessage" = "Приложению необходим доступ к одному и более фото в библиотеке.";
+"alertOpenSettingsButton" = "Настройки";
+"alertNoThanksButton" = "Нет, спасибо";
+
+/* Information screen */
+"EmptyLibraryMessage" = "В доступных медиафайлах нет фото или видео.";
+"NoPermissionsPhotoLibrary" = "У приложения нет разрешений для доступа к медиафайлам.";
 
 /* filters */
 "allFilter" = "Все";

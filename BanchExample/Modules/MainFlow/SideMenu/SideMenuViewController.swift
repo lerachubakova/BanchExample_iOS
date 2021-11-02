@@ -21,7 +21,7 @@ final class SideMenuViewController: UIViewController {
 
     let options: [String] = [LocalizeKeys.home,
                              LocalizeKeys.info,
-                             LocalizeKeys.appRating,
+                             LocalizeKeys.googleMaps,
                              LocalizeKeys.shareApp,
                              LocalizeKeys.settings]
 
@@ -85,7 +85,7 @@ extension SideMenuViewController: UITableViewDataSource {
 
 // MARK: - LanguageSubscriber
 extension SideMenuViewController: LanguageSubscriber {
-    func update() {
+    func updateLanguage() {
         self.setLocalizedStrings()
     }
 }

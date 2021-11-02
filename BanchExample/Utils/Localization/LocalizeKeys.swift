@@ -8,22 +8,22 @@
 import Foundation
 
 struct LocalizeKeys {
-    // sideMenu
+    // SideMenu
     static let home = "home"
     static let info = "info"
-    static let appRating = "rating"
+    static let googleMaps = "googleMaps"
     static let shareApp = "share"
     static let settings = "settings"
     static let footer = "footer"
     static let header = "header"
 
-    // settings
+    // Settings
     static let language = "language"
     static let languageName = "languageName"
     static let changeLanguage = "changeLanguage"
     static let cancel = "cancel"
 
-    // alerts
+    // Alerts
     class Alerts {
         static let showAlert = "showAlert"
         static let alertTitle = "alertTitle"
@@ -33,9 +33,20 @@ struct LocalizeKeys {
         static let alertMissedLink = "alertMissedLink"
         static let alertMissedLinkSource = "alertMissedLinkSource"
         static let alertRequestError = "alertRequestError"
+
+        static let continueTitle = "alertContinueTitle"
+        static let photoLibraryMessage = "alertLibraryMessage"
+        static let openSettingsButton = "alertOpenSettingsButton"
+        static let noThanksButton = "alertNoThanksButton"
     }
 
-    // filters
+    // Information
+    class Information {
+        static let photoLibraryNoPhotoMessage = "EmptyLibraryMessage"
+        static let photoLibraryNoPermission = "NoPermissionsPhotoLibrary"
+    }
+
+    // Filters
     class Filters {
         static let all = "allFilter"
         static let withoutDeleted = "withoutDeletedFilter"

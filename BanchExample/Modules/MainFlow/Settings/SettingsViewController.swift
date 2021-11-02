@@ -53,7 +53,7 @@ final class SettingsViewController: UIViewController {
 
 // MARK: - LanguageSubscriber
 extension SettingsViewController: LanguageSubscriber {
-    func update() {
+    func updateLanguage() {
         self.setLocalizedStrings()
     }
 }

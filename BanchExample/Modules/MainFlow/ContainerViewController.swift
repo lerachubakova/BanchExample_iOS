@@ -37,6 +37,9 @@ enum MenuPosition {
 
 // MARK: - ContainerViewController
 final class ContainerViewController: UIViewController {
+    
+    // MARK: - Public Properties
+    let animationDuration: Double = 0.35
 
     // MARK: - Private Properties
     private var sideMenuVC: SideMenuViewController!
@@ -51,7 +54,6 @@ final class ContainerViewController: UIViewController {
     private var isDraggingEnabled = false
 
     private let sideMenuWidth: CGFloat = 200
-    private let animationDuration: Double = 0.35
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -121,6 +123,26 @@ final class ContainerViewController: UIViewController {
             self.sideMenuTrailingConstraint.constant = 0
         }
         self.sideMenuTrailingConstraint.isActive = true
+    }
+
+    func showOpenSettingsAlert() {
+        let title = LocalizeKeys.Alerts.continueTitle.localized()
+        let message = LocalizeKeys.Alerts.photoLibraryMessage.localized()
+        let settingsButtonTitle = LocalizeKeys.Alerts.openSettingsButton.localized()
+        let noButtonTitle = LocalizeKeys.Alerts.noThanksButton.localized()
+
+        let alert = CustomAlertController(title: title, message: message)
+
+        alert.addAction(title: settingsButtonTitle) {
+            let settingURLString = UIApplication.openSettingsURLString
+            if let url = URL(string: settingURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+
+        alert.addAction(title: noButtonTitle)
+
+        self.present(alert, animated: true)
     }
 }
 
@@ -300,8 +322,8 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
             showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
         case LocalizeKeys.info:
             showViewController(viewController: UINavigationController.self, storyboardName: "Information")
-        case LocalizeKeys.appRating:
-             showViewController(viewController: UIViewController.self, storyboardName: "AppRating")
+        case LocalizeKeys.googleMaps:
+             showViewController(viewController: UINavigationController.self, storyboardName: "GoogleMaps")
         case LocalizeKeys.shareApp:
             let safariVC = SFSafariViewController(url: URL(string: "http://vironit.timesummary.com")!)
             present(safariVC, animated: true)

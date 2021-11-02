@@ -32,6 +32,6 @@ final class LanguageObserver {
     }
 
     private static func changeSubscribersLanguage() {
-        subscribers.forEach { $0.value?.update() }
+        subscribers.forEach { $0.value?.updateLanguage() }
     }
 }

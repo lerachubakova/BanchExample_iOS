@@ -18,6 +18,9 @@
 		CE1B77F42716F9D700C3034A /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77F32716F9D700C3034A /* NewsModel.swift */; };
 		CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F392715D821005448BB /* HomeViewModel.swift */; };
 		CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE249F3C2715D96E005448BB /* NetworkManager.swift */; };
+		CE326620272BC2400067A9A7 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32661E272BC2400067A9A7 /* FiltersViewController.swift */; };
+		CE326621272BC2400067A9A7 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE32661F272BC2400067A9A7 /* FiltersViewController.xib */; };
+		CE326623272BE8F00067A9A7 /* PHLibraryAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */; };
 		CE63328F271876140067A45B /* NewsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63328D271876140067A45B /* NewsTVCell.swift */; };
 		CE633290271876140067A45B /* NewsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE63328E271876140067A45B /* NewsTVCell.xib */; };
 		CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE633291271883D60067A45B /* DateFormatterExtensions.swift */; };
@@ -39,6 +42,7 @@
 		CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */; };
 		CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */; };
 		CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */; };
+		CE82DB592730063600C265E1 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DB582730063600C265E1 /* NSDateExtensions.swift */; };
 		CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDB26F3613000DE394F /* HomeViewController.swift */; };
 		CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDD26F382EA00DE394F /* InformationViewController.swift */; };
 		CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */; };
@@ -46,8 +50,8 @@
 		CE8AB962271F228F00AEEEE4 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */; };
 		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
 		CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E3127270340EA00C61AE6 /* Information.storyboard */; };
-		CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */; };
-		CE929D4E270452130031A8C8 /* AppRating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* AppRating.storyboard */; };
+		CE929D4C27044EFD0031A8C8 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */; };
+		CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */; };
 		CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D5027047C510031A8C8 /* SettingsViewController.swift */; };
 		CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D5227047C770031A8C8 /* Settings.storyboard */; };
 		CEDD9CC6271D587E002F9833 /* loading-state.json in Resources */ = {isa = PBXBuildFile; fileRef = CEDD9CC5271D587E002F9833 /* loading-state.json */; };
@@ -75,6 +79,9 @@
 		CE1B77F32716F9D700C3034A /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		CE249F392715D821005448BB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE249F3C2715D96E005448BB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CE32661E272BC2400067A9A7 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		CE32661F272BC2400067A9A7 /* FiltersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
+		CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHLibraryAuthorizationManager.swift; sourceTree = "<group>"; };
 		CE63328D271876140067A45B /* NewsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTVCell.swift; sourceTree = "<group>"; };
 		CE63328E271876140067A45B /* NewsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTVCell.xib; sourceTree = "<group>"; };
 		CE633291271883D60067A45B /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
@@ -97,6 +104,7 @@
 		CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		CE82DB582730063600C265E1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		CE88FBDB26F3613000DE394F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE88FBDD26F382EA00DE394F /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
@@ -104,8 +112,8 @@
 		CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
 		CE8E3127270340EA00C61AE6 /* Information.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Information.storyboard; sourceTree = "<group>"; };
-		CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRatingViewController.swift; sourceTree = "<group>"; };
-		CE929D4D270452130031A8C8 /* AppRating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppRating.storyboard; sourceTree = "<group>"; };
+		CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
+		CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
 		CE929D5027047C510031A8C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CE929D5227047C770031A8C8 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		CEDD9CC5271D587E002F9833 /* loading-state.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-state.json"; sourceTree = "<group>"; };
@@ -167,6 +175,23 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		CE326619272BC0C20067A9A7 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				CE32661E272BC2400067A9A7 /* FiltersViewController.swift */,
+				CE32661F272BC2400067A9A7 /* FiltersViewController.xib */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		CE326624272BF3850067A9A7 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
 		CE63328C271875DA0067A45B /* NewsTVCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,19 +220,11 @@
 			path = InfoCollectionVCell;
 			sourceTree = "<group>";
 		};
-		CE70DCD727293194009CDC61 /* UserDefaults */ = {
-			isa = PBXGroup;
-			children = (
-				CE70DCD8272931C2009CDC61 /* UserDefaultsConstants.swift */,
-			);
-			path = UserDefaults;
-			sourceTree = "<group>";
-		};
 		CE72F0B52719521F00D9E844 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				CE72F0B62719524200D9E844 /* BanchExample.xcdatamodeld */,
 				CE72F0B92719537000D9E844 /* CoreDataManager.swift */,
+				CE72F0B62719524200D9E844 /* BanchExample.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -225,10 +242,9 @@
 		CE7C11C4270AF55700063336 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CE1B77E72716B93300C3034A /* APIConstants.swift */,
+				CE8314402729821B007D11A3 /* Constants */,
 				CE7C11C5270AF5DF00063336 /* Extensions */,
 				CE7C11C3270AE14600063336 /* Localization */,
-				CE70DCD727293194009CDC61 /* UserDefaults */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -237,8 +253,9 @@
 			isa = PBXGroup;
 			children = (
 				CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */,
-				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 				CE633291271883D60067A45B /* DateFormatterExtensions.swift */,
+				CE82DB582730063600C265E1 /* NSDateExtensions.swift */,
+				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 				CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */,
 			);
 			path = Extensions;
@@ -255,11 +272,20 @@
 		CE7FC0A3270DAA11007325DA /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
-				CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */,
-				CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */,
 				CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */,
+				CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */,
+				CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */,
 			);
 			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		CE8314402729821B007D11A3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				CE1B77E72716B93300C3034A /* APIConstants.swift */,
+				CE70DCD8272931C2009CDC61 /* UserDefaultsConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		CE8AB95C271EFFCB00AEEEE4 /* News */ = {
@@ -276,6 +302,7 @@
 			children = (
 				CE8E3127270340EA00C61AE6 /* Information.storyboard */,
 				CE88FBDD26F382EA00DE394F /* InformationViewController.swift */,
+				CE326624272BF3850067A9A7 /* Authorization */,
 				CE69013D270F1C3F00F09B78 /* InformationTableViewCell */,
 			);
 			path = Information;
@@ -287,19 +314,20 @@
 				CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */,
 				CE88FBDB26F3613000DE394F /* HomeViewController.swift */,
 				CE249F392715D821005448BB /* HomeViewModel.swift */,
+				CE326619272BC0C20067A9A7 /* Filters */,
 				CE8AB95C271EFFCB00AEEEE4 /* News */,
 				CE63328C271875DA0067A45B /* NewsTVCell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		CE929D4A27044E9A0031A8C8 /* AppRating */ = {
+		CE929D4A27044E9A0031A8C8 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				CE929D4D270452130031A8C8 /* AppRating.storyboard */,
-				CE929D4B27044EFD0031A8C8 /* AppRatingViewController.swift */,
+				CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */,
+				CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */,
 			);
-			path = AppRating;
+			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
 		CE929D4F27047C140031A8C8 /* Settings */ = {
@@ -395,7 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF265F626EF1F07008EE038 /* ContainerViewController.swift */,
-				CE929D4A27044E9A0031A8C8 /* AppRating */,
+				CE929D4A27044E9A0031A8C8 /* GoogleMaps */,
 				CE8E312A2703435600C61AE6 /* Home */,
 				CE8E31292703433100C61AE6 /* Information */,
 				CE929D4F27047C140031A8C8 /* Settings */,
@@ -484,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */,
+				CE326621272BC2400067A9A7 /* FiltersViewController.xib in Resources */,
 				CEF2661126EF3F26008EE038 /* SideMenu.storyboard in Resources */,
 				CE690146270F276300F09B78 /* InfoCollectionVCell.xib in Resources */,
 				CEF265FF26EF1F09008EE038 /* LaunchScreen.storyboard in Resources */,
@@ -496,7 +525,7 @@
 				CE633290271876140067A45B /* NewsTVCell.xib in Resources */,
 				CE8E3128270340EA00C61AE6 /* Information.storyboard in Resources */,
 				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
-				CE929D4E270452130031A8C8 /* AppRating.storyboard in Resources */,
+				CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */,
 				CEF265FC26EF1F09008EE038 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE326623272BE8F00067A9A7 /* PHLibraryAuthorizationManager.swift in Sources */,
 				CE1B77F42716F9D700C3034A /* NewsModel.swift in Sources */,
 				CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */,
 				CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */,
@@ -574,12 +604,13 @@
 				CEF2660F26EF3EFC008EE038 /* SideMenuViewController.swift in Sources */,
 				CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */,
 				CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */,
+				CE82DB592730063600C265E1 /* NSDateExtensions.swift in Sources */,
 				CE88FBDE26F382EA00DE394F /* InformationViewController.swift in Sources */,
 				CEF265F326EF1F07008EE038 /* AppDelegate.swift in Sources */,
 				CEF2661526EF45A3008EE038 /* SideMenuTVCell.swift in Sources */,
 				CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */,
 				CE1B77E62716B45A00C3034A /* NewsXMLParser.swift in Sources */,
-				CE929D4C27044EFD0031A8C8 /* AppRatingViewController.swift in Sources */,
+				CE929D4C27044EFD0031A8C8 /* GoogleMapsViewController.swift in Sources */,
 				CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */,
 				CE72F0C12719556000D9E844 /* News+CoreDataClass.swift in Sources */,
 				CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */,
@@ -597,6 +628,7 @@
 				CE1B77EA2716BDF900C3034A /* JSONResponseNewsModel.swift in Sources */,
 				CE70DCD9272931C2009CDC61 /* UserDefaultsConstants.swift in Sources */,
 				CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */,
+				CE326620272BC2400067A9A7 /* FiltersViewController.swift in Sources */,
 				CE69013C270EE34D00F09B78 /* CALayerExtensions.swift in Sources */,
 				CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */,
 				CE8AB962271F228F00AEEEE4 /* UINavigationControllerExtensions.swift in Sources */,

@@ -13,6 +13,14 @@
             <rect key="frame" x="0.0" y="0.0" width="453" height="430"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <visualEffectView opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMj-NH-Md2">
+                    <rect key="frame" x="0.0" y="0.0" width="453" height="430"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MhZ-cj-Dv4">
+                        <rect key="frame" x="0.0" y="0.0" width="453" height="430"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBU-o7-upj">
                     <rect key="frame" x="94.5" y="124.5" width="264" height="181.5"/>
                     <subviews>
@@ -95,8 +103,12 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="KMj-NH-Md2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0fy-cS-eWD"/>
+                <constraint firstAttribute="bottom" secondItem="KMj-NH-Md2" secondAttribute="bottom" id="4Rw-J0-4d0"/>
                 <constraint firstItem="LBU-o7-upj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qcg-6n-0AL"/>
                 <constraint firstItem="LBU-o7-upj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="elw-61-F32"/>
+                <constraint firstItem="KMj-NH-Md2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="o5l-hI-pQQ"/>
+                <constraint firstAttribute="trailing" secondItem="KMj-NH-Md2" secondAttribute="trailing" id="pZx-8V-7Pd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
