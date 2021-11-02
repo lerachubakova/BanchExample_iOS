@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct APIConstants {
+    static let googleMapsApiKey = "AIzaSyBWDTUasx9o_uz9bu6xxuUdmkdxSgWiEmk"
+}
+
 struct BBCAPIConstants {
     static let baseURL = "https://newsapi.org/v2/top-headlines"
     static let nameСountry = "country"
