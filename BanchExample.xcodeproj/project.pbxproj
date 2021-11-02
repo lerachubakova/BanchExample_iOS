@@ -463,6 +463,7 @@
 				CEF265EC26EF1F07008EE038 /* Frameworks */,
 				CEF265ED26EF1F07008EE038 /* Resources */,
 				B6F8EAABA62D7BE01EDD175D /* [CP] Embed Pods Frameworks */,
+				3169E91B13A9FB2FC63858C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -533,6 +534,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3169E91B13A9FB2FC63858C4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-default_pods-BanchExample/Pods-default_pods-BanchExample-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-default_pods-BanchExample/Pods-default_pods-BanchExample-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-default_pods-BanchExample/Pods-default_pods-BanchExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B6F8EAABA62D7BE01EDD175D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
