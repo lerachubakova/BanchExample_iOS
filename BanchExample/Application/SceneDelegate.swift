@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
+        connectGoogle()
         setLocalizationLanguage()
 
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -32,6 +32,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         LanguageObserver.setPreferredLanguage(str: language)
+    }
+
+    private func connectGoogle() {
+        GMSServices.provideAPIKey(APIConstants.googleMapsApiKey)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

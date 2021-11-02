@@ -23,12 +23,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmt-2n-l69" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="x9S-cI-ECz" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="0oR-6b-27j"/>
+                            <constraint firstItem="lmt-2n-l69" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Vvy-gI-sOa"/>
                             <constraint firstItem="x9S-cI-ECz" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="boz-oJ-4tq"/>
+                            <constraint firstAttribute="trailing" secondItem="lmt-2n-l69" secondAttribute="trailing" id="hFQ-CA-jHh"/>
+                            <constraint firstItem="lmt-2n-l69" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="kgS-cJ-tYI"/>
+                            <constraint firstAttribute="bottom" secondItem="lmt-2n-l69" secondAttribute="bottom" id="lJi-Pb-NLE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6S8-8v-vI2">
@@ -41,6 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mainTitleLabel" destination="x9S-cI-ECz" id="IbP-yh-v8U"/>
+                        <outlet property="mapView" destination="lmt-2n-l69" id="2cr-OB-0Gc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -69,8 +78,8 @@
     </scenes>
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

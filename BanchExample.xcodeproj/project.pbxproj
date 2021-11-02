@@ -96,6 +96,7 @@
 		CE72F0B92719537000D9E844 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "News+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE72F0C32719562E00D9E844 /* NewsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArray.swift; sourceTree = "<group>"; };
+		CE7923A127317ED9005CD205 /* BanchExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BanchExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE7C11BE270AD31A00063336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C0270AD36400063336 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
@@ -350,6 +351,7 @@
 		CEF265E626EF1F07008EE038 = {
 			isa = PBXGroup;
 			children = (
+				CE7923A127317ED9005CD205 /* BanchExample-Bridging-Header.h */,
 				CEF265F126EF1F07008EE038 /* BanchExample */,
 				CEF265F026EF1F07008EE038 /* Products */,
 				ED49841C01AFF57C2289F81F /* Pods */,
@@ -485,6 +487,7 @@
 				TargetAttributes = {
 					CEF265EE26EF1F07008EE038 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -804,6 +807,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFWMQ7T85M;
 				INFOPLIST_FILE = BanchExample/Info.plist;
@@ -814,6 +818,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chubakova.BanchExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BanchExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -825,6 +831,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FFWMQ7T85M;
 				INFOPLIST_FILE = BanchExample/Info.plist;
@@ -835,6 +842,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chubakova.BanchExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BanchExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
