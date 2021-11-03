@@ -280,8 +280,8 @@
 		CE7FC09E270D88D0007325DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE7FC0A3270DAA11007325DA /* CustomAlert */,
 				CE03346627327AD200BD481D /* MyLocationButton.swift */,
+				CE7FC0A3270DAA11007325DA /* CustomAlert */,
 			);
 			path = Views;
 			sourceTree = "<group>";
