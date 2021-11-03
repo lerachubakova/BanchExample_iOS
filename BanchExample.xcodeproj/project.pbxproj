@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		94C3E01BFF6DA80F6BBB2B40 /* Pods_default_pods_BanchExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9360E5179CF108FB6D21FC69 /* Pods_default_pods_BanchExample.framework */; };
+		CE03346727327AD200BD481D /* MyLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE03346627327AD200BD481D /* MyLocationButton.swift */; };
 		CE1B77E42716A55200C3034A /* XMLNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E32716A55200C3034A /* XMLNewsModel.swift */; };
 		CE1B77E62716B45A00C3034A /* NewsXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E52716B45A00C3034A /* NewsXMLParser.swift */; };
 		CE1B77E82716B93300C3034A /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B77E72716B93300C3034A /* APIConstants.swift */; };
@@ -39,6 +40,8 @@
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
 		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
 		CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C8270AF88C00063336 /* LanguageObserver.swift */; };
+		CE7CCDF22732654B002F5182 /* AppleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CCDF12732654B002F5182 /* AppleMapsViewController.swift */; };
+		CE7CCDF427326808002F5182 /* AppleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7CCDF327326808002F5182 /* AppleMaps.storyboard */; };
 		CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */; };
 		CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */; };
 		CE7FC0AB270DDB40007325DA /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */; };
@@ -69,6 +72,7 @@
 /* Begin PBXFileReference section */
 		26D9AF54ECAAD7B160337430 /* Pods-default_pods-BanchExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-default_pods-BanchExample.release.xcconfig"; path = "Target Support Files/Pods-default_pods-BanchExample/Pods-default_pods-BanchExample.release.xcconfig"; sourceTree = "<group>"; };
 		9360E5179CF108FB6D21FC69 /* Pods_default_pods_BanchExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_default_pods_BanchExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE03346627327AD200BD481D /* MyLocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationButton.swift; sourceTree = "<group>"; };
 		CE1B77E32716A55200C3034A /* XMLNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLNewsModel.swift; sourceTree = "<group>"; };
 		CE1B77E52716B45A00C3034A /* NewsXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsXMLParser.swift; sourceTree = "<group>"; };
 		CE1B77E72716B93300C3034A /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
 		CE7C11C6270AF5F500063336 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CE7C11C8270AF88C00063336 /* LanguageObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageObserver.swift; sourceTree = "<group>"; };
+		CE7CCDF12732654B002F5182 /* AppleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapsViewController.swift; sourceTree = "<group>"; };
+		CE7CCDF327326808002F5182 /* AppleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppleMaps.storyboard; sourceTree = "<group>"; };
 		CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
 		CE7FC0A8270DABCC007325DA /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		CE7FC0AA270DDB40007325DA /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
@@ -262,10 +268,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CE7CCDF0273261DC002F5182 /* AppleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				CE7CCDF327326808002F5182 /* AppleMaps.storyboard */,
+				CE7CCDF12732654B002F5182 /* AppleMapsViewController.swift */,
+			);
+			path = AppleMaps;
+			sourceTree = "<group>";
+		};
 		CE7FC09E270D88D0007325DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				CE7FC0A3270DAA11007325DA /* CustomAlert */,
+				CE03346627327AD200BD481D /* MyLocationButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				CEF265F626EF1F07008EE038 /* ContainerViewController.swift */,
+				CE7CCDF0273261DC002F5182 /* AppleMaps */,
 				CE929D4A27044E9A0031A8C8 /* GoogleMaps */,
 				CE8E312A2703435600C61AE6 /* Home */,
 				CE8E31292703433100C61AE6 /* Information */,
@@ -519,6 +536,7 @@
 				CE326621272BC2400067A9A7 /* FiltersViewController.xib in Resources */,
 				CEF2661126EF3F26008EE038 /* SideMenu.storyboard in Resources */,
 				CE690146270F276300F09B78 /* InfoCollectionVCell.xib in Resources */,
+				CE7CCDF427326808002F5182 /* AppleMaps.storyboard in Resources */,
 				CEF265FF26EF1F09008EE038 /* LaunchScreen.storyboard in Resources */,
 				CEF2661626EF45A3008EE038 /* SideMenuTVCell.xib in Resources */,
 				CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */,
@@ -621,6 +639,7 @@
 				CE1B77F42716F9D700C3034A /* NewsModel.swift in Sources */,
 				CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */,
 				CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */,
+				CE7CCDF22732654B002F5182 /* AppleMapsViewController.swift in Sources */,
 				CE1B77E82716B93300C3034A /* APIConstants.swift in Sources */,
 				CEF2660F26EF3EFC008EE038 /* SideMenuViewController.swift in Sources */,
 				CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */,
@@ -640,6 +659,7 @@
 				CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */,
 				CE1B77F02716E0D100C3034A /* SourceModel.swift in Sources */,
 				CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */,
+				CE03346727327AD200BD481D /* MyLocationButton.swift in Sources */,
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,
 				CE63328F271876140067A45B /* NewsTVCell.swift in Sources */,
 				CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */,

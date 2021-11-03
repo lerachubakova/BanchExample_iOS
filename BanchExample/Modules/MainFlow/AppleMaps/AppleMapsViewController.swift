@@ -1,19 +1,22 @@
 //
-//  AppRatingViewController.swift
+//  AppleMapsViewController.swift
 //  BanchExample
 //
-//  Created by User on 29.09.21.
+//  Created by User on 3.11.21.
 //
 
+import CoreLocation
+import MapKit
 import UIKit
 
-final class GoogleMapsViewController: UIViewController {
-    // MARK: - @IBOutlets
-    @IBOutlet private weak var mapView: GMSMapView!
+final class AppleMapsViewController: UIViewController {
 
-    // MARK: - Private Properties
-    private let locationManager = CLLocationManager()
+    @IBOutlet private weak var mapView: MKMapView!
+
     private weak var delegate: HomeViewControllerDelegate?
+
+    private let locationManager = CLLocationManager()
+    private var isFirstUpdate = true
 
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -28,9 +31,6 @@ final class GoogleMapsViewController: UIViewController {
 
     // MARK: - Setup
     private func configureLocationManager() {
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
-        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
     }
@@ -39,10 +39,14 @@ final class GoogleMapsViewController: UIViewController {
     @IBAction private func tappedMenuButton(_ sender: Any) {
         delegate?.tappedMenuButton()
     }
+
+    @IBAction private func tappedMyLocationButton (_ sender: Any) {
+        locationManager.startUpdatingLocation()
+    }
 }
 
-// MARK: - CLLocationManagerDelegate
-extension GoogleMapsViewController: CLLocationManagerDelegate {
+extension AppleMapsViewController: CLLocationManagerDelegate {
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
@@ -52,12 +56,18 @@ extension GoogleMapsViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         if let location = locations.first {
-            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            let center = location.coordinate
+            let delta = 0.02
+            let span = MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta)
+            let region = MKCoordinateRegion(center: center, span: span)
+
+            mapView.setRegion(region, animated: !isFirstUpdate)
+            isFirstUpdate = false
             locationManager.stopUpdatingLocation()
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-         print("GoogleMapsViewController: locationManager: \(error.localizedDescription)")
-    }
+   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("AppleMapsViewController: locationManager: \(error.localizedDescription)")
+   }
 }

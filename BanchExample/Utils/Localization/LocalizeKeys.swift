@@ -12,7 +12,7 @@ struct LocalizeKeys {
     static let home = "home"
     static let info = "photoLibrary"
     static let googleMaps = "googleMaps"
-    static let shareApp = "share"
+    static let appleMaps = "appleMaps"
     static let settings = "settings"
     static let footer = "footer"
     static let header = "header"
