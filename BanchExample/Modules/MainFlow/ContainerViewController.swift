@@ -321,7 +321,7 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         case LocalizeKeys.home:
             showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
         case LocalizeKeys.info:
-            showViewController(viewController: UINavigationController.self, storyboardName: "Information")
+            showViewController(viewController: UINavigationController.self, storyboardName: "PHLibraryNavigation")
         case LocalizeKeys.googleMaps:
              showViewController(viewController: UINavigationController.self, storyboardName: "GoogleMaps")
         case LocalizeKeys.shareApp:

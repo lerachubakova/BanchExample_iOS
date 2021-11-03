@@ -1,5 +1,5 @@
 //
-//  InformationViewController.swift
+//  PHLibraryViewController.swift
 //  BanchExample
 //
 //  Created by User on 16.09.21.
@@ -39,17 +39,13 @@ class Month {
     }
 }
 
-final class InformationViewController: UIViewController {
+final class PHLibraryViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var backgroundMessageLabel: UILabel!
 
     private weak var delegate: HomeViewControllerDelegate?
     private weak var container: ContainerViewController?
-
-    private let refreshControl = UIRefreshControl()
-
-    private var photosCount = 50
 
     private var month: Month?
 
@@ -72,9 +68,6 @@ final class InformationViewController: UIViewController {
     }
 
     private func configureTableView() {
-        tableView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-
         tableView.register(InfoTVCell.nib(), forCellReuseIdentifier: InfoTVCell.identifier)
 
         tableView.delegate = self
@@ -92,9 +85,9 @@ final class InformationViewController: UIViewController {
         case .notRequested:
             break
         case .granted:
-            backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPhotoMessage.localized()
+            backgroundMessageLabel.text = LocalizeKeys.PHLibrary.photoLibraryNoPhotoMessage.localized()
         case .unauthorized:
-            backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPermission.localized()
+            backgroundMessageLabel.text = LocalizeKeys.PHLibrary.photoLibraryNoPermission.localized()
         }
     }
 
@@ -134,7 +127,7 @@ final class InformationViewController: UIViewController {
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
-      //  fetchOptions.fetchLimit = photosCount
+      //  fetchOptions.fetchLimit = 30
 
         let startDate = NSDate(dateString: "01.10.2021", format:  "dd.MM.yyyy")
         let endDate = NSDate(dateString: "01.11.2021", format:  "dd.MM.yyyy")
@@ -144,17 +137,17 @@ final class InformationViewController: UIViewController {
         let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
 
         if fetchResult.count > 0 {
-            fetchPhotoAtIndex(0, photosCount, fetchResult)
+            fetchPhotoAtIndex(0, fetchResult)
         } else {
             tableView.isHidden = true
             backgroundMessageLabel.isHidden = false
-            backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPhotoMessage.localized()
+            backgroundMessageLabel.text = LocalizeKeys.PHLibrary.photoLibraryNoPhotoMessage.localized()
         }
 
         self.reloadTableView()
     }
 
-    private func fetchPhotoAtIndex(_ index: Int, _ totalImageCountNeeded: Int, _ fetchResult: PHFetchResult<PHAsset>) {
+    private func fetchPhotoAtIndex(_ index: Int, _ fetchResult: PHFetchResult<PHAsset>) {
 
         let requestOptions = PHImageRequestOptions()
         requestOptions.isSynchronous = true
@@ -184,19 +177,16 @@ final class InformationViewController: UIViewController {
             }
 
             if index + 1 < fetchResult.count {
-                self.fetchPhotoAtIndex(index + 1, totalImageCountNeeded, fetchResult)
+                self.fetchPhotoAtIndex(index + 1, fetchResult)
             } else {
-                DispatchQueue.main.async { [weak self] in
-                    self?.refreshControl.endRefreshing()
-                    self?.reloadTableView()
-                }
+                self.reloadTableView()
             }
         })
     }
 
     private func setNoPermissionBackgroundLabel() {
         backgroundMessageLabel.isHidden = false
-        backgroundMessageLabel.text = LocalizeKeys.Information.photoLibraryNoPermission.localized()
+        backgroundMessageLabel.text = LocalizeKeys.PHLibrary.photoLibraryNoPermission.localized()
     }
 
     private func reloadTableView() {
@@ -205,30 +195,25 @@ final class InformationViewController: UIViewController {
         }
     }
 
-    @objc private func refresh() {
-        month = nil
-        makePhotosArray()
-    }
-
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
     }
 }
 
 // MARK: - LanguageSubscriber
-extension InformationViewController: LanguageSubscriber {
+extension PHLibraryViewController: LanguageSubscriber {
     func updateLanguage() {
         self.setLocalizedStrings()
     }
 }
 
 // MARK: - UITableViewDelegate
-extension InformationViewController: UITableViewDelegate {
+extension PHLibraryViewController: UITableViewDelegate {
 
 }
 
 // MARK: - UITableViewDataSource
-extension InformationViewController: UITableViewDataSource {
+extension PHLibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var res = 0
         switch section {

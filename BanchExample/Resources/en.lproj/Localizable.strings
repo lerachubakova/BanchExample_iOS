@@ -8,7 +8,7 @@
 
 /* sideMenu */
 "home" = "Home Page";
-"info" = "Information";
+"photoLibrary" = "PHLibrary";
 "googleMaps" = "Google Maps";
 "share" = "Share App";
 "settings" = "Settings";
@@ -37,7 +37,7 @@
 "alertOpenSettingsButton" = "Open Settings";
 "alertNoThanksButton" = "No, thanks";
 
-/* Information screen */
+/* PHLibrary screen */
 "EmptyLibraryMessage" = "There is no video in library or in the available media.";
 "NoPermissionsPhotoLibrary" = "We don't have permissions to show your photos.";
 
