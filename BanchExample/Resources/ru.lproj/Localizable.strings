@@ -8,9 +8,9 @@
 
 /* sideMenu */
 "home" = "Главная";
-"info" = "Информация";
+"photoLibrary" = "Галерея";
 "googleMaps" = "Google Карты";
-"share" = "Поделиться";
+"appleMaps" = "Apple Карты";
 "settings" = "Настройки";
 "footer" = "от Меня";
 "header" = "Страницы";
@@ -37,7 +37,7 @@
 "alertOpenSettingsButton" = "Настройки";
 "alertNoThanksButton" = "Нет, спасибо";
 
-/* Information screen */
+/* PHLibrary screen */
 "EmptyLibraryMessage" = "В доступных медиафайлах нет фото или видео.";
 "NoPermissionsPhotoLibrary" = "У приложения нет разрешений для доступа к медиафайлам.";
 

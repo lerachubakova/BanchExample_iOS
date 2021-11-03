@@ -10,9 +10,9 @@ import Foundation
 struct LocalizeKeys {
     // SideMenu
     static let home = "home"
-    static let info = "info"
+    static let info = "photoLibrary"
     static let googleMaps = "googleMaps"
-    static let shareApp = "share"
+    static let appleMaps = "appleMaps"
     static let settings = "settings"
     static let footer = "footer"
     static let header = "header"
@@ -40,8 +40,8 @@ struct LocalizeKeys {
         static let noThanksButton = "alertNoThanksButton"
     }
 
-    // Information
-    class Information {
+    // PHLibrary
+    class PHLibrary {
         static let photoLibraryNoPhotoMessage = "EmptyLibraryMessage"
         static let photoLibraryNoPermission = "NoPermissionsPhotoLibrary"
     }

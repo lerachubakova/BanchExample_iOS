@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Npy-Bt-kVU">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Apple Maps View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="AppleMapsViewController" customModule="BanchExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3UP-7n-g4T">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oia-c1-omw" customClass="MyLocationButton" customModule="BanchExample" customModuleProvider="target">
+                                <rect key="frame" x="350" y="778" width="56" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="tappedMyLocationButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cyv-se-C5c"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3UP-7n-g4T" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="HtU-DY-mjP"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oia-c1-omw" secondAttribute="trailing" constant="8" id="Hxg-gB-yt1"/>
+                            <constraint firstItem="oia-c1-omw" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-28" id="LhT-bJ-CS2"/>
+                            <constraint firstItem="3UP-7n-g4T" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="TV1-JI-ZrY"/>
+                            <constraint firstItem="3UP-7n-g4T" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="r1v-dc-nlJ"/>
+                            <constraint firstAttribute="bottom" secondItem="3UP-7n-g4T" secondAttribute="bottom" id="shL-hv-4BO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0MD-yx-xrf">
+                        <barButtonItem key="leftBarButtonItem" image="line.horizontal.3" catalog="system" id="73K-0D-Wlf">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tappedMenuButton:" destination="Y6W-OH-hqX" id="NZ8-gM-Q1A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="3UP-7n-g4T" id="cmB-1O-XAp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aKc-gK-Sqg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Npy-Bt-kVU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fYy-G3-bvD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="HWW-zc-3Q4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tXi-y0-xFM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="75"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="oia-c1-omw">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

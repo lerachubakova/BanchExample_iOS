@@ -22,7 +22,7 @@ final class SideMenuViewController: UIViewController {
     let options: [String] = [LocalizeKeys.home,
                              LocalizeKeys.info,
                              LocalizeKeys.googleMaps,
-                             LocalizeKeys.shareApp,
+                             LocalizeKeys.appleMaps,
                              LocalizeKeys.settings]
 
     override func viewDidLoad() {
@@ -77,7 +77,7 @@ extension SideMenuViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.selectRow(with: options[indexPath.item])
-        if options[indexPath.item] == LocalizeKeys.settings || options[indexPath.item] == LocalizeKeys.shareApp {
+        if options[indexPath.item] == LocalizeKeys.settings || options[indexPath.item] == LocalizeKeys.appleMaps {
             sideMenuTableView.deselectRow(at: indexPath, animated: false)
         }
     }
