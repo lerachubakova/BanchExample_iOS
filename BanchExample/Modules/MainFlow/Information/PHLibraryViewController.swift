@@ -40,10 +40,11 @@ class Month {
 }
 
 final class PHLibraryViewController: UIViewController {
-
+    // MARK: - @IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var backgroundMessageLabel: UILabel!
 
+    // MARK: - Private Properties
     private weak var delegate: HomeViewControllerDelegate?
     private weak var container: ContainerViewController?
 
@@ -52,6 +53,7 @@ final class PHLibraryViewController: UIViewController {
     private let dayFormatter = DateFormatter(format: "dd.MM.yyyy")
     private let monthFormatter = DateFormatter(format: "MM.yyyy")
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,6 +69,7 @@ final class PHLibraryViewController: UIViewController {
         }
     }
 
+    // MARK: - Setup
     private func configureTableView() {
         tableView.register(InfoTVCell.nib(), forCellReuseIdentifier: InfoTVCell.identifier)
 
@@ -103,7 +106,8 @@ final class PHLibraryViewController: UIViewController {
             container?.showOpenSettingsAlert()
         }
     }
-
+    
+    // MARK: - Logic
     private func makeAuthorizationRequest() {
         PHLibraryAuthorizationManager.requestPhotoLibraryAuthorization { status in
             switch status {
@@ -194,7 +198,7 @@ final class PHLibraryViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
-
+    // MARK: - @IBActions
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
     }
