@@ -72,39 +72,53 @@ final class HomeViewController: UIViewController {
         smallProgressView.animationSpeed = 0.75
     }
 
-    // MARK: - Logic
-    func blockTableView(isBlocked: Bool) {
-        tableView.isUserInteractionEnabled = !isBlocked
-    }
-
-    private func setLocalizedStrings() {
-        titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
-        navigationItem.backButtonTitle = LocalizeKeys.home.localized()
-
-        let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
-        gearButton.setTitle(FiltersViewController.getTitleForPickerView(for: row), for: .normal)
-    }
-
-    private func setFilter() {
-        let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
-        viewModel.setFilter(filter:  NewsFilter.allCases[row])
-        gearButton.setTitle(FiltersViewController.getTitleForPickerView(for: row), for: .normal)
-    }
-
+    // MARK: - Public UILogic
     func reloadTable() {
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
     }
 
-    @objc private func startRefresh(_ sender: AnyObject) {
-        viewModel.getNews()
-    }
-
     func endRefresh() {
         DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.refreshControl.endRefreshing()
         }
+    }
+
+    func stopSmallProgressAnimation() {
+        blockTableView(isBlocked: false)
+        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
+            self?.smallProgressView.isHidden = true
+            self?.smallProgressView.stop()
+        }
+    }
+
+    // MARK: - Private Logic
+    private func setLocalizedStrings() {
+        titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
+        navigationItem.backButtonTitle = LocalizeKeys.home.localized()
+
+        setFilter()
+    }
+
+    private func setFilter() {
+        let row = userDefaults.integer(forKey: UserDefaultsKeys.filter)
+        viewModel.setFilter(filter: NewsFilter.allCases[row])
+        gearButton.setTitle(FiltersViewController.getTitleForPickerView(for: row), for: .normal)
+    }
+
+    private func blockTableView(isBlocked: Bool) {
+        tableView.isUserInteractionEnabled = !isBlocked
+    }
+
+    @objc private func startRefresh(_ sender: AnyObject) {
+        viewModel.getNews()
+    }
+
+    private func startSmallProgressAnimation() {
+        blockTableView(isBlocked: true)
+        smallProgressView.isHidden = false
+        smallProgressView.play()
     }
 
     private func startBigProgressAnimation() {
@@ -116,20 +130,6 @@ final class HomeViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
             self?.bigProgressView.isHidden = true
             self?.bigProgressView.stop()
-        }
-    }
-
-    func startSmallProgressAnimation() {
-        blockTableView(isBlocked: true)
-        smallProgressView.isHidden = false
-        smallProgressView.play()
-    }
-
-    func stopSmallProgressAnimation() {
-        blockTableView(isBlocked: false)
-        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
-            self?.smallProgressView.isHidden = true
-            self?.smallProgressView.stop()
         }
     }
 

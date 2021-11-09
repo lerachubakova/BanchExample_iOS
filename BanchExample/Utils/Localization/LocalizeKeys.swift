@@ -24,7 +24,7 @@ struct LocalizeKeys {
     static let cancel = "cancel"
 
     // Alerts
-    class Alerts {
+    struct Alerts {
         static let showAlert = "showAlert"
         static let alertTitle = "alertTitle"
         static let alertText = "alertText"
@@ -41,13 +41,13 @@ struct LocalizeKeys {
     }
 
     // PHLibrary
-    class PHLibrary {
+    struct PHLibrary {
         static let photoLibraryNoPhotoMessage = "EmptyLibraryMessage"
         static let photoLibraryNoPermission = "NoPermissionsPhotoLibrary"
     }
 
     // Filters
-    class Filters {
+    struct Filters {
         static let all = "allFilter"
         static let withoutDeleted = "withoutDeletedFilter"
         static let interesting = "interestingFilter"

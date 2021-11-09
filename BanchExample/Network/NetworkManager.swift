@@ -11,6 +11,7 @@ final class NetworkManager: NSObject {
     private let defaultSession = URLSession(configuration: .default)
     private var dataTask: URLSessionDataTask?
 
+    // MARK: - GAZETA.RU
     func makeGazetaRuXMLNewsRequest(completion: @escaping (NewsArray?) -> Void) {
         guard let url = URL(string: "https://www.gazeta.ru/export/rss/lenta.xml") else { return }
         dataTask = defaultSession.dataTask(with: url) { (data, response, error) in
@@ -19,10 +20,11 @@ final class NetworkManager: NSObject {
                 return
             }
 
-            if let strongResponse = response as? HTTPURLResponse {
-                if strongResponse.statusCode != 200 {
-                    print("\n", strongResponse.debugDescription)
-                }
+            let strongResponse = response as? HTTPURLResponse ?? HTTPURLResponse()
+
+            guard strongResponse.statusCode == 200 else {
+                print("\n", strongResponse.debugDescription)
+                return
             }
 
             if let data = data {
@@ -37,6 +39,33 @@ final class NetworkManager: NSObject {
         dataTask?.resume()
     }
 
+    func makeNewsRequestByLink(url: URL, completion: @escaping ((title: String, body: String)?) -> Void) {
+        dataTask = defaultSession.dataTask(with: url) { (data, response, error) in
+            guard error == nil else {
+                print("\n NetworkManager: makeNewsRequestByLink: \(error!.localizedDescription)")
+                return
+            }
+
+            let strongResponse = response as? HTTPURLResponse ?? HTTPURLResponse()
+
+            guard strongResponse.statusCode == 200 else {
+                print("\n", strongResponse.debugDescription)
+                return
+            }
+
+            if let data = data, let htmlString = String(data: data, encoding: String.Encoding.utf8) {
+                DispatchQueue.main.async {
+                    let result = htmlString.parseGazetaRuHTML()
+                    completion(result)
+                }
+            } else {
+                print("\n NetworkManager: makeNewsRequestByLink no data.")
+            }
+        }
+        dataTask?.resume()
+    }
+
+    // MARK: - BBC
     func makeBBCJSONNewsRequest(completion: @escaping (NewsArray?) -> Void) {
 
         guard var urlComponents = URLComponents(string: BBCAPIConstants.baseURL) else { return }
@@ -55,11 +84,13 @@ final class NetworkManager: NSObject {
                 return
             }
 
-            if let strongResponse = response as? HTTPURLResponse {
-                if strongResponse.statusCode != 200 {
-                    print("\n", strongResponse.debugDescription)
-                }
+            let strongResponse = response as? HTTPURLResponse ?? HTTPURLResponse()
+
+            guard strongResponse.statusCode == 200 else {
+                print("\n", strongResponse.debugDescription)
+                return
             }
+
             if let data = data {
                 DispatchQueue.main.async {
                     if let news = try? JSONDecoder().decode(JSONResponseNewsModel.self, from: data) {
@@ -72,31 +103,6 @@ final class NetworkManager: NSObject {
                 }
             } else {
                 print("\n NetworkManager: makeJSONNewsRequest no data.")
-            }
-        }
-        dataTask?.resume()
-    }
-
-    func makeNewsRequestByLink(url: URL, completion: @escaping ((title: String, body: String)?) -> Void) {
-        dataTask = defaultSession.dataTask(with: url) { (data, response, error) in
-            guard error == nil else {
-                print("\n NetworkManager: makeNewsRequestByLink: \(error!.localizedDescription)")
-                return
-            }
-
-            if let strongResponse = response as? HTTPURLResponse {
-                if strongResponse.statusCode != 200 {
-                    print("\n", strongResponse.debugDescription)
-                }
-            }
-
-            if let data = data, let htmlString = String(data: data, encoding: String.Encoding.utf8) {
-                DispatchQueue.main.async {
-                    let result = htmlString.parseGazetaRuHTML()
-                    completion(result)
-                }
-            } else {
-                print("\n NetworkManager: makeNewsRequestByLink no data.")
             }
         }
         dataTask?.resume()
