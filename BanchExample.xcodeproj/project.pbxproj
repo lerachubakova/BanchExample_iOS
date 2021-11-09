@@ -265,8 +265,8 @@
 				CE633291271883D60067A45B /* DateFormatterExtensions.swift */,
 				CE82DB582730063600C265E1 /* NSDateExtensions.swift */,
 				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
-				CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */,
 				CE793FCD273A693F00311423 /* UIAlertActionExtensions.swift */,
+				CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
