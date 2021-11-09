@@ -327,7 +327,7 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         case LocalizeKeys.appleMaps:
             showViewController(viewController: UINavigationController.self, storyboardName: "AppleMaps")
         case LocalizeKeys.settings:
-            self.present(UIStoryboard(name: "Settings", bundle: Bundle.main).instantiateInitialViewController()!, animated: true)
+            showViewController(viewController: UINavigationController.self, storyboardName: "SettingsNavigation")
         default: break
         }
 

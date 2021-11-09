@@ -20,6 +20,8 @@
 "languageName" = "Ru";
 "changeLanguage" = "Сменить язык";
 "cancel" = "Отмена";
+"settingsPrivacyPolicy" = "Политика конфиденциальности";
+"settingsTermsAndConditions" = "Условия использования";
 
 /* alert */
 "showAlert" = "Показать алерт";
