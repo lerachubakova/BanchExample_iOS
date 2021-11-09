@@ -29,6 +29,13 @@ final class SettingsViewController: UIViewController {
         setLocalizedStrings()
         LanguageObserver.subscribe(self)
     }
+    // MARK: - Navigation
+    func goToPrivacyAndTerms(type: PolicyAndTerms) {
+        guard let vc = UIStoryboard(name: Storyboards.MainFlow.policyAndTerms, bundle: .main).instantiateInitialViewController() as? PolicyAndTermsViewController else { return }
+
+        vc.setScreenType(type)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     // MARK: - Logic
     private func setLocalizedStrings() {
@@ -63,19 +70,11 @@ final class SettingsViewController: UIViewController {
     }
 
     @IBAction private func tappedPrivacyPolicyButton() {
-
-        guard let vc = UIStoryboard(name: "PolicyAndTerms", bundle: .main).instantiateInitialViewController() as? PolicyAndTermsViewController else { return }
-        
-        vc.setScreenType(.privacyPolicy)
-        navigationController?.pushViewController(vc, animated: true)
+        goToPrivacyAndTerms(type: .privacyPolicy)
     }
 
     @IBAction private func tappedTermsAndConditionsButton() {
-
-        guard let vc = UIStoryboard(name: "PolicyAndTerms", bundle: .main).instantiateInitialViewController() as? PolicyAndTermsViewController else { return }
-
-        vc.setScreenType(.termsAndConditions)
-        navigationController?.pushViewController(vc, animated: true)
+        goToPrivacyAndTerms(type: .termsAndConditions)
     }
 }
 

@@ -225,7 +225,7 @@ extension HomeViewController: UITableViewDataSource {
                 return
             }
 
-            let storyboard = UIStoryboard(name: "News", bundle: Bundle.main)
+            let storyboard = UIStoryboard(name: Storyboards.MainFlow.news, bundle: Bundle.main)
             guard let vc = storyboard.instantiateInitialViewController() as? NewsViewController else { return }
             vc.setNews(strongNews)
 
