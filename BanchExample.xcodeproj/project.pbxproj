@@ -37,6 +37,14 @@
 		CE72F0C12719556000D9E844 /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */; };
 		CE72F0C42719562E00D9E844 /* NewsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0C32719562E00D9E844 /* NewsArray.swift */; };
 		CE793FCE273A693F00311423 /* UIAlertActionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793FCD273A693F00311423 /* UIAlertActionExtensions.swift */; };
+		CE793FD8273A9F8100311423 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793FD7273A9F8100311423 /* NSAttributedStringExtensions.swift */; };
+		CE793FDB273AA6E400311423 /* PolicyAndTerms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE793FDA273AA6E400311423 /* PolicyAndTerms.storyboard */; };
+		CE793FDD273AA75200311423 /* PolicyAndTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793FDC273AA75200311423 /* PolicyAndTermsViewController.swift */; };
+		CE793FE0273AB30E00311423 /* TermsAndConditions-ru.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE793FDE273AB30E00311423 /* TermsAndConditions-ru.txt */; };
+		CE793FE1273AB30E00311423 /* TermsAndConditions-en.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE793FDF273AB30E00311423 /* TermsAndConditions-en.txt */; };
+		CE793FE4273AB36300311423 /* PrivacyPolicy-en.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE793FE2273AB36300311423 /* PrivacyPolicy-en.txt */; };
+		CE793FE5273AB36300311423 /* PrivacyPolicy-ru.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE793FE3273AB36300311423 /* PrivacyPolicy-ru.txt */; };
+		CE793FF1273AC98A00311423 /* StoryboardsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793FF0273AC98A00311423 /* StoryboardsConstants.swift */; };
 		CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C11BF270AD31A00063336 /* Localizable.strings */; };
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
 		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
@@ -57,7 +65,7 @@
 		CE929D4C27044EFD0031A8C8 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */; };
 		CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */; };
 		CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D5027047C510031A8C8 /* SettingsViewController.swift */; };
-		CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D5227047C770031A8C8 /* Settings.storyboard */; };
+		CE929D5327047C770031A8C8 /* SettingsNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D5227047C770031A8C8 /* SettingsNavigation.storyboard */; };
 		CEDD9CC6271D587E002F9833 /* loading-state.json in Resources */ = {isa = PBXBuildFile; fileRef = CEDD9CC5271D587E002F9833 /* loading-state.json */; };
 		CEF265F326EF1F07008EE038 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF265F226EF1F07008EE038 /* AppDelegate.swift */; };
 		CEF265F526EF1F07008EE038 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF265F426EF1F07008EE038 /* SceneDelegate.swift */; };
@@ -103,6 +111,14 @@
 		CE72F0C32719562E00D9E844 /* NewsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArray.swift; sourceTree = "<group>"; };
 		CE7923A127317ED9005CD205 /* BanchExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BanchExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE793FCD273A693F00311423 /* UIAlertActionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertActionExtensions.swift; sourceTree = "<group>"; };
+		CE793FD7273A9F8100311423 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
+		CE793FDA273AA6E400311423 /* PolicyAndTerms.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyAndTerms.storyboard; sourceTree = "<group>"; };
+		CE793FDC273AA75200311423 /* PolicyAndTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyAndTermsViewController.swift; sourceTree = "<group>"; };
+		CE793FDE273AB30E00311423 /* TermsAndConditions-ru.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "TermsAndConditions-ru.txt"; sourceTree = "<group>"; };
+		CE793FDF273AB30E00311423 /* TermsAndConditions-en.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "TermsAndConditions-en.txt"; sourceTree = "<group>"; };
+		CE793FE2273AB36300311423 /* PrivacyPolicy-en.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "PrivacyPolicy-en.txt"; sourceTree = "<group>"; };
+		CE793FE3273AB36300311423 /* PrivacyPolicy-ru.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "PrivacyPolicy-ru.txt"; sourceTree = "<group>"; };
+		CE793FF0273AC98A00311423 /* StoryboardsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardsConstants.swift; sourceTree = "<group>"; };
 		CE7C11BE270AD31A00063336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C0270AD36400063336 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
@@ -124,7 +140,7 @@
 		CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
 		CE929D5027047C510031A8C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		CE929D5227047C770031A8C8 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		CE929D5227047C770031A8C8 /* SettingsNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsNavigation.storyboard; sourceTree = "<group>"; };
 		CEDD9CC5271D587E002F9833 /* loading-state.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-state.json"; sourceTree = "<group>"; };
 		CEF265EF26EF1F07008EE038 /* BanchExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BanchExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF265F226EF1F07008EE038 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +254,33 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		CE793FD9273AA6A200311423 /* PolicyAndTerms */ = {
+			isa = PBXGroup;
+			children = (
+				CE793FDA273AA6E400311423 /* PolicyAndTerms.storyboard */,
+				CE793FDC273AA75200311423 /* PolicyAndTermsViewController.swift */,
+			);
+			path = PolicyAndTerms;
+			sourceTree = "<group>";
+		};
+		CE793FEE273AC06A00311423 /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				CE793FE2273AB36300311423 /* PrivacyPolicy-en.txt */,
+				CE793FE3273AB36300311423 /* PrivacyPolicy-ru.txt */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
+		CE793FEF273AC08100311423 /* TermsAndConditions */ = {
+			isa = PBXGroup;
+			children = (
+				CE793FDF273AB30E00311423 /* TermsAndConditions-en.txt */,
+				CE793FDE273AB30E00311423 /* TermsAndConditions-ru.txt */,
+			);
+			path = TermsAndConditions;
+			sourceTree = "<group>";
+		};
 		CE7C11C3270AE14600063336 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +306,7 @@
 			children = (
 				CE69013B270EE34D00F09B78 /* CALayerExtensions.swift */,
 				CE633291271883D60067A45B /* DateFormatterExtensions.swift */,
+				CE793FD7273A9F8100311423 /* NSAttributedStringExtensions.swift */,
 				CE82DB582730063600C265E1 /* NSDateExtensions.swift */,
 				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 				CE793FCD273A693F00311423 /* UIAlertActionExtensions.swift */,
@@ -303,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1B77E72716B93300C3034A /* APIConstants.swift */,
+				CE793FF0273AC98A00311423 /* StoryboardsConstants.swift */,
 				CE70DCD8272931C2009CDC61 /* UserDefaultsConstants.swift */,
 			);
 			path = Constants;
@@ -353,8 +398,9 @@
 		CE929D4F27047C140031A8C8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				CE929D5227047C770031A8C8 /* Settings.storyboard */,
+				CE929D5227047C770031A8C8 /* SettingsNavigation.storyboard */,
 				CE929D5027047C510031A8C8 /* SettingsViewController.swift */,
+				CE793FD9273AA6A200311423 /* PolicyAndTerms */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -408,6 +454,8 @@
 				CEF265FB26EF1F09008EE038 /* Assets.xcassets */,
 				CEDD9CC2271D5822002F9833 /* Animations */,
 				CE7C11BF270AD31A00063336 /* Localizable.strings */,
+				CE793FEE273AC06A00311423 /* PrivacyPolicy */,
+				CE793FEF273AC08100311423 /* TermsAndConditions */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -538,19 +586,24 @@
 				CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */,
 				CE326621272BC2400067A9A7 /* FiltersViewController.xib in Resources */,
 				CEF2661126EF3F26008EE038 /* SideMenu.storyboard in Resources */,
+				CE793FE0273AB30E00311423 /* TermsAndConditions-ru.txt in Resources */,
+				CE793FE1273AB30E00311423 /* TermsAndConditions-en.txt in Resources */,
 				CE690146270F276300F09B78 /* InfoCollectionVCell.xib in Resources */,
 				CE7CCDF427326808002F5182 /* AppleMaps.storyboard in Resources */,
 				CEF265FF26EF1F09008EE038 /* LaunchScreen.storyboard in Resources */,
 				CEF2661626EF45A3008EE038 /* SideMenuTVCell.xib in Resources */,
-				CE929D5327047C770031A8C8 /* Settings.storyboard in Resources */,
+				CE929D5327047C770031A8C8 /* SettingsNavigation.storyboard in Resources */,
 				CE690141270F1CB100F09B78 /* InfoTVCell.xib in Resources */,
 				CE8AB960271F0DCA00AEEEE4 /* News.storyboard in Resources */,
 				CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */,
 				CEDD9CC6271D587E002F9833 /* loading-state.json in Resources */,
 				CE633290271876140067A45B /* NewsTVCell.xib in Resources */,
+				CE793FDB273AA6E400311423 /* PolicyAndTerms.storyboard in Resources */,
 				CE8E3128270340EA00C61AE6 /* PHLibraryNavigation.storyboard in Resources */,
 				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
+				CE793FE5273AB36300311423 /* PrivacyPolicy-ru.txt in Resources */,
 				CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */,
+				CE793FE4273AB36300311423 /* PrivacyPolicy-en.txt in Resources */,
 				CEF265FC26EF1F09008EE038 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +693,7 @@
 			files = (
 				CE326623272BE8F00067A9A7 /* PHLibraryAuthorizationManager.swift in Sources */,
 				CE1B77F42716F9D700C3034A /* NewsModel.swift in Sources */,
+				CE793FF1273AC98A00311423 /* StoryboardsConstants.swift in Sources */,
 				CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */,
 				CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */,
 				CE793FCE273A693F00311423 /* UIAlertActionExtensions.swift in Sources */,
@@ -647,6 +701,7 @@
 				CE1B77E82716B93300C3034A /* APIConstants.swift in Sources */,
 				CEF2660F26EF3EFC008EE038 /* SideMenuViewController.swift in Sources */,
 				CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */,
+				CE793FD8273A9F8100311423 /* NSAttributedStringExtensions.swift in Sources */,
 				CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */,
 				CE82DB592730063600C265E1 /* NSDateExtensions.swift in Sources */,
 				CE88FBDE26F382EA00DE394F /* PHLibraryViewController.swift in Sources */,
@@ -680,6 +735,7 @@
 				CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */,
 				CE1B77E42716A55200C3034A /* XMLNewsModel.swift in Sources */,
 				CE690145270F276300F09B78 /* InfoCollectionVCell.swift in Sources */,
+				CE793FDD273AA75200311423 /* PolicyAndTermsViewController.swift in Sources */,
 				CE690140270F1CB100F09B78 /* InfoTVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

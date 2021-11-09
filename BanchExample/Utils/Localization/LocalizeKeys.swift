@@ -18,11 +18,14 @@ struct LocalizeKeys {
     static let header = "header"
 
     // Settings
-    static let language = "language"
-    static let languageName = "languageName"
-    static let changeLanguage = "changeLanguage"
-    static let cancel = "cancel"
-
+    struct Settings {
+        static let language = "language"
+        static let languageName = "languageName"
+        static let changeLanguage = "changeLanguage"
+        static let cancel = "cancel"
+        static let privacyPolicy = "settingsPrivacyPolicy"
+        static let termsAndConditions = "settingsTermsAndConditions"
+    }
     // Alerts
     struct Alerts {
         static let showAlert = "showAlert"

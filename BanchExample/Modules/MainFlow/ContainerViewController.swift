@@ -63,7 +63,7 @@ final class ContainerViewController: UIViewController {
         addSubviews()
         setupGestureRecognizers()
         setupConstraints()
-        showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
+        showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.home)
     }
 
     // MARK: - Setup
@@ -76,7 +76,7 @@ final class ContainerViewController: UIViewController {
     }
 
     private func setupSideMenuVC() {
-        if let vc = UIStoryboard(name: "SideMenu", bundle: Bundle.main).instantiateInitialViewController() as? SideMenuViewController {
+        if let vc = UIStoryboard(name: Storyboards.MainFlow.menu, bundle: Bundle.main).instantiateInitialViewController() as? SideMenuViewController {
             sideMenuVC = vc
         } else {
             sideMenuVC = SideMenuViewController()
@@ -319,15 +319,15 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
 
         switch option {
         case LocalizeKeys.home:
-            showViewController(viewController: UINavigationController.self, storyboardName: "HomeNavigation")
+            showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.home)
         case LocalizeKeys.info:
-            showViewController(viewController: UINavigationController.self, storyboardName: "PHLibraryNavigation")
+            showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.library)
         case LocalizeKeys.googleMaps:
-             showViewController(viewController: UINavigationController.self, storyboardName: "GoogleMaps")
+             showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.googleMaps)
         case LocalizeKeys.appleMaps:
-            showViewController(viewController: UINavigationController.self, storyboardName: "AppleMaps")
+            showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.appleMaps)
         case LocalizeKeys.settings:
-            self.present(UIStoryboard(name: "Settings", bundle: Bundle.main).instantiateInitialViewController()!, animated: true)
+            showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.settings)
         default: break
         }
 

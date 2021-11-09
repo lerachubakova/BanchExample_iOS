@@ -20,6 +20,8 @@
 "languageName" = "En";
 "changeLanguage" = "Change Language";
 "cancel" = "Cancel";
+"settingsPrivacyPolicy" = "Privacy Policy";
+"settingsTermsAndConditions" = "Terms and Conditions";
 
 /* alert */
 "showAlert" = "Show Alert";
