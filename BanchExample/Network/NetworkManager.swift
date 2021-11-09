@@ -65,7 +65,6 @@ final class NetworkManager: NSObject {
         dataTask?.resume()
     }
 
-
     // MARK: - BBC
     func makeBBCJSONNewsRequest(completion: @escaping (NewsArray?) -> Void) {
 
