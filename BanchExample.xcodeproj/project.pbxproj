@@ -36,6 +36,7 @@
 		CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0B92719537000D9E844 /* CoreDataManager.swift */; };
 		CE72F0C12719556000D9E844 /* News+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */; };
 		CE72F0C42719562E00D9E844 /* NewsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72F0C32719562E00D9E844 /* NewsArray.swift */; };
+		CE793FCE273A693F00311423 /* UIAlertActionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE793FCD273A693F00311423 /* UIAlertActionExtensions.swift */; };
 		CE7C11BD270AD31A00063336 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7C11BF270AD31A00063336 /* Localizable.strings */; };
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
 		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
@@ -101,6 +102,7 @@
 		CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "News+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE72F0C32719562E00D9E844 /* NewsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArray.swift; sourceTree = "<group>"; };
 		CE7923A127317ED9005CD205 /* BanchExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BanchExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE793FCD273A693F00311423 /* UIAlertActionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertActionExtensions.swift; sourceTree = "<group>"; };
 		CE7C11BE270AD31A00063336 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C0270AD36400063336 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				CE82DB582730063600C265E1 /* NSDateExtensions.swift */,
 				CE7C11C6270AF5F500063336 /* StringExtensions.swift */,
 				CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */,
+				CE793FCD273A693F00311423 /* UIAlertActionExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				CE1B77F42716F9D700C3034A /* NewsModel.swift in Sources */,
 				CE249F3A2715D821005448BB /* HomeViewModel.swift in Sources */,
 				CE7FC0A9270DABCC007325DA /* CustomAlertView.swift in Sources */,
+				CE793FCE273A693F00311423 /* UIAlertActionExtensions.swift in Sources */,
 				CE7CCDF22732654B002F5182 /* AppleMapsViewController.swift in Sources */,
 				CE1B77E82716B93300C3034A /* APIConstants.swift in Sources */,
 				CEF2660F26EF3EFC008EE038 /* SideMenuViewController.swift in Sources */,
