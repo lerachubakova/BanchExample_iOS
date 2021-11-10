@@ -60,6 +60,7 @@
 		CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */; };
 		CE8AB960271F0DCA00AEEEE4 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */; };
 		CE8AB962271F228F00AEEEE4 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */; };
+		CE8B0E19273BBE7C005410DC /* PHLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B0E18273BBE7C005410DC /* PHLibraryViewModel.swift */; };
 		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
 		CE929D4C27044EFD0031A8C8 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */; };
 		CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */; };
@@ -134,6 +135,7 @@
 		CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
+		CE8B0E18273BBE7C005410DC /* PHLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHLibraryViewModel.swift; sourceTree = "<group>"; };
 		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
 		CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 			children = (
 				CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */,
 				CE88FBDD26F382EA00DE394F /* PHLibraryViewController.swift */,
+				CE8B0E18273BBE7C005410DC /* PHLibraryViewModel.swift */,
 				CE69013D270F1C3F00F09B78 /* InformationTableViewCell */,
 			);
 			path = Information;
@@ -703,6 +706,7 @@
 				CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */,
 				CE72F0C42719562E00D9E844 /* NewsArray.swift in Sources */,
 				CE1B77EE2716E0B800C3034A /* JSONNewsModel.swift in Sources */,
+				CE8B0E19273BBE7C005410DC /* PHLibraryViewModel.swift in Sources */,
 				CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */,
 				CE1B77F02716E0D100C3034A /* SourceModel.swift in Sources */,
 				CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */,
