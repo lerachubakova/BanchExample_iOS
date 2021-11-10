@@ -63,7 +63,7 @@ final class ContainerViewController: UIViewController {
         addSubviews()
         setupGestureRecognizers()
         setupConstraints()
-        showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.home)
+        showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.home)
     }
 
     // MARK: - Setup
@@ -319,15 +319,15 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
 
         switch option {
         case LocalizeKeys.home:
-            showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.home)
+            showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.home)
         case LocalizeKeys.info:
-            showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.library)
+            showViewController(vc: UINavigationController(rootViewController: PHLibraryViewController()))
         case LocalizeKeys.googleMaps:
-             showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.googleMaps)
+            showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.googleMaps)
         case LocalizeKeys.appleMaps:
-            showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.appleMaps)
+            showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.appleMaps)
         case LocalizeKeys.settings:
-            showViewController(viewController: UINavigationController.self, storyboardName: Storyboards.MainFlow.settings)
+            showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.settings)
         default: break
         }
 
@@ -336,7 +336,14 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         }
     }
 
-    private func showViewController<Type: UIViewController>(viewController: Type.Type, storyboardName: String) {
+    private func showViewController<Type: UIViewController>(viewControllerType: Type.Type, storyboardName: String) {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+        guard let vc = storyboard.instantiateInitialViewController() as? Type else { return }
+
+        showViewController(vc: vc)
+    }
+
+    private func showViewController(vc: UIViewController) {
         for subview in view.subviews where subview.tag == 99 {
             subview.removeFromSuperview()
         }
@@ -344,9 +351,6 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         for child in self.children {
             child.didMove(toParent: nil)
         }
-
-        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
-        guard let vc = storyboard.instantiateInitialViewController() as? Type else { return }
 
         self.addChild(vc)
         vc.view.tag = 99

@@ -61,7 +61,6 @@
 		CE8AB960271F0DCA00AEEEE4 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */; };
 		CE8AB962271F228F00AEEEE4 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */; };
 		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
-		CE8E3128270340EA00C61AE6 /* PHLibraryNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E3127270340EA00C61AE6 /* PHLibraryNavigation.storyboard */; };
 		CE929D4C27044EFD0031A8C8 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */; };
 		CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */; };
 		CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D5027047C510031A8C8 /* SettingsViewController.swift */; };
@@ -136,7 +135,6 @@
 		CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
-		CE8E3127270340EA00C61AE6 /* PHLibraryNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PHLibraryNavigation.storyboard; sourceTree = "<group>"; };
 		CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
 		CE929D5027047C510031A8C8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -207,14 +205,6 @@
 				CE32661F272BC2400067A9A7 /* FiltersViewController.xib */,
 			);
 			path = Filters;
-			sourceTree = "<group>";
-		};
-		CE326624272BF3850067A9A7 /* Authorization */ = {
-			isa = PBXGroup;
-			children = (
-				CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */,
-			);
-			path = Authorization;
 			sourceTree = "<group>";
 		};
 		CE63328C271875DA0067A45B /* NewsTVCell */ = {
@@ -365,9 +355,8 @@
 		CE8E31292703433100C61AE6 /* Information */ = {
 			isa = PBXGroup;
 			children = (
-				CE8E3127270340EA00C61AE6 /* PHLibraryNavigation.storyboard */,
+				CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */,
 				CE88FBDD26F382EA00DE394F /* PHLibraryViewController.swift */,
-				CE326624272BF3850067A9A7 /* Authorization */,
 				CE69013D270F1C3F00F09B78 /* InformationTableViewCell */,
 			);
 			path = Information;
@@ -599,7 +588,6 @@
 				CEDD9CC6271D587E002F9833 /* loading-state.json in Resources */,
 				CE633290271876140067A45B /* NewsTVCell.xib in Resources */,
 				CE793FDB273AA6E400311423 /* PolicyAndTerms.storyboard in Resources */,
-				CE8E3128270340EA00C61AE6 /* PHLibraryNavigation.storyboard in Resources */,
 				CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */,
 				CE793FE5273AB36300311423 /* PrivacyPolicy-ru.txt in Resources */,
 				CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */,

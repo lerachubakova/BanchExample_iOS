@@ -6,8 +6,10 @@
 //
 
 import Photos
+import SnapKit
 import UIKit
 
+// MARK: Day
 class Day {
     let day: Date
     var images: [UIImage?]
@@ -18,6 +20,7 @@ class Day {
     }
 }
 
+// MARK: Month
 class Month {
     let month: Date
     var days: [Day]
@@ -40,9 +43,27 @@ class Month {
 }
 
 final class PHLibraryViewController: UIViewController {
-    // MARK: - @IBOutlets
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var backgroundMessageLabel: UILabel!
+    // MARK: UIElements
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(InfoTVCell.nib(), forCellReuseIdentifier: InfoTVCell.identifier)
+
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        tableView.isHidden = true
+        tableView.backgroundColor = .clear
+        return tableView
+    }()
+
+    private lazy var backgroundMessageLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.isHidden = true
+        return label
+    }()
 
     // MARK: - Private Properties
     private weak var delegate: HomeViewControllerDelegate?
@@ -61,6 +82,8 @@ final class PHLibraryViewController: UIViewController {
         container = navigationController?.parent as? ContainerViewController
 
         setLocalizedStrings()
+        configureUIElements()
+
         LanguageObserver.subscribe(self)
 
         let animationDuration = container?.animationDuration ?? 0
@@ -69,18 +92,50 @@ final class PHLibraryViewController: UIViewController {
         }
     }
 
-    // MARK: - Setup
-    private func configureTableView() {
-        tableView.register(InfoTVCell.nib(), forCellReuseIdentifier: InfoTVCell.identifier)
-
-        tableView.delegate = self
-        tableView.dataSource = self
-
-        tableView.isHidden = false
-
-        makePhotosArray()
+    // MARK: - UISetup
+    private func configureUIElements() {
+        view.backgroundColor = .lightGray
+        configureNavigationBar()
+        configureBackgroundMessageLabel()
+        configureTableView()
     }
 
+    private func configureNavigationBar() {
+        let menuBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(tappedMenuButton))
+        menuBarButtonItem.tintColor = .black
+        menuBarButtonItem.image = UIImage(systemName: "line.horizontal.3")
+        navigationItem.setLeftBarButton(menuBarButtonItem, animated: true)
+
+        let cameraBarButtonItem =  UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(tappedCameraButton))
+        cameraBarButtonItem.tintColor = .black
+        cameraBarButtonItem.image = UIImage(systemName: "camera")
+        navigationItem.setRightBarButton(cameraBarButtonItem, animated: true)
+    }
+
+    private func configureBackgroundMessageLabel() {
+        self.view.addSubview(backgroundMessageLabel)
+        backgroundMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        backgroundMessageLabel.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.centerX.equalToSuperview()
+            maker.width.equalTo(264)
+        }
+    }
+
+    private func configureTableView() {
+        self.view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        tableView.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+            maker.bottom.equalToSuperview()
+            maker.top.equalToSuperview()
+        }
+    }
+
+    // MARK: - Setup
     private func setLocalizedStrings() {
         title = LocalizeKeys.info.localized()
         let status = PHLibraryAuthorizationManager.getPhotoLibraryAuthorizationStatus()
@@ -100,7 +155,7 @@ final class PHLibraryViewController: UIViewController {
         case .notRequested:
             makeAuthorizationRequest()
         case .granted:
-            configureTableView()
+            makePhotosArray()
         case .unauthorized:
             setNoPermissionBackgroundLabel()
             container?.showOpenSettingsAlert()
@@ -113,7 +168,7 @@ final class PHLibraryViewController: UIViewController {
             switch status {
             case .granted:
                 DispatchQueue.main.async { [weak self] in
-                    self?.configureTableView()
+                    self?.makePhotosArray()
                     self?.tableView.reloadData()
                 }
             case .unauthorized:
@@ -141,6 +196,7 @@ final class PHLibraryViewController: UIViewController {
         let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
 
         if fetchResult.count > 0 {
+            tableView.isHidden = false
             fetchPhotoAtIndex(0, fetchResult)
         } else {
             tableView.isHidden = true
@@ -202,6 +258,8 @@ final class PHLibraryViewController: UIViewController {
     @IBAction private func tappedMenuButton() {
         delegate?.tappedMenuButton()
     }
+
+    @IBAction private func tappedCameraButton() { }
 }
 
 // MARK: - LanguageSubscriber
