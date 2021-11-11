@@ -57,10 +57,13 @@
 		CE82DB592730063600C265E1 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82DB582730063600C265E1 /* NSDateExtensions.swift */; };
 		CE88FBDC26F3613000DE394F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDB26F3613000DE394F /* HomeViewController.swift */; };
 		CE88FBDE26F382EA00DE394F /* PHLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDD26F382EA00DE394F /* PHLibraryViewController.swift */; };
+		CE892A2A273D287500AAB9B8 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE892A29273D287500AAB9B8 /* CameraViewModel.swift */; };
+		CE892A2C273D2FEF00AAB9B8 /* VideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE892A2B273D2FEF00AAB9B8 /* VideoPreviewView.swift */; };
 		CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */; };
 		CE8AB960271F0DCA00AEEEE4 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */; };
 		CE8AB962271F228F00AEEEE4 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */; };
 		CE8B0E19273BBE7C005410DC /* PHLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B0E18273BBE7C005410DC /* PHLibraryViewModel.swift */; };
+		CE8B0E1C273BE641005410DC /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B0E1B273BE641005410DC /* CameraViewController.swift */; };
 		CE8E312627033C5300C61AE6 /* HomeNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */; };
 		CE929D4C27044EFD0031A8C8 /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */; };
 		CE929D4E270452130031A8C8 /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */; };
@@ -132,10 +135,13 @@
 		CE82DB582730063600C265E1 /* NSDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
 		CE88FBDB26F3613000DE394F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE88FBDD26F382EA00DE394F /* PHLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHLibraryViewController.swift; sourceTree = "<group>"; };
+		CE892A29273D287500AAB9B8 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		CE892A2B273D2FEF00AAB9B8 /* VideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewView.swift; sourceTree = "<group>"; };
 		CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		CE8B0E18273BBE7C005410DC /* PHLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHLibraryViewModel.swift; sourceTree = "<group>"; };
+		CE8B0E1B273BE641005410DC /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		CE8E312527033C5300C61AE6 /* HomeNavigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeNavigation.storyboard; sourceTree = "<group>"; };
 		CE929D4B27044EFD0031A8C8 /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		CE929D4D270452130031A8C8 /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
@@ -320,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				CE03346627327AD200BD481D /* MyLocationButton.swift */,
+				CE892A2B273D2FEF00AAB9B8 /* VideoPreviewView.swift */,
 				CE7FC0A3270DAA11007325DA /* CustomAlert */,
 			);
 			path = Views;
@@ -354,12 +361,22 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		CE8B0E1A273BE630005410DC /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				CE8B0E1B273BE641005410DC /* CameraViewController.swift */,
+				CE892A29273D287500AAB9B8 /* CameraViewModel.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 		CE8E31292703433100C61AE6 /* Information */ = {
 			isa = PBXGroup;
 			children = (
 				CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */,
 				CE88FBDD26F382EA00DE394F /* PHLibraryViewController.swift */,
 				CE8B0E18273BBE7C005410DC /* PHLibraryViewModel.swift */,
+				CE8B0E1A273BE630005410DC /* Camera */,
 				CE69013D270F1C3F00F09B78 /* InformationTableViewCell */,
 			);
 			path = Information;
@@ -711,6 +728,8 @@
 				CE1B77F02716E0D100C3034A /* SourceModel.swift in Sources */,
 				CE633292271883D60067A45B /* DateFormatterExtensions.swift in Sources */,
 				CE03346727327AD200BD481D /* MyLocationButton.swift in Sources */,
+				CE892A2C273D2FEF00AAB9B8 /* VideoPreviewView.swift in Sources */,
+				CE8B0E1C273BE641005410DC /* CameraViewController.swift in Sources */,
 				CE667D4B270C6DF0004CD31A /* LanguageSubscriber.swift in Sources */,
 				CE63328F271876140067A45B /* NewsTVCell.swift in Sources */,
 				CE249F3D2715D96E005448BB /* NetworkManager.swift in Sources */,
@@ -727,6 +746,7 @@
 				CE929D5127047C510031A8C8 /* SettingsViewController.swift in Sources */,
 				CE1B77E42716A55200C3034A /* XMLNewsModel.swift in Sources */,
 				CE690145270F276300F09B78 /* InfoCollectionVCell.swift in Sources */,
+				CE892A2A273D287500AAB9B8 /* CameraViewModel.swift in Sources */,
 				CE793FDD273AA75200311423 /* PolicyAndTermsViewController.swift in Sources */,
 				CE690140270F1CB100F09B78 /* InfoTVCell.swift in Sources */,
 			);

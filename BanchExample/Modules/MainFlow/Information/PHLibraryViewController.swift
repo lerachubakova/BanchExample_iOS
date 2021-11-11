@@ -61,9 +61,14 @@ final class PHLibraryViewController: UIViewController {
         LanguageObserver.subscribe(self)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.startLoading()
+    }
+
     // MARK: - UISetup
     private func configureUIElements() {
         view.backgroundColor = .lightGray
+        navigationController?.navigationBar.tintColor = .black
         configureMenuBarButtonItem()
         configureBackgroundMessageLabel()
         configureTableView()
@@ -72,7 +77,6 @@ final class PHLibraryViewController: UIViewController {
 
     private func configureMenuBarButtonItem() {
         let menuBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(tappedMenuButton))
-        menuBarButtonItem.tintColor = .black
         menuBarButtonItem.image = UIImage(systemName: "line.horizontal.3")
         navigationItem.setLeftBarButton(menuBarButtonItem, animated: true)
     }
@@ -159,7 +163,6 @@ final class PHLibraryViewController: UIViewController {
 
     func showCameraButton() {
         let cameraBarButtonItem =  UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(tappedCameraButton))
-        cameraBarButtonItem.tintColor = .black
         cameraBarButtonItem.image = UIImage(systemName: "camera")
         navigationItem.setRightBarButton(cameraBarButtonItem, animated: true)
     }
@@ -169,7 +172,9 @@ final class PHLibraryViewController: UIViewController {
         delegate?.tappedMenuButton()
     }
 
-    @IBAction private func tappedCameraButton() { }
+    @IBAction private func tappedCameraButton() {
+        navigationController?.pushViewController(CameraViewController(), animated: true)
+    }
 }
 
 // MARK: - LanguageSubscriber
