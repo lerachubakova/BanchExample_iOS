@@ -318,15 +318,15 @@ extension ContainerViewController: SideMenuViewControllerDelegate {
         }
 
         switch option {
-        case LocalizeKeys.home:
+        case LocalizeKeys.SideMenu.home:
             showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.home)
-        case LocalizeKeys.info:
+        case LocalizeKeys.SideMenu.info:
             showViewController(vc: UINavigationController(rootViewController: PHLibraryViewController()))
-        case LocalizeKeys.googleMaps:
+        case LocalizeKeys.SideMenu.googleMaps:
             showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.googleMaps)
-        case LocalizeKeys.appleMaps:
+        case LocalizeKeys.SideMenu.appleMaps:
             showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.appleMaps)
-        case LocalizeKeys.settings:
+        case LocalizeKeys.SideMenu.settings:
             showViewController(viewControllerType: UINavigationController.self, storyboardName: Storyboards.MainFlow.settings)
         default: break
         }

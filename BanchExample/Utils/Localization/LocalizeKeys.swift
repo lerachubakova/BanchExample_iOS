@@ -8,14 +8,17 @@
 import Foundation
 
 struct LocalizeKeys {
+    
     // SideMenu
-    static let home = "home"
-    static let info = "photoLibrary"
-    static let googleMaps = "googleMaps"
-    static let appleMaps = "appleMaps"
-    static let settings = "settings"
-    static let footer = "footer"
-    static let header = "header"
+    struct SideMenu {
+        static let home = "home"
+        static let info = "photoLibrary"
+        static let googleMaps = "googleMaps"
+        static let appleMaps = "appleMaps"
+        static let settings = "settings"
+        static let footer = "footer"
+        static let header = "header"
+    }
 
     // Settings
     struct Settings {
@@ -47,6 +50,7 @@ struct LocalizeKeys {
     struct PHLibrary {
         static let photoLibraryNoPhotoMessage = "EmptyLibraryMessage"
         static let photoLibraryNoPermission = "NoPermissionsPhotoLibrary"
+        static let saveButton = "PHLibrarySaveButton"
     }
 
     // Filters
@@ -58,6 +62,7 @@ struct LocalizeKeys {
         static let hidden = "hiddenFilter"
     }
 
+    // Notification
     struct Notification {
         static let savedPhoto = "notifificationSavedPhoto"
         static let notSavedPhoto = "notifificationNotSavedPhoto"

@@ -39,8 +39,8 @@ final class SettingsViewController: UIViewController {
 
     // MARK: - Logic
     private func setLocalizedStrings() {
-        mainLabel.text = LocalizeKeys.settings.localized().uppercased()
-        title = LocalizeKeys.settings.localized()
+        mainLabel.text = LocalizeKeys.SideMenu.settings.localized().uppercased()
+        title = LocalizeKeys.SideMenu.settings.localized()
         languageLabel.text = LocalizeKeys.Settings.language.localized()
         languageButton.setTitle(LocalizeKeys.Settings.languageName.localized() + " ▼", for: .normal)
         privacyPolicyButton.setTitle(LocalizeKeys.Settings.privacyPolicy.localized(), for: .normal)

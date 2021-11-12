@@ -42,6 +42,7 @@
 /* PHLibrary screen */
 "EmptyLibraryMessage" = "There is no video in library or in the available media.";
 "NoPermissionsPhotoLibrary" = "We don't have permissions to show your photos.";
+"PHLibrarySaveButton" = "Save";
 
 /* filters */
 "allFilter" = "All";

@@ -118,7 +118,7 @@ final class PHLibraryViewController: UIViewController {
 
     // MARK: - Setup
     private func setLocalizedStrings() {
-        title = LocalizeKeys.info.localized()
+        title = LocalizeKeys.SideMenu.info.localized()
         let status = PHLibraryAuthorizationManager.getPhotoLibraryAuthorizationStatus()
         switch status {
         case .notRequested:

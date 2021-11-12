@@ -42,6 +42,7 @@
 /* PHLibrary screen */
 "EmptyLibraryMessage" = "В доступных медиафайлах нет фото или видео.";
 "NoPermissionsPhotoLibrary" = "У приложения нет разрешений для доступа к медиафайлам.";
+"PHLibrarySaveButton" = "Сохранить";
 
 /* filters */
 "allFilter" = "Все";

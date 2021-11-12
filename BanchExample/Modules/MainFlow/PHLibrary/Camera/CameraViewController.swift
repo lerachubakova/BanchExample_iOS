@@ -76,7 +76,7 @@ class CameraViewController: UIViewController {
     }
 
     private func configureNavigationBar() {
-        let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(tappedSaveButton))
+        let saveBarButtonItem = UIBarButtonItem(title: LocalizeKeys.PHLibrary.saveButton.localized(), style: .done, target: self, action: #selector(tappedSaveButton))
         navigationItem.setRightBarButton(saveBarButtonItem, animated: true)
     }
 

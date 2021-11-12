@@ -95,8 +95,8 @@ final class HomeViewController: UIViewController {
 
     // MARK: - Private Logic
     private func setLocalizedStrings() {
-        titleButton.setTitle(LocalizeKeys.home.localized(), for: .normal)
-        navigationItem.backButtonTitle = LocalizeKeys.home.localized()
+        titleButton.setTitle(LocalizeKeys.SideMenu.home.localized(), for: .normal)
+        navigationItem.backButtonTitle = LocalizeKeys.SideMenu.home.localized()
 
         setFilter()
     }
