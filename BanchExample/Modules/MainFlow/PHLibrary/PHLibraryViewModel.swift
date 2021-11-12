@@ -5,8 +5,8 @@
 //  Created by User on 10.11.21.
 //
 
-import Foundation
 import Photos
+import UIKit
 
 // MARK: - Day
 class Day {

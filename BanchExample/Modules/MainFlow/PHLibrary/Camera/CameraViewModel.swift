@@ -7,7 +7,7 @@
 
 import AVFoundation
 import Photos
-import Foundation
+import UIKit
 
 class CameraViewModel: NSObject {
 

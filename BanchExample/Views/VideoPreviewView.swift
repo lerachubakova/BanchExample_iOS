@@ -6,7 +6,7 @@
 //
 
 import AVFoundation
-import Foundation
+import UIKit
 
 class VideoPreviewView: UIView {
 

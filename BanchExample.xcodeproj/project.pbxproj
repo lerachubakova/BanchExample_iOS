@@ -113,7 +113,6 @@
 		CE72F0B92719537000D9E844 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CE72F0BF2719556000D9E844 /* News+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "News+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE72F0C32719562E00D9E844 /* NewsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArray.swift; sourceTree = "<group>"; };
-		CE7923A127317ED9005CD205 /* BanchExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BanchExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		CE793FCD273A693F00311423 /* UIAlertActionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertActionExtensions.swift; sourceTree = "<group>"; };
 		CE793FD7273A9F8100311423 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		CE793FDA273AA6E400311423 /* PolicyAndTerms.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PolicyAndTerms.storyboard; sourceTree = "<group>"; };
@@ -428,7 +427,6 @@
 		CEF265E626EF1F07008EE038 = {
 			isa = PBXGroup;
 			children = (
-				CE7923A127317ED9005CD205 /* BanchExample-Bridging-Header.h */,
 				CEF265F126EF1F07008EE038 /* BanchExample */,
 				CEF265F026EF1F07008EE038 /* Products */,
 				ED49841C01AFF57C2289F81F /* Pods */,
@@ -914,7 +912,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chubakova.BanchExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "BanchExample-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -938,7 +936,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chubakova.BanchExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "BanchExample-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
