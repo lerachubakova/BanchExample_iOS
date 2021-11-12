@@ -20,7 +20,6 @@ class CameraViewController: UIViewController {
 
     private lazy var videoPreviewView: VideoPreviewView = {
         let view = VideoPreviewView(frame: UIScreen.main.bounds)
-        view.backgroundColor = .blue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -41,6 +40,11 @@ class CameraViewController: UIViewController {
         view.clipsToBounds = true
         view.backgroundColor = .black
         return view
+    }()
+
+    private lazy var notificationView: NotificationView = {
+        let notification = NotificationView()
+        return notification
     }()
 
     private var heightCameraViewConstraint: Constraint?
@@ -67,6 +71,7 @@ class CameraViewController: UIViewController {
         configurePhotoImageView()
         configureVideoPreviewView()
         configureButtonWithBackground()
+        configureNotificationView()
         view.layoutIfNeeded()
     }
 
@@ -115,6 +120,25 @@ class CameraViewController: UIViewController {
         }
     }
 
+    func configureNotificationView() {
+        view.addSubview(notificationView)
+
+        notificationView.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview()
+            maker.trailing.equalToSuperview()
+        }
+
+        if let inset = navigationController?.navigationBar.frame.maxY {
+            notificationView.snp.makeConstraints { maker in
+                maker.bottom.equalTo(view.snp.top).offset(inset)
+            }
+        } else {
+            notificationView.snp.makeConstraints { maker in
+                maker.bottom.equalTo(view.snp.top)
+            }
+        }
+    }
+
     // MARK: - Logic
     private func hideCameraButtonView() {
 
@@ -136,6 +160,11 @@ class CameraViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         hideCameraButtonView()
         videoPreviewView.isHidden = true
+    }
+
+    func showNotification(message: String) {
+        notificationView.present(message: message)
+        navigationItem.rightBarButtonItems?.first?.isEnabled = false
     }
 
     // MARK: - @IBActions

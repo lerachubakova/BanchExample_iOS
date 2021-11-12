@@ -59,6 +59,7 @@
 		CE88FBDE26F382EA00DE394F /* PHLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88FBDD26F382EA00DE394F /* PHLibraryViewController.swift */; };
 		CE892A2A273D287500AAB9B8 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE892A29273D287500AAB9B8 /* CameraViewModel.swift */; };
 		CE892A2C273D2FEF00AAB9B8 /* VideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE892A2B273D2FEF00AAB9B8 /* VideoPreviewView.swift */; };
+		CE892A30273D552E00AAB9B8 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE892A2F273D552E00AAB9B8 /* NotificationView.swift */; };
 		CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */; };
 		CE8AB960271F0DCA00AEEEE4 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */; };
 		CE8AB962271F228F00AEEEE4 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */; };
@@ -137,6 +138,7 @@
 		CE88FBDD26F382EA00DE394F /* PHLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHLibraryViewController.swift; sourceTree = "<group>"; };
 		CE892A29273D287500AAB9B8 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		CE892A2B273D2FEF00AAB9B8 /* VideoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewView.swift; sourceTree = "<group>"; };
+		CE892A2F273D552E00AAB9B8 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		CE8AB95D271F000E00AEEEE4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		CE8AB95F271F0DCA00AEEEE4 /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		CE8AB961271F228F00AEEEE4 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				CE03346627327AD200BD481D /* MyLocationButton.swift */,
+				CE892A2F273D552E00AAB9B8 /* NotificationView.swift */,
 				CE892A2B273D2FEF00AAB9B8 /* VideoPreviewView.swift */,
 				CE7FC0A3270DAA11007325DA /* CustomAlert */,
 			);
@@ -722,6 +725,7 @@
 				CE72F0C12719556000D9E844 /* News+CoreDataClass.swift in Sources */,
 				CE72F0BA2719537000D9E844 /* CoreDataManager.swift in Sources */,
 				CE72F0C42719562E00D9E844 /* NewsArray.swift in Sources */,
+				CE892A30273D552E00AAB9B8 /* NotificationView.swift in Sources */,
 				CE1B77EE2716E0B800C3034A /* JSONNewsModel.swift in Sources */,
 				CE8B0E19273BBE7C005410DC /* PHLibraryViewModel.swift in Sources */,
 				CE8AB95E271F000E00AEEEE4 /* NewsViewController.swift in Sources */,

@@ -57,4 +57,9 @@ struct LocalizeKeys {
         static let trash = "trashFilter"
         static let hidden = "hiddenFilter"
     }
+
+    struct Notification {
+        static let savedPhoto = "notifificationSavedPhoto"
+        static let notSavedPhoto = "notifificationNotSavedPhoto"
+    }
 }

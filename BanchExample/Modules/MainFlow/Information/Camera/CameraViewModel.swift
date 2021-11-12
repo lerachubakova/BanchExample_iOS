@@ -33,6 +33,11 @@ class CameraViewModel: NSObject {
     }
 
     func takePicture() {
+        guard !captureSession.connections.isEmpty else {
+            print("\n LOG CameraViewModel: takePicture: No available connections")
+            return
+        }
+
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         captureOutput.capturePhoto(with: settings, delegate: self)
     }
@@ -80,9 +85,11 @@ class CameraViewModel: NSObject {
 
     @objc private func saveImageError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         guard let error = error else {
+            controller?.showNotification(message: LocalizeKeys.Notification.savedPhoto.localized())
             return
         }
-        print("### PhotoViewController: saveError: \(error)")
+        controller?.showNotification(message: LocalizeKeys.Notification.notSavedPhoto.localized())
+        print("### PhotoViewController: saveError: \(error.localizedDescription)")
     }
 }
 

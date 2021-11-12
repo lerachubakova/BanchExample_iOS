@@ -50,3 +50,6 @@
 "trashFilter" = "Trash";
 "hiddenFilter" = "Hidden";
 
+/* Notification */
+"notifificationSavedPhoto" = "Your photo was saved";
+"notifificationNotSavedPhoto" = "Your photo wasn't saved. Unexpected error.";

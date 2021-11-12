@@ -49,3 +49,7 @@
 "interestingFilter" = "Интересные";
 "trashFilter" = "Корзина";
 "hiddenFilter" = "Скрытые";
+
+/* Notification */
+"notifificationSavedPhoto" = "Ваше фото было сохранено";
+"notifificationNotSavedPhoto" = "Ваше фото не было сохранено. Произошла ошибка.";
