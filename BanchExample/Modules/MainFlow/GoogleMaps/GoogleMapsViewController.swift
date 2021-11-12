@@ -5,6 +5,7 @@
 //  Created by User on 29.09.21.
 //
 
+import GoogleMaps
 import UIKit
 
 final class GoogleMapsViewController: UIViewController {

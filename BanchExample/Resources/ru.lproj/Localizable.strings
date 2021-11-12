@@ -36,12 +36,14 @@
 /* PHLibrary alert */
 "alertContinueTitle" = "Хотите продолжить?";
 "alertLibraryMessage" = "Приложению необходим доступ к одному и более фото в библиотеке.";
+"alertCameraMessage" = "Приложению необходим доступ к камере.";
 "alertOpenSettingsButton" = "Настройки";
 "alertNoThanksButton" = "Нет, спасибо";
 
 /* PHLibrary screen */
 "EmptyLibraryMessage" = "В доступных медиафайлах нет фото или видео.";
 "NoPermissionsPhotoLibrary" = "У приложения нет разрешений для доступа к медиафайлам.";
+"PHLibrarySaveButton" = "Сохранить";
 
 /* filters */
 "allFilter" = "Все";
@@ -49,3 +51,8 @@
 "interestingFilter" = "Интересные";
 "trashFilter" = "Корзина";
 "hiddenFilter" = "Скрытые";
+
+/* Notification */
+"notifificationSavedPhoto" = "Ваше фото было сохранено";
+"notifificationNotSavedPhoto" = "Ваше фото не было сохранено. Произошла ошибка";
+"notifificationNoLibraryAccess" = "У приложения нет доступа для сохранения фотографии";

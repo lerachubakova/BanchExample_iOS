@@ -19,11 +19,11 @@ final class SideMenuViewController: UIViewController {
 
     weak var delegate: SideMenuViewControllerDelegate?
 
-    let options: [String] = [LocalizeKeys.home,
-                             LocalizeKeys.info,
-                             LocalizeKeys.googleMaps,
-                             LocalizeKeys.appleMaps,
-                             LocalizeKeys.settings]
+    let options: [String] = [LocalizeKeys.SideMenu.home,
+                             LocalizeKeys.SideMenu.info,
+                             LocalizeKeys.SideMenu.googleMaps,
+                             LocalizeKeys.SideMenu.appleMaps,
+                             LocalizeKeys.SideMenu.settings]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,8 @@ final class SideMenuViewController: UIViewController {
     }
 
     private func setLocalizedStrings() {
-        footerLabel.text = LocalizeKeys.footer.localized()
-        headerLabel.text = LocalizeKeys.header.localized()
+        footerLabel.text = LocalizeKeys.SideMenu.footer.localized()
+        headerLabel.text = LocalizeKeys.SideMenu.header.localized()
         DispatchQueue.main.async { [weak self] in
             self?.sideMenuTableView.reloadData()
         }
@@ -77,7 +77,7 @@ extension SideMenuViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.selectRow(with: options[indexPath.item])
-        if options[indexPath.item] == LocalizeKeys.settings || options[indexPath.item] == LocalizeKeys.appleMaps {
+        if options[indexPath.item] == LocalizeKeys.SideMenu.settings || options[indexPath.item] == LocalizeKeys.SideMenu.appleMaps {
             sideMenuTableView.deselectRow(at: indexPath, animated: false)
         }
     }

@@ -5,8 +5,8 @@
 //  Created by User on 10.11.21.
 //
 
-import Foundation
 import Photos
+import UIKit
 
 // MARK: - Day
 class Day {
@@ -58,7 +58,9 @@ final class PHLibraryViewModel {
     init(vc: PHLibraryViewController) {
         self.controller = vc
         self.screenSize = controller?.view.frame.size ?? CGSize()
+    }
 
+    func startLoading() {
         let animationDuration = controller?.container?.animationDuration ?? 0
         DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) { [weak self] in
             self?.checkAuthorization()
@@ -66,8 +68,8 @@ final class PHLibraryViewModel {
     }
 
     // MARK: Logic
-    func checkAuthorization() {
-        let status = PHLibraryAuthorizationManager.getPhotoLibraryAuthorizationStatus()
+    private func checkAuthorization() {
+        let status = PHLibraryAuthorizationManager.getStatus()
         switch status {
         case .notRequested:
             makeAuthorizationRequest()
@@ -79,7 +81,7 @@ final class PHLibraryViewModel {
     }
 
     private func makeAuthorizationRequest() {
-        PHLibraryAuthorizationManager.requestPhotoLibraryAuthorization { [weak self] status in
+        PHLibraryAuthorizationManager.requestAuthorization { [weak self] status in
             switch status {
             case .granted:
                 DispatchQueue.main.async { [weak self] in
@@ -96,13 +98,14 @@ final class PHLibraryViewModel {
     }
 
     private func makePhotosArray() {
+        month = nil
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
 
       //  fetchOptions.fetchLimit = 30
 
-        let startDate = NSDate(dateString: "01.10.2021", format:  "dd.MM.yyyy")
-        let endDate = NSDate(dateString: "01.11.2021", format:  "dd.MM.yyyy")
+        let startDate = NSDate(dateString: "01.11.2021", format:  "dd.MM.yyyy")
+        let endDate = NSDate(dateString: "01.12.2021", format:  "dd.MM.yyyy")
 
         fetchOptions.predicate = NSPredicate(format: "creationDate > %@ AND creationDate < %@", startDate, endDate)
 
@@ -167,11 +170,13 @@ final class PHLibraryViewModel {
 
     private func doIfNoPermissions() {
         controller?.setNoPermissionBackgroundLabel()
-        controller?.container?.showOpenSettingsAlert()
+        controller?.container?.showLibraryOpenSettingsAlert()
+        controller?.showCameraButton()
     }
 
     private func doIfEmpty() {
         controller?.setNoPhotoMessageLabel()
+        controller?.showCameraButton()
     }
 
     private func doAfterLoading() {

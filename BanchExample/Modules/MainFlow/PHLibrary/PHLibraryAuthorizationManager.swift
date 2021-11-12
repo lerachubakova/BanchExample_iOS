@@ -18,7 +18,7 @@ typealias RequestPhotoLibraryAuthCompletionHandler = (PhotoLibraryAuthorizationS
 
 final class PHLibraryAuthorizationManager {
 
-    static func requestPhotoLibraryAuthorization(completionHandler: @escaping RequestPhotoLibraryAuthCompletionHandler) {
+    static func requestAuthorization(completionHandler: @escaping RequestPhotoLibraryAuthCompletionHandler) {
         DispatchQueue.main.async {
             PHPhotoLibrary.requestAuthorization { status in
                 guard status == .authorized else {
@@ -30,7 +30,7 @@ final class PHLibraryAuthorizationManager {
         }
     }
 
-    static func getPhotoLibraryAuthorizationStatus() -> PhotoLibraryAuthorizationStatus {
+    static func getStatus() -> PhotoLibraryAuthorizationStatus {
         let status = PHPhotoLibrary.authorizationStatus()
         switch status {
         case .authorized: return .granted

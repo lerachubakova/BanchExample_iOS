@@ -5,8 +5,8 @@
 //  Created by User on 15.10.21.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 enum NewsFilter: CaseIterable {
     case all, noDeleted, intresting, trash, hidden
