@@ -125,7 +125,7 @@ final class ContainerViewController: UIViewController {
         self.sideMenuTrailingConstraint.isActive = true
     }
 
-    func showOpenSettingsAlert() {
+    func showLibraryOpenSettingsAlert() {
         let title = LocalizeKeys.Alerts.continueTitle.localized()
         let message = LocalizeKeys.Alerts.photoLibraryMessage.localized()
         let settingsButtonTitle = LocalizeKeys.Alerts.openSettingsButton.localized()

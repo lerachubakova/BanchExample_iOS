@@ -36,6 +36,7 @@
 /* PHLibrary alert */
 "alertContinueTitle" = "Want to continue?";
 "alertLibraryMessage" = "Application needs access to one or more photos in library.";
+"alertCameraMessage" = "Application needs access to your camera.";
 "alertOpenSettingsButton" = "Open Settings";
 "alertNoThanksButton" = "No, thanks";
 
@@ -53,4 +54,5 @@
 
 /* Notification */
 "notifificationSavedPhoto" = "Your photo was saved";
-"notifificationNotSavedPhoto" = "Your photo wasn't saved. Unexpected error.";
+"notifificationNotSavedPhoto" = "Your photo wasn't saved. Unexpected error";
+"notifificationNoLibraryAccess" = "App doesn't have permissions to save your photo";

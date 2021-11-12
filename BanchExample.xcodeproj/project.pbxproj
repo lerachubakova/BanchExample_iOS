@@ -49,6 +49,7 @@
 		CE7C11C2270ADA0C00063336 /* LocalizeKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */; };
 		CE7C11C7270AF5F500063336 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C6270AF5F500063336 /* StringExtensions.swift */; };
 		CE7C11C9270AF88C00063336 /* LanguageObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7C11C8270AF88C00063336 /* LanguageObserver.swift */; };
+		CE7CA81F273E527500E419D7 /* CameraAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CA81E273E527500E419D7 /* CameraAuthorizationManager.swift */; };
 		CE7CCDF22732654B002F5182 /* AppleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7CCDF12732654B002F5182 /* AppleMapsViewController.swift */; };
 		CE7CCDF427326808002F5182 /* AppleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7CCDF327326808002F5182 /* AppleMaps.storyboard */; };
 		CE7FC0A7270DAA99007325DA /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */; };
@@ -127,6 +128,7 @@
 		CE7C11C1270ADA0C00063336 /* LocalizeKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKeys.swift; sourceTree = "<group>"; };
 		CE7C11C6270AF5F500063336 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		CE7C11C8270AF88C00063336 /* LanguageObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageObserver.swift; sourceTree = "<group>"; };
+		CE7CA81E273E527500E419D7 /* CameraAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAuthorizationManager.swift; sourceTree = "<group>"; };
 		CE7CCDF12732654B002F5182 /* AppleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapsViewController.swift; sourceTree = "<group>"; };
 		CE7CCDF327326808002F5182 /* AppleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppleMaps.storyboard; sourceTree = "<group>"; };
 		CE7FC0A6270DAA99007325DA /* CustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 		CE8B0E1A273BE630005410DC /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				CE7CA81E273E527500E419D7 /* CameraAuthorizationManager.swift */,
 				CE8B0E1B273BE641005410DC /* CameraViewController.swift */,
 				CE892A29273D287500AAB9B8 /* CameraViewModel.swift */,
 			);
@@ -708,6 +711,7 @@
 				CE793FCE273A693F00311423 /* UIAlertActionExtensions.swift in Sources */,
 				CE7CCDF22732654B002F5182 /* AppleMapsViewController.swift in Sources */,
 				CE1B77E82716B93300C3034A /* APIConstants.swift in Sources */,
+				CE7CA81F273E527500E419D7 /* CameraAuthorizationManager.swift in Sources */,
 				CEF2660F26EF3EFC008EE038 /* SideMenuViewController.swift in Sources */,
 				CEF265F726EF1F07008EE038 /* ContainerViewController.swift in Sources */,
 				CE793FD8273A9F8100311423 /* NSAttributedStringExtensions.swift in Sources */,

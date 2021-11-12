@@ -26,10 +26,8 @@ class CameraViewModel: NSObject {
     init(vc: CameraViewController) {
         super.init()
         controller = vc
-        if setupSession() {
-            controller?.setSession(captureSession: captureSession)
-            startSession()
-        }
+
+        checkAuthorization()
     }
 
     func takePicture() {
@@ -46,6 +44,8 @@ class CameraViewModel: NSObject {
         if PHPhotoLibrary.authorizationStatus() == .authorized {
             guard let image = image else { return }
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveImageError), nil)
+        } else {
+            controller?.showNotification(message: LocalizeKeys.Notifications.noLibraryAccess.localized())
         }
     }
 
@@ -85,12 +85,55 @@ class CameraViewModel: NSObject {
 
     @objc private func saveImageError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         guard let error = error else {
-            controller?.showNotification(message: LocalizeKeys.Notification.savedPhoto.localized())
+            controller?.showNotification(message: LocalizeKeys.Notifications.savedPhoto.localized())
             return
         }
-        controller?.showNotification(message: LocalizeKeys.Notification.notSavedPhoto.localized())
+        controller?.showNotification(message: LocalizeKeys.Notifications.notSavedPhoto.localized())
         print("### PhotoViewController: saveError: \(error.localizedDescription)")
     }
+
+    // MARK: - Authorization
+
+    private func checkAuthorization() {
+        let status = CameraAuthorizationManager.getStatus()
+        switch status {
+        case .notRequested:
+            makeAuthorizationRequest()
+        case .granted:
+           doIfGranted()
+        case .unauthorized:
+            doIfNoPermissions()
+        }
+    }
+
+    private func makeAuthorizationRequest() {
+        CameraAuthorizationManager.requestAuthorization { [weak self] status in
+            switch status {
+            case .granted:
+                DispatchQueue.main.async { [weak self] in
+                    self?.doIfGranted()
+                }
+            case .unauthorized:
+                DispatchQueue.main.async { [weak self] in
+                    self?.doIfNoPermissions()
+                }
+            case .notRequested:
+                break
+            }
+        }
+    }
+
+    private func doIfGranted() {
+        if setupSession() {
+            controller?.setSession(captureSession: captureSession)
+            startSession()
+        }
+    }
+
+    private func doIfNoPermissions() {
+        controller?.showOpenSettingsAlert()
+    }
+    
 }
 
 extension CameraViewModel: AVCapturePhotoCaptureDelegate {

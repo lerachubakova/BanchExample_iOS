@@ -62,6 +62,7 @@ final class PHLibraryViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
         viewModel.startLoading()
     }
 
@@ -119,7 +120,7 @@ final class PHLibraryViewController: UIViewController {
     // MARK: - Setup
     private func setLocalizedStrings() {
         title = LocalizeKeys.SideMenu.info.localized()
-        let status = PHLibraryAuthorizationManager.getPhotoLibraryAuthorizationStatus()
+        let status = PHLibraryAuthorizationManager.getStatus()
         switch status {
         case .notRequested:
             break

@@ -69,7 +69,7 @@ final class PHLibraryViewModel {
 
     // MARK: Logic
     private func checkAuthorization() {
-        let status = PHLibraryAuthorizationManager.getPhotoLibraryAuthorizationStatus()
+        let status = PHLibraryAuthorizationManager.getStatus()
         switch status {
         case .notRequested:
             makeAuthorizationRequest()
@@ -81,7 +81,7 @@ final class PHLibraryViewModel {
     }
 
     private func makeAuthorizationRequest() {
-        PHLibraryAuthorizationManager.requestPhotoLibraryAuthorization { [weak self] status in
+        PHLibraryAuthorizationManager.requestAuthorization { [weak self] status in
             switch status {
             case .granted:
                 DispatchQueue.main.async { [weak self] in
@@ -170,7 +170,8 @@ final class PHLibraryViewModel {
 
     private func doIfNoPermissions() {
         controller?.setNoPermissionBackgroundLabel()
-        controller?.container?.showOpenSettingsAlert()
+        controller?.container?.showLibraryOpenSettingsAlert()
+        controller?.showCameraButton()
     }
 
     private func doIfEmpty() {

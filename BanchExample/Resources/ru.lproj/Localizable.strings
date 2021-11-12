@@ -36,6 +36,7 @@
 /* PHLibrary alert */
 "alertContinueTitle" = "Хотите продолжить?";
 "alertLibraryMessage" = "Приложению необходим доступ к одному и более фото в библиотеке.";
+"alertCameraMessage" = "Приложению необходим доступ к камере.";
 "alertOpenSettingsButton" = "Настройки";
 "alertNoThanksButton" = "Нет, спасибо";
 
@@ -53,4 +54,5 @@
 
 /* Notification */
 "notifificationSavedPhoto" = "Ваше фото было сохранено";
-"notifificationNotSavedPhoto" = "Ваше фото не было сохранено. Произошла ошибка.";
+"notifificationNotSavedPhoto" = "Ваше фото не было сохранено. Произошла ошибка";
+"notifificationNoLibraryAccess" = "У приложения нет доступа для сохранения фотографии";

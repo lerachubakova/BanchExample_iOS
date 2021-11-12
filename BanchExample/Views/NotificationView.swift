@@ -9,6 +9,8 @@ import UIKit
 
 class NotificationView: UIView {
 
+    static let duration: Double = 1.8
+
     private var height: CGFloat = 0
 
     private lazy var messageLabel: UILabel = {

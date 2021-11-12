@@ -8,7 +8,7 @@
 import Foundation
 
 struct LocalizeKeys {
-    
+
     // SideMenu
     struct SideMenu {
         static let home = "home"
@@ -42,6 +42,7 @@ struct LocalizeKeys {
 
         static let continueTitle = "alertContinueTitle"
         static let photoLibraryMessage = "alertLibraryMessage"
+        static let cameraMessage = "alertCameraMessage"
         static let openSettingsButton = "alertOpenSettingsButton"
         static let noThanksButton = "alertNoThanksButton"
     }
@@ -63,8 +64,9 @@ struct LocalizeKeys {
     }
 
     // Notification
-    struct Notification {
+    struct Notifications {
         static let savedPhoto = "notifificationSavedPhoto"
         static let notSavedPhoto = "notifificationNotSavedPhoto"
+        static let noLibraryAccess = "notifificationNoLibraryAccess"
     }
 }

@@ -47,6 +47,10 @@ class CameraViewController: UIViewController {
         return notification
     }()
 
+    // MARK: - Internal Properties
+    weak var container: ContainerViewController?
+
+    // MARK: - Private Properties
     private var heightCameraViewConstraint: Constraint?
     private let buttonHeight: CGFloat = UIScreen.main.bounds.width * 0.25
 
@@ -56,6 +60,7 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        container = navigationController?.parent as? ContainerViewController
         viewModel = CameraViewModel(vc: self)
     }
 
@@ -163,8 +168,34 @@ class CameraViewController: UIViewController {
     }
 
     func showNotification(message: String) {
-        notificationView.present(message: message)
         navigationItem.rightBarButtonItems?.first?.isEnabled = false
+        notificationView.present(message: message)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + NotificationView.duration) { [weak self] in
+            self?.navigationItem.rightBarButtonItems?.first?.isEnabled = true
+        }
+    }
+
+    func showOpenSettingsAlert() {
+        let title = LocalizeKeys.Alerts.continueTitle.localized()
+        let message = LocalizeKeys.Alerts.cameraMessage.localized()
+        let settingsButtonTitle = LocalizeKeys.Alerts.openSettingsButton.localized()
+        let noButtonTitle = LocalizeKeys.Alerts.noThanksButton.localized()
+
+        let alert = CustomAlertController(title: title, message: message)
+
+        alert.addAction(title: settingsButtonTitle) {
+            let settingURLString = UIApplication.openSettingsURLString
+            if let url = URL(string: settingURLString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+
+        alert.addAction(title: noButtonTitle) { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+
+        self.present(alert, animated: true)
     }
 
     // MARK: - @IBActions
