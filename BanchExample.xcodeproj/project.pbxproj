@@ -373,7 +373,7 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
-		CE8E31292703433100C61AE6 /* Information */ = {
+		CE8E31292703433100C61AE6 /* PHLibrary */ = {
 			isa = PBXGroup;
 			children = (
 				CE326622272BE8EF0067A9A7 /* PHLibraryAuthorizationManager.swift */,
@@ -382,7 +382,7 @@
 				CE8B0E1A273BE630005410DC /* Camera */,
 				CE69013D270F1C3F00F09B78 /* InformationTableViewCell */,
 			);
-			path = Information;
+			path = PHLibrary;
 			sourceTree = "<group>";
 		};
 		CE8E312A2703435600C61AE6 /* Home */ = {
@@ -507,7 +507,7 @@
 				CE7CCDF0273261DC002F5182 /* AppleMaps */,
 				CE929D4A27044E9A0031A8C8 /* GoogleMaps */,
 				CE8E312A2703435600C61AE6 /* Home */,
-				CE8E31292703433100C61AE6 /* Information */,
+				CE8E31292703433100C61AE6 /* PHLibrary */,
 				CE929D4F27047C140031A8C8 /* Settings */,
 				CEF2660C26EF3D93008EE038 /* SideMenu */,
 			);
